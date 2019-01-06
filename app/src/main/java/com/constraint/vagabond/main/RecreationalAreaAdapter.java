@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.RecreationalArea;
+import com.constraint.vagabond.data.RecreationalAreaList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
 public class RecreationalAreaAdapter
     extends RecyclerView.Adapter<RecreationalAreaAdapter.AreaHolder> {
 
-  private List<RecreationalArea> recreationalAreaArrayList;
+  private RecreationalAreaList recreationalAreaArrayList;
   private RecyclerViewclickListener recyclerViewclickListener;
 
   public RecreationalAreaAdapter(
-      List<RecreationalArea> recreationalAreas,
+      RecreationalAreaList recreationalAreas,
       RecyclerViewclickListener recyclerViewclickListener) {
 
     this.recreationalAreaArrayList = recreationalAreas;
@@ -40,23 +41,23 @@ public class RecreationalAreaAdapter
   public void onBindViewHolder(
       @NonNull AreaHolder areaHolder, @SuppressLint("RecyclerView") final int i) {
 
-    areaHolder.areaName.setText(recreationalAreaArrayList.get(i).getRecAreaName());
-    areaHolder.areaDescription.setText(recreationalAreaArrayList.get(i).getRecAreaDescription());
-    areaHolder.areaPhone.setText(recreationalAreaArrayList.get(i).getRecAreaPhone());
-    areaHolder.areaEmail.setText(recreationalAreaArrayList.get(i).getRecAreaEmail());
+    areaHolder.areaName.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaName());
+    areaHolder.areaDescription.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaDescription());
+    areaHolder.areaPhone.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaPhone());
+    areaHolder.areaEmail.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaEmail());
 
     areaHolder.itemView.setOnClickListener(
         new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-            recyclerViewclickListener.onItemClick(recreationalAreaArrayList.get(i));
+            recyclerViewclickListener.onItemClick(recreationalAreaArrayList.getRecreationalAreaList().get(i));
           }
         });
   }
 
   @Override
   public int getItemCount() {
-    return recreationalAreaArrayList.size();
+    return recreationalAreaArrayList.getRecreationalAreaList().size();
   }
 
   class AreaHolder extends RecyclerView.ViewHolder {

@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
 
 public class GetRecAreasImpl implements MainContract.GetRecAreasInteractor {
 
-  String apiKey = "sss";
+  String apiKey = "Your API Key";
 
   @Override
   public void getRecAreasList(final OnFinishedListener onFinishedListener, String query) {
@@ -26,8 +26,9 @@ public class GetRecAreasImpl implements MainContract.GetRecAreasInteractor {
           @Override
           public void onResponse(
               Call<RecreationalAreaList> call, Response<RecreationalAreaList> response) {
-            onFinishedListener.onFinished(response.body().getRecreationalAreaList());
+            onFinishedListener.onFinished(response.body());
           }
+
           @Override
           public void onFailure(Call<RecreationalAreaList> call, Throwable t) {
             onFinishedListener.onFailure(t);

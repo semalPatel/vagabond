@@ -1,6 +1,7 @@
 package com.constraint.vagabond.main;
 
 import com.constraint.vagabond.data.RecreationalArea;
+import com.constraint.vagabond.data.RecreationalAreaList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public interface MainContract {
 
     void hideProgress();
 
-    void setDataToRecyclerView(List<RecreationalArea> recAreasList);
+    void setDataToRecyclerView(RecreationalAreaList recAreasList);
 
     void onResponseFailure(Throwable throwable);
   }
@@ -29,7 +30,7 @@ public interface MainContract {
 
     interface OnFinishedListener {
 
-      void onFinished(List<RecreationalArea> recAreasList);
+      void onFinished(RecreationalAreaList recAreasList);
 
       void onFailure(Throwable t);
     }
