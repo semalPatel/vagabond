@@ -4,5 +4,5 @@ import com.constraint.vagabond.data.RecreationalArea;
 
 public interface RecyclerViewclickListener {
 
-    void onItemClick(RecreationalArea recreationalArea);
+  void onItemClick(RecreationalArea recreationalArea);
 }

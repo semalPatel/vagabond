@@ -7,35 +7,33 @@ import java.util.List;
 
 public interface MainContract {
 
-    interface presenter{
+  interface presenter {
 
-        void onDestroy();
+    void onDestroy();
 
-        void onSearch(String query);
+    void onSearch(String query);
+  }
 
+  interface MainView {
 
+    void showProgress();
+
+    void hideProgress();
+
+    void setDataToRecyclerView(List<RecreationalArea> recAreasList);
+
+    void onResponseFailure(Throwable throwable);
+  }
+
+  interface GetRecAreasInteractor {
+
+    interface OnFinishedListener {
+
+      void onFinished(List<RecreationalArea> recAreasList);
+
+      void onFailure(Throwable t);
     }
 
-    interface MainView{
-
-        void showProgress();
-
-        void hideProgress();
-
-        void setDataToRecyclerView(List<RecreationalArea> recAreasList);
-
-        void onResponseFailure(Throwable throwable);
-    }
-
-    interface GetRecAreasInteractor{
-
-        interface OnFinishedListener{
-
-            void onFinished(List<RecreationalArea> recAreasList);
-            void onFailure(Throwable t);
-        }
-
-        void getRecAreasList(OnFinishedListener onFinishedListener, String query);
-
-    }
+    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
+  }
 }
