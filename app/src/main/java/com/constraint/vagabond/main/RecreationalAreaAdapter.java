@@ -1,16 +1,22 @@
 package com.constraint.vagabond.main;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.constraint.vagabond.R;
+import com.constraint.vagabond.data.RecAreaMedia;
 import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +24,11 @@ import java.util.List;
 public class RecreationalAreaAdapter
     extends RecyclerView.Adapter<RecreationalAreaAdapter.AreaHolder> {
 
-  private RecreationalAreaList recreationalAreaArrayList;
-  private RecyclerViewclickListener recyclerViewclickListener;
+  public RecreationalAreaList recreationalAreaArrayList;
+  public RecyclerViewclickListener recyclerViewclickListener;
 
   public RecreationalAreaAdapter(
-      RecreationalAreaList recreationalAreas,
-      RecyclerViewclickListener recyclerViewclickListener) {
-
+      RecreationalAreaList recreationalAreas, RecyclerViewclickListener recyclerViewclickListener) {
     this.recreationalAreaArrayList = recreationalAreas;
     this.recyclerViewclickListener = recyclerViewclickListener;
   }
@@ -38,41 +42,61 @@ public class RecreationalAreaAdapter
   }
 
   @Override
-  public void onBindViewHolder(
-      @NonNull AreaHolder areaHolder, @SuppressLint("RecyclerView") final int i) {
-
-    areaHolder.areaName.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaName());
-    areaHolder.areaDescription.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaDescription());
-    areaHolder.areaPhone.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaPhone());
-    areaHolder.areaEmail.setText(recreationalAreaArrayList.getRecreationalAreaList().get(i).getRecAreaEmail());
-
-    areaHolder.itemView.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            recyclerViewclickListener.onItemClick(recreationalAreaArrayList.getRecreationalAreaList().get(i));
-          }
-        });
+  public void onBindViewHolder(final AreaHolder areaHolder, final int i) {
+    RecreationalArea recreationalArea = recreationalAreaArrayList.recreationalAreaList.get(i);
+    areaHolder.areaName.setText(recreationalArea.recAreaName);
+    areaHolder.areaPhone.setText(recreationalArea.recAreaPhone);
+    areaHolder.areaEmail.setText(recreationalArea.recAreaEmail);
+    setBackGroundImage(recreationalArea, areaHolder.backgroundImage);
   }
 
   @Override
   public int getItemCount() {
-    return recreationalAreaArrayList.getRecreationalAreaList().size();
+    return recreationalAreaArrayList.recreationalAreaList.size();
+  }
+
+  public void setBackGroundImage(RecreationalArea recreationalArea, ImageView imageView) {
+    List<RecAreaMedia> imageList = recreationalArea.recAreaMediaList;
+    String imageURL;
+    if (imageList.isEmpty()) {
+      imageURL = null;
+    } else {
+      imageURL = imageList.get(0).imageURL;
+    }
+    Picasso.get()
+        .load(imageURL)
+        .placeholder(R.drawable.baseline_report_problem_24)
+        .error(R.drawable.baseline_report_problem_24)
+        .fit()
+        .into(imageView);
   }
 
   class AreaHolder extends RecyclerView.ViewHolder {
 
-    TextView areaName;
-    TextView areaDescription;
-    TextView areaEmail;
-    TextView areaPhone;
+    final TextView areaName;
+    final TextView areaEmail;
+    final TextView areaPhone;
+    final ImageView backgroundImage;
 
     AreaHolder(View view) {
       super(view);
       areaName = view.findViewById(R.id.area_name);
-      areaDescription = view.findViewById(R.id.area_description);
       areaEmail = view.findViewById(R.id.area_email);
       areaPhone = view.findViewById(R.id.area_phone);
+      backgroundImage = view.findViewById(R.id.card_background);
+      setupClickListener();
+    }
+
+    private void setupClickListener() {
+      itemView.setOnClickListener(
+          new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              int position = getLayoutPosition();
+              recyclerViewclickListener.onItemClick(
+                  recreationalAreaArrayList.recreationalAreaList.get(position));
+            }
+          });
     }
   }
 }

@@ -8,18 +8,11 @@ import java.util.List;
 
 public class RecreationalAreaList {
 
-    @SerializedName("RECDATA")
-    @Expose
-    private List<RecreationalArea> recreationalAreaList;
+  @SerializedName("RECDATA")
+  @Expose
+  public List<RecreationalArea> recreationalAreaList;
 
-    public List<RecreationalArea> getRecreationalAreaList(){
-
-        return recreationalAreaList;
-    }
-
-    public void setRecreationalAreaList(ArrayList<RecreationalArea> recreationalAreaList){
-
-        this.recreationalAreaList = recreationalAreaList;
-    }
-
+  public RecreationalAreaList(List<RecreationalArea> recreationalAreaList, List<String> recAreaMediaList) {
+    this.recreationalAreaList = recreationalAreaList;
+  }
 }

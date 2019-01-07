@@ -11,5 +11,5 @@ public interface GetRecAreasData {
 
   @GET("recareas")
   Call<RecreationalAreaList> getRecreationalAreaData(
-      @Query("query") String query, @Header("apikey") String apiKey);
+      @Query("query") String query, @Query("full") boolean full, @Header("apikey") String apiKey);
 }

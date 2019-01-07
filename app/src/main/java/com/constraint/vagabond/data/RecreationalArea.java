@@ -3,82 +3,52 @@ package com.constraint.vagabond.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class RecreationalArea {
 
-    @SerializedName("RecAreaID")
-    @Expose
-    private String recAreaID;
-    @SerializedName("RecAreaName")
-    @Expose
-    private String recAreaName;
-    @SerializedName("RecAreaDescription")
-    @Expose
-    private String recAreaDescription;
-    @SerializedName("RecAreaDirections")
-    @Expose
-    private String recAreaDirections;
-    @SerializedName("RecAreaPhone")
-    @Expose
-    private String recAreaPhone;
-    @SerializedName("RecAreaEmail")
-    @Expose
-    private String recAreaEmail;
+  @SerializedName("RecAreaID")
+  @Expose
+  public final String recAreaID;
 
-    public RecreationalArea(String recAreaID, String recAreaName, String recAreaDescription, String recAreaDirections, String recAreaPhone, String recAreaEmail){
+  @SerializedName("RecAreaName")
+  @Expose
+  public final String recAreaName;
 
-        this.recAreaID = recAreaID;
-        this.recAreaName = recAreaName;
-        this.recAreaDescription = recAreaDescription;
-        this.recAreaDirections = recAreaDirections;
-        this.recAreaPhone = recAreaPhone;
-        this.recAreaEmail = recAreaEmail;
-    }
+  @SerializedName("RecAreaDescription")
+  @Expose
+  public final String recAreaDescription;
 
-    public String getRecAreaID() {
-        return recAreaID;
-    }
+  @SerializedName("RecAreaDirections")
+  @Expose
+  public final String recAreaDirections;
 
-    public void setRecAreaID(String recAreaID) {
-        this.recAreaID = recAreaID;
-    }
+  @SerializedName("RecAreaPhone")
+  @Expose
+  public final String recAreaPhone;
 
-    public String getRecAreaName() {
-        return recAreaName;
-    }
+  @SerializedName("RecAreaEmail")
+  @Expose
+  public final String recAreaEmail;
 
-    public void setRecAreaName(String recAreaName) {
-        this.recAreaName = recAreaName;
-    }
+  @SerializedName("MEDIA")
+  @Expose
+  public final List<RecAreaMedia> recAreaMediaList;
 
-    public String getRecAreaDescription() {
-        return recAreaDescription;
-    }
-
-    public void setRecAreaDescription(String recAreaDescription) {
-        this.recAreaDescription = recAreaDescription;
-    }
-
-    public String getRecAreaDirections() {
-        return recAreaDirections;
-    }
-
-    public void setRecAreaDirections(String recAreaDirections) {
-        this.recAreaDirections = recAreaDirections;
-    }
-
-    public String getRecAreaPhone() {
-        return recAreaPhone;
-    }
-
-    public void setRecAreaPhone(String recAreaPhone) {
-        this.recAreaPhone = recAreaPhone;
-    }
-
-    public String getRecAreaEmail() {
-        return recAreaEmail;
-    }
-
-    public void setRecAreaEmail(String recAreaEmail) {
-        this.recAreaEmail = recAreaEmail;
-    }
+  public RecreationalArea(
+      String recAreaID,
+      String recAreaName,
+      String recAreaDescription,
+      String recAreaDirections,
+      String recAreaPhone,
+      String recAreaEmail,
+      List<RecAreaMedia> recAreaMediaList) {
+    this.recAreaID = recAreaID;
+    this.recAreaName = recAreaName;
+    this.recAreaDescription = recAreaDescription;
+    this.recAreaDirections = recAreaDirections;
+    this.recAreaPhone = recAreaPhone;
+    this.recAreaEmail = recAreaEmail;
+    this.recAreaMediaList = recAreaMediaList;
+  }
 }

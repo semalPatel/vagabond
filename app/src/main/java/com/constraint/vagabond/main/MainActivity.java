@@ -14,14 +14,12 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.constraint.vagabond.R;
-import com.constraint.vagabond.data.GetRecAreasImpl;
+import com.constraint.vagabond.retrofit.GetRecAreasImpl;
 import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity
-    implements MainContract.MainView, SearchView.OnQueryTextListener {
+     implements MainContract.MainView, SearchView.OnQueryTextListener {
 
   private ProgressBar progressBar;
   private RecyclerView recyclerView;
@@ -60,7 +58,7 @@ public class MainActivity extends AppCompatActivity
       new RecyclerViewclickListener() {
         @Override
         public void onItemClick(RecreationalArea recreationalArea) {
-          Toast.makeText(MainActivity.this, recreationalArea.getRecAreaName(), Toast.LENGTH_LONG)
+          Toast.makeText(MainActivity.this, recreationalArea.recAreaName, Toast.LENGTH_LONG)
               .show();
         }
       };
