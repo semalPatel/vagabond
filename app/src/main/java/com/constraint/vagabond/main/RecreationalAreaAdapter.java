@@ -58,7 +58,11 @@ public class RecreationalAreaAdapter
     } else {
       imageURL = imageList.get(0).imageURL;
     }
-    Picasso.get().load(imageURL).placeholder(R.drawable.baseline_report_problem_24).fit().into(imageView);
+    Picasso.get()
+        .load(imageURL)
+        .placeholder(R.drawable.baseline_report_problem_24)
+        .fit()
+        .into(imageView);
   }
 
   class AreaHolder extends RecyclerView.ViewHolder {
