@@ -1,7 +1,7 @@
 package com.constraint.vagabond.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -14,9 +14,9 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.constraint.vagabond.R;
-import com.constraint.vagabond.retrofit.GetRecAreasImpl;
 import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
+import com.constraint.vagabond.retrofit.GetRecAreasImpl;
 
 public class MainActivity extends AppCompatActivity
      implements MainContract.MainView, SearchView.OnQueryTextListener {

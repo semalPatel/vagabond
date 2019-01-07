@@ -1,10 +1,6 @@
 package com.constraint.vagabond.main;
 
-import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainPresenterImpl
     implements MainContract.presenter, MainContract.GetRecAreasInteractor.OnFinishedListener {

@@ -1,11 +1,7 @@
 package com.constraint.vagabond.main;
 
-import android.annotation.SuppressLint;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +14,6 @@ import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecreationalAreaAdapter
@@ -63,12 +58,7 @@ public class RecreationalAreaAdapter
     } else {
       imageURL = imageList.get(0).imageURL;
     }
-    Picasso.get()
-        .load(imageURL)
-        .placeholder(R.drawable.baseline_report_problem_24)
-        .error(R.drawable.baseline_report_problem_24)
-        .fit()
-        .into(imageView);
+    Picasso.get().load(imageURL).placeholder(R.drawable.baseline_report_problem_24).fit().into(imageView);
   }
 
   class AreaHolder extends RecyclerView.ViewHolder {
