@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.squareup.picasso.Picasso;
 
+import java.sql.BatchUpdateException;
 import java.util.List;
 
 public class RecreationalAreaAdapter
@@ -40,8 +42,6 @@ public class RecreationalAreaAdapter
   public void onBindViewHolder(final AreaHolder areaHolder, final int i) {
     RecreationalArea recreationalArea = recreationalAreaArrayList.recreationalAreaList.get(i);
     areaHolder.areaName.setText(recreationalArea.recAreaName);
-    areaHolder.areaPhone.setText(recreationalArea.recAreaPhone);
-    areaHolder.areaEmail.setText(recreationalArea.recAreaEmail);
     setBackGroundImage(recreationalArea, areaHolder.backgroundImage);
   }
 
@@ -68,15 +68,13 @@ public class RecreationalAreaAdapter
   class AreaHolder extends RecyclerView.ViewHolder {
 
     final TextView areaName;
-    final TextView areaEmail;
-    final TextView areaPhone;
+    final Button moreInfoBtn;
     final ImageView backgroundImage;
 
     AreaHolder(View view) {
       super(view);
       areaName = view.findViewById(R.id.area_name);
-      areaEmail = view.findViewById(R.id.area_email);
-      areaPhone = view.findViewById(R.id.area_phone);
+      moreInfoBtn = view.findViewById(R.id.more_info);
       backgroundImage = view.findViewById(R.id.card_background);
       setupClickListener();
     }
@@ -91,6 +89,14 @@ public class RecreationalAreaAdapter
                   recreationalAreaArrayList.recreationalAreaList.get(position));
             }
           });
+
+      backgroundImage.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          int position = getLayoutPosition();
+
+        }
+      });
     }
   }
 }
