@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.constraint.vagabond.R;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity
   private ProgressBar progressBar;
   private RecyclerView recyclerView;
   private MainContract.presenter presenter;
+  Toolbar toolbar;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity
   }
 
   public void initializeToolbarAndRecyclerView() {
+    toolbar = findViewById(R.id.main_app_toolbar);
+    setSupportActionBar(toolbar);
+    toolbar.setTitle(R.string.app_name);
     recyclerView = findViewById(R.id.recyclerViewID);
     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
     recyclerView.setLayoutManager(layoutManager);
@@ -46,7 +51,6 @@ public class MainActivity extends AppCompatActivity
     RelativeLayout relativeLayout = new RelativeLayout(this);
     relativeLayout.setGravity(Gravity.CENTER);
     relativeLayout.addView(progressBar);
-
     RelativeLayout.LayoutParams params =
         new RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
@@ -99,6 +103,7 @@ public class MainActivity extends AppCompatActivity
     getMenuInflater().inflate(R.menu.menu_main, menu);
     MenuItem menuItem = menu.findItem(R.id.app_bar_search);
     SearchView searchView = (SearchView) menuItem.getActionView();
+    searchView.setMaxWidth(android.R.attr.maxWidth);
     searchView.setOnQueryTextListener(this);
     return true;
   }

@@ -1,7 +1,10 @@
 package com.constraint.vagabond.main;
 
+import android.content.Intent;
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +18,6 @@ import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.squareup.picasso.Picasso;
 
-import java.sql.BatchUpdateException;
 import java.util.List;
 
 public class RecreationalAreaAdapter
@@ -42,7 +44,21 @@ public class RecreationalAreaAdapter
   public void onBindViewHolder(final AreaHolder areaHolder, final int i) {
     RecreationalArea recreationalArea = recreationalAreaArrayList.recreationalAreaList.get(i);
     areaHolder.areaName.setText(recreationalArea.recAreaName);
-    setBackGroundImage(recreationalArea, areaHolder.backgroundImage);
+    Log.d(getClass().getSimpleName(), recreationalAreaArrayList.toString());
+    final String imageURL = setBackGroundImage(recreationalArea, areaHolder.backgroundImage);
+    if (imageURL == null) {
+      Resources res = areaHolder.areaName.getContext().getResources();
+      areaHolder.areaName.setTextColor(res.getColor(android.R.color.black));
+    }
+    areaHolder.moreInfoBtn.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+            intent.putExtra("image_url", imageURL);
+            v.getContext().startActivity(intent);
+          }
+        });
   }
 
   @Override
@@ -50,7 +66,7 @@ public class RecreationalAreaAdapter
     return recreationalAreaArrayList.recreationalAreaList.size();
   }
 
-  public void setBackGroundImage(RecreationalArea recreationalArea, ImageView imageView) {
+  public String setBackGroundImage(RecreationalArea recreationalArea, ImageView imageView) {
     List<RecAreaMedia> imageList = recreationalArea.recAreaMediaList;
     String imageURL;
     if (imageList.isEmpty()) {
@@ -62,7 +78,9 @@ public class RecreationalAreaAdapter
         .load(imageURL)
         .placeholder(R.drawable.baseline_report_problem_24)
         .fit()
+        .centerCrop()
         .into(imageView);
+    return imageURL;
   }
 
   class AreaHolder extends RecyclerView.ViewHolder {
@@ -89,14 +107,6 @@ public class RecreationalAreaAdapter
                   recreationalAreaArrayList.recreationalAreaList.get(position));
             }
           });
-
-      backgroundImage.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          int position = getLayoutPosition();
-
-        }
-      });
     }
   }
 }
