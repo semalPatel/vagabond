@@ -3,6 +3,7 @@ package com.constraint.vagabond.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecreationalArea {
@@ -50,5 +51,14 @@ public class RecreationalArea {
     this.recAreaPhone = recAreaPhone;
     this.recAreaEmail = recAreaEmail;
     this.recAreaMediaList = recAreaMediaList;
+  }
+
+  public List<String> getImageUrls() {
+
+    List<String> imageUrls = new ArrayList<>();
+    for (RecAreaMedia images : recAreaMediaList) {
+      imageUrls.add(images.imageURL);
+    }
+    return imageUrls;
   }
 }
