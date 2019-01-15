@@ -1,11 +1,6 @@
 package com.constraint.vagabond.main;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,13 +14,26 @@ import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.constraint.vagabond.retrofit.GetRecAreasImpl;
 
-public class MainActivity extends AppCompatActivity
-     implements MainContract.MainView, SearchView.OnQueryTextListener {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+public class MainActivity extends AppCompatActivity
+    implements MainContract.MainView, SearchView.OnQueryTextListener {
+
+  Toolbar toolbar;
   private ProgressBar progressBar;
   private RecyclerView recyclerView;
   private MainContract.presenter presenter;
-  Toolbar toolbar;
+  private RecyclerViewclickListener recyclerViewclickListener =
+      new RecyclerViewclickListener() {
+        @Override
+        public void onItemClick(RecreationalArea recreationalArea) {
+          Toast.makeText(MainActivity.this, recreationalArea.recAreaName, Toast.LENGTH_LONG).show();
+        }
+      };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +65,6 @@ public class MainActivity extends AppCompatActivity
     progressBar.setVisibility(View.INVISIBLE);
     this.addContentView(relativeLayout, params);
   }
-
-  private RecyclerViewclickListener recyclerViewclickListener =
-      new RecyclerViewclickListener() {
-        @Override
-        public void onItemClick(RecreationalArea recreationalArea) {
-          Toast.makeText(MainActivity.this, recreationalArea.recAreaName, Toast.LENGTH_LONG)
-              .show();
-        }
-      };
 
   @Override
   public void showProgress() {

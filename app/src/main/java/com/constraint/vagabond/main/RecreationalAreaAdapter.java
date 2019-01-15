@@ -2,8 +2,6 @@ package com.constraint.vagabond.main;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +17,9 @@ import com.constraint.vagabond.data.RecreationalAreaList;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class RecreationalAreaAdapter
     extends RecyclerView.Adapter<RecreationalAreaAdapter.AreaHolder> {

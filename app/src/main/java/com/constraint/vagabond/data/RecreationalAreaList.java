@@ -11,7 +11,7 @@ public class RecreationalAreaList {
   @Expose
   public List<RecreationalArea> recreationalAreaList;
 
-  public RecreationalAreaList(List<RecreationalArea> recreationalAreaList, List<String> recAreaMediaList) {
+  public RecreationalAreaList(List<RecreationalArea> recreationalAreaList) {
     this.recreationalAreaList = recreationalAreaList;
   }
 }

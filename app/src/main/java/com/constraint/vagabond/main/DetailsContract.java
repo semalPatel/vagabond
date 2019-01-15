@@ -2,13 +2,11 @@ package com.constraint.vagabond.main;
 
 public interface DetailsContract {
 
-    void initializeView();
+  void initializeView();
 
-    void destroyView();
+  void destroyView();
 
-    void initializeData();
+  void initializeData();
 
-    void setDataToRecyclerView();
-
-
+  void setDataToRecyclerView();
 }

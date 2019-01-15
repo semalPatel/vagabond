@@ -24,13 +24,13 @@ public interface MainContract {
 
   interface GetRecAreasInteractor {
 
+    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
+
     interface OnFinishedListener {
 
       void onFinished(RecreationalAreaList recAreasList);
 
       void onFailure(Throwable t);
     }
-
-    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
   }
 }

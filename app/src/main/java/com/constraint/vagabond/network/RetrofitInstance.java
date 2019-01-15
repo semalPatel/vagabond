@@ -5,8 +5,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
 
+  private static final String BASE_URL = "https://ridb.recreation.gov/api/v1/";
   private static Retrofit retrofit;
-  private final static String BASE_URL = "https://ridb.recreation.gov/api/v1/";
 
   public static Retrofit getInstance() {
 
@@ -20,5 +20,4 @@ public class RetrofitInstance {
 
     return retrofit;
   }
-
 }
