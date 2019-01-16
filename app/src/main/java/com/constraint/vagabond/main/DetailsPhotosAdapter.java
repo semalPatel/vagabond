@@ -1,11 +1,15 @@
 package com.constraint.vagabond.main;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.constraint.vagabond.R;
+import com.github.chrisbanes.photoview.OnPhotoTapListener;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -30,9 +34,17 @@ public class DetailsPhotosAdapter extends RecyclerView.Adapter<DetailsPhotosAdap
   }
 
   @Override
-  public void onBindViewHolder(@NonNull Images images, int i) {
-    String randomUrl = imagesUrls.get(images.getAdapterPosition());
+  public void onBindViewHolder(@NonNull Images images, final int i) {
+    final String randomUrl = imagesUrls.get(images.getAdapterPosition());
     Picasso.get().load(randomUrl).fit().centerCrop().into(images.image);
+    images.image.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), SingleImageView.class);
+            intent.putExtra("image_url", randomUrl);
+            v.getContext().startActivity(intent);
+        }
+    });
   }
 
   @Override
@@ -42,20 +54,11 @@ public class DetailsPhotosAdapter extends RecyclerView.Adapter<DetailsPhotosAdap
 
   class Images extends RecyclerView.ViewHolder {
 
-    final ImageView image;
+    final PhotoView image;
 
     Images(@NonNull View itemView) {
       super(itemView);
       image = itemView.findViewById(R.id.more_images);
-      imageOnClickListener();
-    }
-
-    void imageOnClickListener() {
-      itemView.setOnClickListener(
-          new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {}
-          });
     }
   }
 }

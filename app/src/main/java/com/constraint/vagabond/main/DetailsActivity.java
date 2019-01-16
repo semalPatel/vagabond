@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.DataStore;
 import com.constraint.vagabond.data.RecreationalAreaList;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -98,4 +99,5 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     DetailsPhotosAdapter detailsPhotosAdapter = new DetailsPhotosAdapter(imageUrls);
     areaImages.setAdapter(detailsPhotosAdapter);
   }
+
 }

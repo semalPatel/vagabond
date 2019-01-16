@@ -21,6 +21,9 @@
         <activity
             android:name=".main.DetailsActivity"
             android:theme="@style/VagaTheme"></activity>
+        <activity
+            android:name=".main.SingleImageView"
+            android:theme="@style/VagaTheme"></activity>
     </application>
 
 </manifest>
