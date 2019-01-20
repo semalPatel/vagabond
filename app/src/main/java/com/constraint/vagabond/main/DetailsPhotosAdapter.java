@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.constraint.vagabond.R;
-import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
 
@@ -37,14 +34,15 @@ public class DetailsPhotosAdapter extends RecyclerView.Adapter<DetailsPhotosAdap
   public void onBindViewHolder(@NonNull Images images, final int i) {
     final String randomUrl = imagesUrls.get(images.getAdapterPosition());
     Picasso.get().load(randomUrl).fit().centerCrop().into(images.image);
-    images.image.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+    images.image.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SingleImageView.class);
             intent.putExtra("image_url", randomUrl);
             v.getContext().startActivity(intent);
-        }
-    });
+          }
+        });
   }
 
   @Override

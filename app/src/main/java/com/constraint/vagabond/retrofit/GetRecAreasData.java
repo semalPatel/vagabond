@@ -2,7 +2,7 @@ package com.constraint.vagabond.retrofit;
 
 import com.constraint.vagabond.data.RecreationalAreaList;
 
-import retrofit2.Call;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Query;
@@ -10,6 +10,6 @@ import retrofit2.http.Query;
 public interface GetRecAreasData {
 
   @GET("recareas")
-  Call<RecreationalAreaList> getRecreationalAreaData(
+  Observable<RecreationalAreaList> getRecreationalAreaData(
       @Query("query") String query, @Query("full") boolean full, @Header("apikey") String apiKey);
 }
