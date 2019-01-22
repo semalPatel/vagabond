@@ -82,7 +82,14 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
   }
 
   @Override
-  public void destroyView() {}
+  public void onBackPressed() {
+    super.onBackPressed();
+  }
+
+  @Override
+  public void destroyView() {
+
+  }
 
   @Override
   public void initializeData() {
