@@ -10,4 +10,4 @@ A national park information and campsite availibility watcher application for An
   <ui>MVP architecture</ui></br>
   <ui>RxJava(Trying to learn and make sense of it!)</ui>
 </ul>
-![image](https://imgur.com/a/uaduxyF)
+![alt text](https://imgur.com/a/uaduxyF)
