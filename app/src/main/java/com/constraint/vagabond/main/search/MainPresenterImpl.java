@@ -1,4 +1,4 @@
-package com.constraint.vagabond.main;
+package com.constraint.vagabond.main.search;
 
 import com.constraint.vagabond.data.RecreationalAreaList;
 

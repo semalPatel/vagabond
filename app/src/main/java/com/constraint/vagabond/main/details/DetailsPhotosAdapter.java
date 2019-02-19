@@ -1,4 +1,4 @@
-package com.constraint.vagabond.main;
+package com.constraint.vagabond.main.details;
 
 import android.content.Intent;
 import android.view.LayoutInflater;

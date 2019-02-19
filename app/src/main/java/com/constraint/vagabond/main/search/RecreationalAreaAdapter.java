@@ -1,4 +1,4 @@
-package com.constraint.vagabond.main;
+package com.constraint.vagabond.main.search;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,6 +14,7 @@ import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.RecAreaMedia;
 import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
+import com.constraint.vagabond.main.details.DetailsActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

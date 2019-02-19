@@ -1,4 +1,4 @@
-package com.constraint.vagabond.main;
+package com.constraint.vagabond.main.details;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.DataStore;
 import com.constraint.vagabond.data.RecreationalAreaList;
-import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -24,7 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DetailsActivity extends AppCompatActivity implements DetailsContract {
+public class DetailsActivity extends AppCompatActivity implements DetailsContract.View{
 
   private CollapsingToolbarLayout collapsingToolbarLayout;
   private Toolbar toolbar;
@@ -69,6 +68,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     directionBtn = findViewById(R.id.directions);
   }
 
+
   public void loadImage() {
     final ImageView expandingImage = findViewById(R.id.collapsing_image);
     Picasso.get().load(collapsingImageUrl).fit().centerCrop().into(expandingImage);
@@ -84,11 +84,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
   @Override
   public void onBackPressed() {
     super.onBackPressed();
-  }
-
-  @Override
-  public void destroyView() {
-
+    finish();
   }
 
   @Override
