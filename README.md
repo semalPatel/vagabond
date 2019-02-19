@@ -10,7 +10,4 @@ A national park information and campsite availibility watcher application for An
   <ui>MVP architecture</ui></br>
   <ui>RxJava(Trying to learn and make sense of it!)</ui>
 </ul>
-<p>
-    <img src="screenshots/vagabond.png" width="350" height="700"/>
-    <img src="screenshots/details.png" width="300" height="500"/>
-</p>
+![Screenshot](vagabond.png)
