@@ -4,6 +4,10 @@ public class DataStore {
 
   private static RecreationalAreaList recreationalAreaList;
 
+  public DataStore(RecreationalAreaList recreationalAreaList){
+
+  }
+
   public static RecreationalAreaList getRecreationalAreaList() {
     return recreationalAreaList;
   }

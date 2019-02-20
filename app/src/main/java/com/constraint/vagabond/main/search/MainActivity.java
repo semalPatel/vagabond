@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
+import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter;
+import com.constraint.vagabond.main.search.adapter.RecyclerViewclickListener;
 import com.constraint.vagabond.retrofit.GetRecAreasImpl;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,9 +80,8 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public void setDataToRecyclerView(RecreationalAreaList recAreasList) {
-
     RecreationalAreaAdapter recreationalAreaAdapter =
-        new RecreationalAreaAdapter(recAreasList, recyclerViewclickListener);
+        new RecreationalAreaAdapter(recAreasList);
     recyclerView.setAdapter(recreationalAreaAdapter);
   }
 

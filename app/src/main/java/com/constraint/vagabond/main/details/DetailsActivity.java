@@ -31,7 +31,6 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
   private String collapsingImageUrl;
   private TextView areaDescription;
   private RecreationalAreaList detailedArea = DataStore.getRecreationalAreaList();
-  private List<String> imageUrls;
   private int position;
   private RecyclerView areaImages;
   private Button directionBtn;
@@ -42,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     Intent getData = getIntent();
     collapsingImageUrl = getData.getStringExtra("image_url");
     position = getData.getIntExtra("position", 0);
-    imageUrls = detailedArea.recreationalAreaList.get(position).getImageUrls();
+//    imageUrls = detailedArea.recreationalAreaList.get(position).getImageUrls();
     initializeView();
   }
 
@@ -51,10 +50,9 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     super.onStart();
     initializeData();
     loadImage();
-    setDataToRecyclerView();
+//    setDataToRecyclerView();
   }
 
-  @Override
   public void initializeView() {
     setContentView(R.layout.activity_detail);
     toolbar = findViewById(R.id.toolbar_title);
@@ -87,7 +85,6 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     finish();
   }
 
-  @Override
   public void initializeData() {
     collapsingToolbarLayout.setTitle(detailedArea.recreationalAreaList.get(position).recAreaName);
     String desc = detailedArea.recreationalAreaList.get(position).recAreaDescription;
@@ -95,7 +92,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
   }
 
   @Override
-  public void setDataToRecyclerView() {
+  public void setDataToRecyclerView(List<String> imageUrls) {
     LinearLayoutManager linearLayoutManager =
         new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
     areaImages.setLayoutManager(linearLayoutManager);

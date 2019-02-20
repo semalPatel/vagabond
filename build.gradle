@@ -3,20 +3,6 @@
 buildscript {
     ext.isCi = Boolean.parseBoolean(System.getProperty('CI', 'false'))
 
-    ext.versions = [
-            'supportLibrary': '28.0.0'
-    ]
-
-    ext.deps = [
-            'support': [
-                    'appcompat'    : "com.android.support:appcompat-v7:${versions.supportLibrary}",
-                    'design'       : "com.android.support:design:${versions.supportLibrary}",
-                    'recyclerview' : "com.android.support:recyclerview-v7:${versions.supportLibrary}",
-                    'cardview'     : "com.android.support:cardview-v7:${versions.supportLibrary}",
-                    'exifinterface': "com.android.support:exifinterface:${versions.supportLibrary}"
-            ]
-    ]
-
 
     repositories {
         google()
