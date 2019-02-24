@@ -1,4 +1,4 @@
-package com.constraint.vagabond.retrofit;
+package com.constraint.vagabond.data.remote;
 
 import com.constraint.vagabond.data.RecreationalAreaList;
 

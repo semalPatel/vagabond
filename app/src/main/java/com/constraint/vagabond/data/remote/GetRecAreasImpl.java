@@ -2,6 +2,7 @@ package com.constraint.vagabond.retrofit;
 
 import android.util.Log;
 
+import com.constraint.vagabond.data.RecAreaRepository;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.constraint.vagabond.main.search.MainContract;
 import com.constraint.vagabond.network.RetrofitInstance;
@@ -12,7 +13,8 @@ import retrofit2.Response;
 
 public class GetRecAreasImpl implements MainContract.GetRecAreasInteractor {
 
-   private final String apiKey = "api-key";
+   private final String apiKey = "3e842b31-3481-4b92-8512-930d5f4093c4";
+   RecAreaRepository recAreaRepository = new RecAreaRepository();
 
   @Override
   public void getRecAreasList(final OnFinishedListener onFinishedListener, String query) {
@@ -24,7 +26,6 @@ public class GetRecAreasImpl implements MainContract.GetRecAreasInteractor {
           @Override
           public void onResponse(
               Call<RecreationalAreaList> call, Response<RecreationalAreaList> response) {
-              
             onFinishedListener.onFinished(response.body());
           }
 

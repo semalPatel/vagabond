@@ -14,7 +14,7 @@ import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter;
 import com.constraint.vagabond.main.search.adapter.RecyclerViewclickListener;
-import com.constraint.vagabond.retrofit.GetRecAreasImpl;
+import com.constraint.vagabond.data.remote.GetRecAreasImpl;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;

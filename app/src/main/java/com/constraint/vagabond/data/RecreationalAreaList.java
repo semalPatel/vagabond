@@ -5,7 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class RecreationalAreaList {
+import androidx.room.Entity;
+import androidx.room.TypeConverters;
+
+public final class RecreationalAreaList {
 
   @SerializedName("RECDATA")
   @Expose

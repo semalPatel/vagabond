@@ -6,8 +6,17 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecreationalArea {
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
+@Entity
+public final class RecreationalArea {
+
+  @PrimaryKey
+  @NonNull
   @SerializedName("RecAreaID")
   @Expose
   public final String recAreaID;
@@ -34,6 +43,7 @@ public class RecreationalArea {
 
   @SerializedName("MEDIA")
   @Expose
+  @TypeConverters(DataConverter.class)
   public final List<RecAreaMedia> recAreaMediaList;
 
   public RecreationalArea(

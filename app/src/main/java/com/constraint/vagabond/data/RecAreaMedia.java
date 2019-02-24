@@ -3,7 +3,7 @@ package com.constraint.vagabond.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RecAreaMedia {
+public final class RecAreaMedia {
 
   @SerializedName("Title")
   @Expose
