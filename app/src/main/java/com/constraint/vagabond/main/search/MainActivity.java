@@ -11,12 +11,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.constraint.vagabond.R;
-import com.constraint.vagabond.data.RecAreaRepository;
-import com.constraint.vagabond.data.RecreationalArea;
-import com.constraint.vagabond.data.RecreationalAreaList;
-import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter;
-import com.constraint.vagabond.main.search.adapter.RecyclerViewclickListener;
+import com.constraint.vagabond.data.entities.RecreationalAreaList;
 import com.constraint.vagabond.data.remote.GetRecAreasImpl;
+import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -31,13 +28,6 @@ public class MainActivity extends AppCompatActivity
   private ProgressBar progressBar;
   private RecyclerView recyclerView;
   private MainContract.presenter presenter;
-  private RecyclerViewclickListener recyclerViewclickListener =
-      new RecyclerViewclickListener() {
-        @Override
-        public void onItemClick(RecreationalArea recreationalArea) {
-          Toast.makeText(MainActivity.this, recreationalArea.recAreaName, Toast.LENGTH_LONG).show();
-        }
-      };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +72,7 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public void setDataToRecyclerView(RecreationalAreaList recAreasList) {
-    RecreationalAreaAdapter recreationalAreaAdapter =
-        new RecreationalAreaAdapter(recAreasList);
+    RecreationalAreaAdapter recreationalAreaAdapter = new RecreationalAreaAdapter(recAreasList);
     recyclerView.setAdapter(recreationalAreaAdapter);
     Log.d(MainActivity.class.getSimpleName(), recAreasList.toString());
   }

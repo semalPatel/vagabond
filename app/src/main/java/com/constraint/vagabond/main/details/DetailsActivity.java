@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.DataStore;
-import com.constraint.vagabond.data.RecreationalAreaList;
+import com.constraint.vagabond.data.entities.RecreationalAreaList;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
@@ -23,7 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DetailsActivity extends AppCompatActivity implements DetailsContract.View{
+public class DetailsActivity extends AppCompatActivity implements DetailsContract.View {
 
   private CollapsingToolbarLayout collapsingToolbarLayout;
   private Toolbar toolbar;
@@ -41,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     Intent getData = getIntent();
     collapsingImageUrl = getData.getStringExtra("image_url");
     position = getData.getIntExtra("position", 0);
-//    imageUrls = detailedArea.recreationalAreaList.get(position).getImageUrls();
+    //    imageUrls = detailedArea.recreationalAreaList.get(position).getImageUrls();
     initializeView();
   }
 
@@ -50,7 +50,7 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     super.onStart();
     initializeData();
     loadImage();
-//    setDataToRecyclerView();
+    //    setDataToRecyclerView();
   }
 
   public void initializeView() {
@@ -65,7 +65,6 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     areaDescription = findViewById(R.id.description);
     directionBtn = findViewById(R.id.directions);
   }
-
 
   public void loadImage() {
     final ImageView expandingImage = findViewById(R.id.collapsing_image);
@@ -99,5 +98,4 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
     DetailsPhotosAdapter detailsPhotosAdapter = new DetailsPhotosAdapter(imageUrls);
     areaImages.setAdapter(detailsPhotosAdapter);
   }
-
 }

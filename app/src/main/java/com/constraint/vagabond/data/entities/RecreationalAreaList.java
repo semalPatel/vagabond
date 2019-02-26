@@ -1,4 +1,4 @@
-package com.constraint.vagabond.data;
+package com.constraint.vagabond.data.entities;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,8 +6,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.room.Entity;
-import androidx.room.TypeConverters;
 
 public final class RecreationalAreaList {
 

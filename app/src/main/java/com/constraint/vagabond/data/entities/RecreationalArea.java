@@ -1,13 +1,11 @@
-package com.constraint.vagabond.data;
+package com.constraint.vagabond.data.entities;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
@@ -66,13 +64,27 @@ public final class RecreationalArea {
   @NonNull
   @Override
   public String toString() {
-    String info = "id: " + recAreaID +
-            "\n" + "name: " + recAreaName +
-            "\n" + "description: " + recAreaDescription +
-            "\n" + "directions: " + recAreaDirections +
-            "\n" + "phone: " + recAreaPhone +
-            "\n" + "email: " + recAreaEmail +
-            "\n" + "media_urls" + recAreaMediaList.toString();
+    String info =
+        "id: "
+            + recAreaID
+            + "\n"
+            + "name: "
+            + recAreaName
+            + "\n"
+            + "description: "
+            + recAreaDescription
+            + "\n"
+            + "directions: "
+            + recAreaDirections
+            + "\n"
+            + "phone: "
+            + recAreaPhone
+            + "\n"
+            + "email: "
+            + recAreaEmail
+            + "\n"
+            + "media_urls"
+            + recAreaMediaList.toString();
     return info;
   }
 }

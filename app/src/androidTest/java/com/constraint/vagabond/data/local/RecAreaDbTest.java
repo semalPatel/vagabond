@@ -2,10 +2,8 @@ package com.constraint.vagabond.data.local;
 
 import android.content.Context;
 
-import com.constraint.vagabond.data.RecAreaMedia;
-import com.constraint.vagabond.data.RecreationalArea;
-import com.constraint.vagabond.data.local.RecAreaDao;
-import com.constraint.vagabond.data.local.RecAreaDatabase;
+import com.constraint.vagabond.data.entities.RecAreaMedia;
+import com.constraint.vagabond.data.entities.RecreationalArea;
 
 import org.junit.After;
 import org.junit.Before;

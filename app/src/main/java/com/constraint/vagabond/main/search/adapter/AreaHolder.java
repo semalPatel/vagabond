@@ -12,35 +12,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AreaHolder extends RecyclerView.ViewHolder implements AreaHolderView {
 
-    private final TextView areaName;
-    private final Button moreInfoBtn;
-    private final ImageView backgroundImage;
+  private final TextView areaName;
+  private final Button moreInfoBtn;
+  private final ImageView backgroundImage;
 
-    AreaHolder(View view) {
-        super(view);
-        areaName = view.findViewById(R.id.area_name);
-        moreInfoBtn = view.findViewById(R.id.more_info);
-        backgroundImage = view.findViewById(R.id.card_background);
-    }
+  AreaHolder(final View view) {
+    super(view);
+    areaName = view.findViewById(R.id.area_name);
+    moreInfoBtn = view.findViewById(R.id.more_info);
+    backgroundImage = view.findViewById(R.id.card_background);
+  }
 
-    @Override
-    public void setAreaTitle(String areaTitle) {
-        areaName.setText(areaTitle);
-    }
+  @Override
+  public void setAreaTitle(String areaTitle) {
+    areaName.setText(areaTitle);
+  }
 
-    @Override
-    public void setAreaImage(String imageUrl) {
-        Picasso.get()
-                .load(imageUrl)
-                .placeholder(R.drawable.baseline_report_problem_24)
-                .fit()
-                .centerCrop()
-                .into(backgroundImage);
-    }
+  @Override
+  public void setAreaImage(String imageUrl) {
+    Picasso.get()
+        .load(imageUrl)
+        .placeholder(R.drawable.baseline_report_problem_24)
+        .fit()
+        .centerCrop()
+        .into(backgroundImage);
+  }
 
-    @Override
-    public void setMoreInfoButton() {
-
-
-    }
+  @Override
+  public void setMoreInfoButton() {}
 }

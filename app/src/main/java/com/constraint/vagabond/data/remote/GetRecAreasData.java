@@ -1,6 +1,6 @@
 package com.constraint.vagabond.data.remote;
 
-import com.constraint.vagabond.data.RecreationalAreaList;
+import com.constraint.vagabond.data.entities.RecreationalAreaList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

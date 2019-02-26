@@ -1,6 +1,6 @@
 package com.constraint.vagabond.main.search;
 
-import com.constraint.vagabond.data.RecreationalAreaList;
+import com.constraint.vagabond.data.entities.RecreationalAreaList;
 
 public class MainPresenterImpl
     implements MainContract.presenter, MainContract.GetRecAreasInteractor.OnFinishedListener {

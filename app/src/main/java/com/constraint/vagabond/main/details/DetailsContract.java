@@ -11,7 +11,6 @@ public interface DetailsContract {
     void loadAreaDescription(String recAreaName);
 
     void areaDirections(String recAreaName);
-
   }
 
   interface View {

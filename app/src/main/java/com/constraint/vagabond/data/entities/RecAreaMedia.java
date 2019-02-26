@@ -1,4 +1,4 @@
-package com.constraint.vagabond.data;
+package com.constraint.vagabond.data.entities;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -34,10 +34,18 @@ public final class RecAreaMedia {
   @NonNull
   @Override
   public String toString() {
-    String urls = "image_url: " + imageURL +
-            "\n" + "image_title: " + imageTitle +
-            "\n" + "image_height: " + imageHeight +
-            "\n" + "image_width: " + imageWidth;
+    String urls =
+        "image_url: "
+            + imageURL
+            + "\n"
+            + "image_title: "
+            + imageTitle
+            + "\n"
+            + "image_height: "
+            + imageHeight
+            + "\n"
+            + "image_width: "
+            + imageWidth;
 
     return urls;
   }
