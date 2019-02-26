@@ -8,6 +8,7 @@ A national park information and campsite availibility watcher application for An
   <ui>Retrofit</ui></br>
   <ui>Picasso</ui></br>
   <ui>MVP architecture</ui></br>
+  <ui>Room</ui></br>
   <ui>RxJava(Trying to learn and make sense of it!)</ui>
 </ul>
 
