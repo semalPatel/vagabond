@@ -63,16 +63,16 @@ public final class RecreationalArea {
     this.recAreaMediaList = recAreaMediaList;
   }
 
-//  @NonNull
-//  @Override
-//  public String toString() {
-//    String info = "id: " + recAreaID +
-//            "\n" + "name: " + recAreaName +
-//            "\n" + "description: " + recAreaDescription +
-//            "\n" + "directions: " + recAreaDirections +
-//            "\n" + "phone: " + recAreaPhone +
-//            "\n" + "email: " + recAreaEmail +
-//            "\n" + "media_urls" + recAreaMediaList.toString();
-//    return info;
-//  }
+  @NonNull
+  @Override
+  public String toString() {
+    String info = "id: " + recAreaID +
+            "\n" + "name: " + recAreaName +
+            "\n" + "description: " + recAreaDescription +
+            "\n" + "directions: " + recAreaDirections +
+            "\n" + "phone: " + recAreaPhone +
+            "\n" + "email: " + recAreaEmail +
+            "\n" + "media_urls" + recAreaMediaList.toString();
+    return info;
+  }
 }

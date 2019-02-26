@@ -31,14 +31,14 @@ public final class RecAreaMedia {
     this.imageURL = imageURL;
   }
 
-//  @NonNull
-//  @Override
-//  public String toString() {
-//    String urls = "image_url: " + imageURL +
-//            "\n" + "image_title: " + imageTitle +
-//            "\n" + "image_height: " + imageHeight +
-//            "\n" + "image_width: " + imageWidth;
-//
-//    return urls;
-//  }
+  @NonNull
+  @Override
+  public String toString() {
+    String urls = "image_url: " + imageURL +
+            "\n" + "image_title: " + imageTitle +
+            "\n" + "image_height: " + imageHeight +
+            "\n" + "image_width: " + imageWidth;
+
+    return urls;
+  }
 }

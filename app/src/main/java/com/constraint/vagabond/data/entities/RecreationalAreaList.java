@@ -19,10 +19,10 @@ public final class RecreationalAreaList {
     this.recreationalAreaList = recreationalAreaList;
   }
 
-//  @NonNull
-//  @Override
-//  public String toString() {
-//    String areas = "areas: " + recreationalAreaList.toString();
-//    return areas;
-//  }
+  @NonNull
+  @Override
+  public String toString() {
+    String areas = "areas: " + recreationalAreaList.toString();
+    return areas;
+  }
 }
