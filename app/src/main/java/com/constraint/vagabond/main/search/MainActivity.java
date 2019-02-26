@@ -1,6 +1,7 @@
 package com.constraint.vagabond.main.search;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.constraint.vagabond.R;
+import com.constraint.vagabond.data.RecAreaRepository;
 import com.constraint.vagabond.data.RecreationalArea;
 import com.constraint.vagabond.data.RecreationalAreaList;
 import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter;
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity
     RecreationalAreaAdapter recreationalAreaAdapter =
         new RecreationalAreaAdapter(recAreasList);
     recyclerView.setAdapter(recreationalAreaAdapter);
+    Log.d(MainActivity.class.getSimpleName(), recAreasList.toString());
   }
 
   @Override

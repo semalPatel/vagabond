@@ -3,6 +3,8 @@ package com.constraint.vagabond.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import androidx.annotation.NonNull;
+
 public final class RecAreaMedia {
 
   @SerializedName("Title")
@@ -28,4 +30,15 @@ public final class RecAreaMedia {
     this.imageWidth = imageWidth;
     this.imageURL = imageURL;
   }
+
+//  @NonNull
+//  @Override
+//  public String toString() {
+//    String urls = "image_url: " + imageURL +
+//            "\n" + "image_title: " + imageTitle +
+//            "\n" + "image_height: " + imageHeight +
+//            "\n" + "image_width: " + imageWidth;
+//
+//    return urls;
+//  }
 }

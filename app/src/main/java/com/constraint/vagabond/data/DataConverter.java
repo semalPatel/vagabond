@@ -40,7 +40,7 @@ public class DataConverter {
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<RecreationalAreaList>() {}.getType();
+        Type type = new TypeToken<List<RecAreaMedia>>() {}.getType();
         String json = gson.toJson(recAreaMediaList, type);
         return json;
     }
@@ -51,7 +51,7 @@ public class DataConverter {
             return null;
         }
         Gson gson = new Gson();
-        Type type = new TypeToken<RecreationalAreaList>() {}.getType();
+        Type type = new TypeToken<List<RecAreaMedia>>() {}.getType();
         List<RecAreaMedia> recreationalAreaMedia = gson.fromJson(json, type);
         return recreationalAreaMedia;
     }

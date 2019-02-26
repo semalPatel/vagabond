@@ -63,12 +63,16 @@ public final class RecreationalArea {
     this.recAreaMediaList = recAreaMediaList;
   }
 
-  public List<String> getImageUrls() {
-
-    List<String> imageUrls = new ArrayList<>();
-    for (RecAreaMedia images : recAreaMediaList) {
-      imageUrls.add(images.imageURL);
-    }
-    return imageUrls;
-  }
+//  @NonNull
+//  @Override
+//  public String toString() {
+//    String info = "id: " + recAreaID +
+//            "\n" + "name: " + recAreaName +
+//            "\n" + "description: " + recAreaDescription +
+//            "\n" + "directions: " + recAreaDirections +
+//            "\n" + "phone: " + recAreaPhone +
+//            "\n" + "email: " + recAreaEmail +
+//            "\n" + "media_urls" + recAreaMediaList.toString();
+//    return info;
+//  }
 }
