@@ -5,9 +5,4 @@ import com.google.gson.annotations.SerializedName
 
 data class RecreationalAreaList(@field:SerializedName("RECDATA")
                            @field:Expose
-                           val recreationalAreaList: List<RecreationalArea>) {
-
-    override fun toString(): String {
-        return "areas: $recreationalAreaList"
-    }
-}
+                           val recreationalAreaList: List<RecreationalArea>)g

@@ -42,7 +42,6 @@ class MainPresenterImpl(
                         mainView?.hideProgress()
                         e.stackTrace
                     }
-
                 })
         )
     }

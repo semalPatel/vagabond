@@ -30,28 +30,4 @@ data class RecreationalArea(
         @field:SerializedName("MEDIA")
         @field:Expose
         @field:TypeConverters(DataConverter::class)
-        val recAreaMediaList: List<RecAreaMedia>) {
-
-    override fun toString(): String {
-        return ("id: "
-                + recAreaID
-                + "\n"
-                + "name: "
-                + recAreaName
-                + "\n"
-                + "description: "
-                + recAreaDescription
-                + "\n"
-                + "directions: "
-                + recAreaDirections
-                + "\n"
-                + "phone: "
-                + recAreaPhone
-                + "\n"
-                + "email: "
-                + recAreaEmail
-                + "\n"
-                + "media_urls"
-                + recAreaMediaList.toString())
-    }
-}
+        val recAreaMediaList: List<RecAreaMedia>)

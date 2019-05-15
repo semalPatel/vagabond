@@ -11,20 +11,4 @@ data class RecAreaMedia(@field:SerializedName("Title")
                    @field:Expose
                    val imageWidth: Int?, @field:SerializedName("URL")
                    @field:Expose
-                   val imageURL: String) {
-
-    override fun toString(): String {
-
-        return ("image_url: "
-                + imageURL
-                + "\n"
-                + "image_title: "
-                + imageTitle
-                + "\n"
-                + "image_height: "
-                + imageHeight
-                + "\n"
-                + "image_width: "
-                + imageWidth)
-    }
-}
+                   val imageURL: String)
