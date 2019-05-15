@@ -38,7 +38,7 @@ class MainPresenterImpl(
                     }
 
                     override fun onError(e: Throwable) {
-                        mainView?.onResponseFailure(e)
+                        mainView?.onResponseFailure()
                         mainView?.hideProgress()
                         e.stackTrace
                     }

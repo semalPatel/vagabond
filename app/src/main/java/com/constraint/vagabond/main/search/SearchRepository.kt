@@ -10,7 +10,7 @@ object SearchRepositoryProvider {
     }
 }
 
-class SearchRepository(val recAreaData: GetRecAreasData) {
+class SearchRepository(private val recAreaData: GetRecAreasData) {
     fun getRecAreasList(query: String, apiKey: String) : Observable<RecreationalAreaList> {
         return recAreaData.getRecreationalAreaData(query, full = true, apiKey = apiKey)
     }

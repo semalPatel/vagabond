@@ -19,7 +19,7 @@ public interface MainContract {
 
     void setDataToRecyclerView(RecreationalAreaList recAreasList);
 
-    void onResponseFailure(Throwable throwable);
+    void onResponseFailure();
   }
 
 //  interface GetRecAreasInteractor {
