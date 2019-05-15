@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Vagabond</string>
-    <string name="recreation_api_key">3e842b31-3481-4b92-8512-930d5f4093c4</string>
     <string name="recycler_view_id">recyclerViewID</string>
     <string name="search_bar_title">Search</string>
     <string name="more_info">MORE INFO</string>
