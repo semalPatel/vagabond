@@ -3,7 +3,7 @@ package com.constraint.vagabond.data.entities
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class RecAreaMedia(@field:SerializedName("Title")
+data class RecAreaMedia(@field:SerializedName("Title")
                    @field:Expose
                    val imageTitle: String, @field:SerializedName("Height")
                    @field:Expose

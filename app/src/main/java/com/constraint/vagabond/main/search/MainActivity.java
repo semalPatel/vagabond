@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.entities.RecreationalAreaList;
-import com.constraint.vagabond.data.remote.GetRecAreasImpl;
 import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     setContentView(R.layout.activity_main);
     initializeToolbarAndRecyclerView();
     initProgressBar();
-    presenter = new MainPresenterImpl(this, new GetRecAreasImpl());
+    presenter = new MainPresenterImpl(this);
   }
 
   public void initializeToolbarAndRecyclerView() {
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public boolean onQueryTextSubmit(String s) {
-    presenter.onSearch(s);
+    presenter.onSearch(s, getString(R.string.api_key));
     return false;
   }
 

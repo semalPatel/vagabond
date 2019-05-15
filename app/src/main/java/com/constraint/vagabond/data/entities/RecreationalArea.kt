@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 
 @Entity
-class RecreationalArea(
+data class RecreationalArea(
         @field:PrimaryKey
         @field:SerializedName("RecAreaID")
         @field:Expose

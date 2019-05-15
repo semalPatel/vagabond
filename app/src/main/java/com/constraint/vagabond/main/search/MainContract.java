@@ -8,7 +8,7 @@ public interface MainContract {
 
     void onDestroy();
 
-    void onSearch(String query);
+    void onSearch(String query, String apiKey);
   }
 
   interface MainView {
@@ -22,15 +22,15 @@ public interface MainContract {
     void onResponseFailure(Throwable throwable);
   }
 
-  interface GetRecAreasInteractor {
-
-    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
-
-    interface OnFinishedListener {
-
-      void onFinished(RecreationalAreaList recAreasList);
-
-      void onFailure(Throwable t);
-    }
-  }
+//  interface GetRecAreasInteractor {
+//
+//    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
+//
+//    interface OnFinishedListener {
+//
+//      void onFinished(RecreationalAreaList recAreasList);
+//
+//      void onFailure(Throwable t);
+//    }
+//  }
 }

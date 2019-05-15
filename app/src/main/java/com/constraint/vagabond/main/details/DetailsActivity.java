@@ -85,8 +85,8 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
   }
 
   public void initializeData() {
-    collapsingToolbarLayout.setTitle(detailedArea.recreationalAreaList.get(position).recAreaName);
-    String desc = detailedArea.recreationalAreaList.get(position).recAreaDescription;
+    collapsingToolbarLayout.setTitle(detailedArea.getRecreationalAreaList().get(position).getRecAreaName());
+    String desc = detailedArea.getRecreationalAreaList().get(position).getRecAreaDescription();
     areaDescription.setText(desc);
   }
 

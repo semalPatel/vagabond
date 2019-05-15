@@ -18,13 +18,13 @@ public class AreaAdapterPresenter {
 
   public void onBindDataToAdapter(@NonNull AreaHolder holder, int position) {
     final RecreationalArea recreationalArea =
-        recreationalAreaList.recreationalAreaList.get(position);
-    holder.setAreaTitle(recreationalArea.recAreaName);
-    final List<RecAreaMedia> recAreaMedia = recreationalArea.recAreaMediaList;
-    holder.setAreaImage(recAreaMedia.get(0).imageURL);
+        recreationalAreaList.getRecreationalAreaList().get(position);
+    holder.setAreaTitle(recreationalArea.getRecAreaName());
+    final List<RecAreaMedia> recAreaMedia = recreationalArea.getRecAreaMediaList();
+    holder.setAreaImage(recAreaMedia.get(0).getImageURL());
   }
 
   public int getAreaCount() {
-    return recreationalAreaList.recreationalAreaList.size();
+    return recreationalAreaList.getRecreationalAreaList().size();
   }
 }

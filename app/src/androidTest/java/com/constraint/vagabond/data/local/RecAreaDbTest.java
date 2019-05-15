@@ -56,7 +56,7 @@ public class RecAreaDbTest  {
         recreationalAreaList.add(testRecreationalArea1);
         recAreaDao.save(recreationalAreaList);
         RecreationalArea getTestArea = recAreaDao.getArea("1074");
-        assertThat(getTestArea.recAreaDescription).isEqualTo(testRecreationalArea1.recAreaDescription);
+        assertThat(getTestArea.getRecAreaDescription()).isEqualTo(testRecreationalArea1.getRecAreaDescription());
     }
 
 }
