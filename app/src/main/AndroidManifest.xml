@@ -16,14 +16,19 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
         </activity>
         <activity
             android:name=".main.details.DetailsActivity"
-            android:theme="@style/VagaTheme"></activity>
+            android:theme="@style/VagaTheme">
+        </activity>
         <activity
             android:name=".main.details.SingleImageView"
-            android:theme="@style/VagaTheme"></activity>
+            android:theme="@style/VagaTheme">
+        </activity>
     </application>
 
 </manifest>
