@@ -2,11 +2,8 @@ package com.constraint.vagabond.main.search
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.Menu
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -78,7 +75,6 @@ class MainActivity : AppCompatActivity(), MainContract.MainView, SearchView.OnQu
     override fun onQueryTextChange(s: String): Boolean {
         return false
     }
-
 
 
 }

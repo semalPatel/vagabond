@@ -20,8 +20,8 @@ class MainPresenterImpl(
                 .getRecAreasList(query, apiKey)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        {result -> handleSuccess(result)},
-                        {error -> handleError(error)})
+                        { result -> handleSuccess(result) },
+                        { error -> handleError(error) })
         )
     }
 
