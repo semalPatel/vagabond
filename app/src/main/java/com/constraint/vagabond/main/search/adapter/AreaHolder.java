@@ -5,10 +5,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.constraint.vagabond.R;
 import com.squareup.picasso.Picasso;
-
-import androidx.recyclerview.widget.RecyclerView;
 
 public class AreaHolder extends RecyclerView.ViewHolder implements AreaHolderView {
 

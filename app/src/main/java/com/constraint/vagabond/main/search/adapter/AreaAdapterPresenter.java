@@ -1,12 +1,12 @@
 package com.constraint.vagabond.main.search.adapter;
 
+import androidx.annotation.NonNull;
+
 import com.constraint.vagabond.data.entities.RecAreaMedia;
 import com.constraint.vagabond.data.entities.RecreationalArea;
 import com.constraint.vagabond.data.entities.RecreationalAreaList;
 
 import java.util.List;
-
-import androidx.annotation.NonNull;
 
 public class AreaAdapterPresenter {
 

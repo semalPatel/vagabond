@@ -1,10 +1,10 @@
 package com.constraint.vagabond.data.entities
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 @Entity
 data class RecreationalArea(

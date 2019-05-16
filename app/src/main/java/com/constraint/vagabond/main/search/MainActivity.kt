@@ -7,18 +7,13 @@ import android.view.Menu
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
-import android.widget.Toast
-
-import com.constraint.vagabond.R
-import com.constraint.vagabond.data.entities.RecreationalAreaList
-import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-
+import com.constraint.vagabond.R
+import com.constraint.vagabond.data.entities.RecreationalAreaList
+import com.constraint.vagabond.main.search.adapter.RecreationalAreaAdapter
 import com.google.android.material.snackbar.Snackbar
-
 import kotlinx.android.synthetic.main.activity_main.*
 
 

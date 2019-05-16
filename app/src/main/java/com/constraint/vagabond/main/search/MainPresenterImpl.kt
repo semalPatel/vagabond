@@ -1,9 +1,6 @@
 package com.constraint.vagabond.main.search
 
-import android.util.Log
-
 import com.constraint.vagabond.data.entities.RecreationalAreaList
-
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
@@ -21,14 +18,14 @@ class MainPresenterImpl(
 
     override fun onSearch(s: String, apiKey: String) {
         if (mainView != null) {
-                mainView!!.showProgress()
+            mainView!!.showProgress()
         }
         val repository = SearchRepositoryProvider.provideSearchRepository()
         compositeDisposable.add(repository
                 .getRecAreasList(s, apiKey)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribeWith(object : DisposableObserver<RecreationalAreaList>(){
+                .subscribeWith(object : DisposableObserver<RecreationalAreaList>() {
                     override fun onComplete() {
                         mainView?.hideProgress()
                     }

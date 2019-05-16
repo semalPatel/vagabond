@@ -1,12 +1,12 @@
 package com.constraint.vagabond.data.local;
 
-import com.constraint.vagabond.data.entities.RecreationalArea;
-
-import java.util.List;
-
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
+import com.constraint.vagabond.data.entities.RecreationalArea;
+
+import java.util.List;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
 

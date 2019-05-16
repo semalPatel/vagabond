@@ -3,11 +3,11 @@ package com.constraint.vagabond.main.search.adapter;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.constraint.vagabond.R;
-import com.constraint.vagabond.data.entities.RecreationalAreaList;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.constraint.vagabond.R;
+import com.constraint.vagabond.data.entities.RecreationalAreaList;
 
 public class RecreationalAreaAdapter extends RecyclerView.Adapter<AreaHolder> {
 

@@ -22,15 +22,15 @@ public interface MainContract {
     void onResponseFailure();
   }
 
-//  interface GetRecAreasInteractor {
-//
-//    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
-//
-//    interface OnFinishedListener {
-//
-//      void onFinished(RecreationalAreaList recAreasList);
-//
-//      void onFailure(Throwable t);
-//    }
-//  }
+  //  interface GetRecAreasInteractor {
+  //
+  //    void getRecAreasList(OnFinishedListener onFinishedListener, String query);
+  //
+  //    interface OnFinishedListener {
+  //
+  //      void onFinished(RecreationalAreaList recAreasList);
+  //
+  //      void onFailure(Throwable t);
+  //    }
+  //  }
 }

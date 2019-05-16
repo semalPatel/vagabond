@@ -2,12 +2,12 @@ package com.constraint.vagabond.main.details;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.constraint.vagabond.R;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.squareup.picasso.Picasso;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class SingleImageView extends AppCompatActivity {
   PhotoView photoView;

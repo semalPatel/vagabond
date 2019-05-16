@@ -8,6 +8,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.constraint.vagabond.R;
 import com.constraint.vagabond.data.DataStore;
 import com.constraint.vagabond.data.entities.RecreationalAreaList;
@@ -16,12 +22,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailsActivity extends AppCompatActivity implements DetailsContract.View {
 
@@ -85,7 +85,8 @@ public class DetailsActivity extends AppCompatActivity implements DetailsContrac
   }
 
   public void initializeData() {
-    collapsingToolbarLayout.setTitle(detailedArea.getRecreationalAreaList().get(position).getRecAreaName());
+    collapsingToolbarLayout.setTitle(
+        detailedArea.getRecreationalAreaList().get(position).getRecAreaName());
     String desc = detailedArea.getRecreationalAreaList().get(position).getRecAreaDescription();
     areaDescription.setText(desc);
   }
