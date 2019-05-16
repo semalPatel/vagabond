@@ -1,7 +1,7 @@
 package com.constraint.vagabond.main.search
 
 import com.constraint.vagabond.data.entities.RecreationalAreaList
-import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +15,7 @@ interface GetRecAreasData {
     fun getRecreationalAreaData(
             @Query("query") query: String,
             @Query("full") full: Boolean,
-            @Header("apikey") apiKey: String): Observable<RecreationalAreaList>
+            @Header("apikey") apiKey: String): Single<RecreationalAreaList>
 
     companion object Factory {
 

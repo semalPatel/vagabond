@@ -1,8 +1,7 @@
 package com.constraint.vagabond.main.search
 
 import com.constraint.vagabond.data.entities.RecreationalAreaList
-
-import io.reactivex.Observable
+import io.reactivex.Single
 
 object SearchRepositoryProvider {
     fun provideSearchRepository(): SearchRepository {
@@ -11,7 +10,7 @@ object SearchRepositoryProvider {
 }
 
 class SearchRepository(private val recAreaData: GetRecAreasData) {
-    fun getRecAreasList(query: String, apiKey: String): Observable<RecreationalAreaList> {
+    fun getRecAreasList(query: String, apiKey: String): Single<RecreationalAreaList> {
         return recAreaData.getRecreationalAreaData(query, full = true, apiKey = apiKey)
     }
 }
