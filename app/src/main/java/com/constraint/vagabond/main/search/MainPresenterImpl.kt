@@ -3,40 +3,41 @@ package com.constraint.vagabond.main.search
 import com.constraint.vagabond.data.entities.RecreationalAreaList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
 
 class MainPresenterImpl(
-        private var mainView: MainContract.MainView?) : MainContract.presenter {
+        private val mainView: MainContract.MainView) : MainContract.Presenter {
 
     private val compositeDisposable = CompositeDisposable()
 
     override fun onDestroy() {
         compositeDisposable.dispose()
-        mainView = null
     }
 
-    override fun onSearch(s: String, apiKey: String) {
-        if (mainView != null) {
-            mainView!!.showProgress()
-        }
+    override fun onSearch(query: String, apiKey: String) {
+        mainView.showProgress()
         val repository = SearchRepositoryProvider.provideSearchRepository()
         compositeDisposable.add(repository
-                .getRecAreasList(s, apiKey)
+                .getRecAreasList(query, apiKey)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribeWith(object : DisposableSingleObserver<RecreationalAreaList>() {
-                    override fun onSuccess(t: RecreationalAreaList) {
-                        mainView?.setDataToRecyclerView(t)
-                        mainView?.hideProgress()
-                    }
-
-                    override fun onError(e: Throwable) {
-                        mainView?.onResponseFailure()
-                        mainView?.hideProgress()
-                        e.stackTrace
-                    }
-                })
+                .subscribe(
+                        {result -> handleSuccess(result)},
+                        {error -> handleError(error)})
         )
     }
+
+    private fun handleSuccess(result: RecreationalAreaList) {
+        mainView.hideProgress()
+        if (result.recreationalAreaList.isEmpty()) {
+            mainView.onResponseFailure()
+        } else {
+            mainView.setDataToRecyclerView(result)
+        }
+    }
+
+    private fun handleError(error: Throwable) {
+        mainView.hideProgress()
+        mainView.onResponseFailure()
+        error.stackTrace
+    }
+
 }

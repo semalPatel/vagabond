@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), MainContract.MainView, SearchView.OnQueryTextListener {
 
     private var progressBar: ProgressBar? = null
-    private var presenter: MainContract.presenter? = null
+    private var presenter: MainContract.Presenter? = null
     private var errorSnackBar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
