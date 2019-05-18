@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.constraint.vagabond">
+    package="com.sierra.vagabond">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity
-            android:name=".main.search.MainActivity"
+            android:name="com.sierra.vagabond.main.search.MainActivity"
             android:theme="@style/VagaTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +22,11 @@
                 android:resource="@xml/searchable"/>
         </activity>
         <activity
-            android:name=".main.details.DetailsActivity"
+            android:name="com.sierra.vagabond.main.details.DetailsActivity"
             android:theme="@style/VagaTheme">
         </activity>
         <activity
-            android:name=".main.details.SingleImageView"
+            android:name="com.sierra.vagabond.main.details.SingleImageView"
             android:theme="@style/VagaTheme">
         </activity>
     </application>
