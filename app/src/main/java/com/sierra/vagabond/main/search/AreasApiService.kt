@@ -10,9 +10,9 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface GetRecAreasData {
+interface AreasApiService {
 
-    @GET("recareas")
+    @GET(AREAS_ENDPOINT)
     fun getRecreationalAreaData(
             @Query("query") query: String,
             @Query("full") full: Boolean,
@@ -21,15 +21,16 @@ interface GetRecAreasData {
 
     companion object Factory {
 
-        private const val BASE_URL = "https://ridb.recreation.gov/api/v1/"
+        private const val AREAS_ENDPOINT = "recareas"
+        private const val BASE_ENDPOINT = "https://ridb.recreation.gov/api/v1/"
 
-        fun create(): GetRecAreasData {
+        fun create(): AreasApiService {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(BASE_URL)
+                    .baseUrl(BASE_ENDPOINT)
                     .build()
-            return retrofit.create(GetRecAreasData::class.java)
+            return retrofit.create(AreasApiService::class.java)
         }
     }
 }
