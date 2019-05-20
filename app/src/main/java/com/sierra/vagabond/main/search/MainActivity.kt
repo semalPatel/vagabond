@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), MainContract.MainView, SearchView.OnQu
 
     override fun setDataToRecyclerView(recAreasList: RecreationalAreaList) {
         val recreationalAreaAdapter = RecreationalAreaAdapter(recAreasList)
-        recyclerViewID!!.adapter = recreationalAreaAdapter
+        recyclerViewID.adapter = recreationalAreaAdapter
         Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
 

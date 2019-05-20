@@ -2,19 +2,16 @@ package com.sierra.vagabond.main.search.adapter
 
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 
-class AreaAdapterPresenter internal constructor(private val recreationalAreaList: RecreationalAreaList) {
+class AreaAdapterPresenter(private val recreationalAreaList: RecreationalAreaList) {
 
     internal val areaCount: Int
-        get() = recreationalAreaList.recreationalAreaList.size
+        get() = recreationalAreaList.areasList.size
 
     internal fun onBindDataToAdapter(holder: AreaHolder, position: Int) {
-        val (_, recAreaName, _, _, _, _, recAreaMedia) = recreationalAreaList.recreationalAreaList[position]
-        holder.setAreaTitle(recAreaName)
-        if (recAreaMedia.isEmpty()) {
-            holder.setAreaImage(null)
-        } else {
-            holder.setAreaImage(recAreaMedia[0].imageURL)
-        }
-
+        val area = recreationalAreaList.areasList[position]
+        holder.setAreaTitle(area.recAreaName)
+        val imageUrl : String? = if (area.recAreaMediaList.isEmpty()) null else area.recAreaMediaList[0].imageURL
+        holder.setAreaImage(imageUrl)
+        holder.setMoreInfoButton(area)
     }
 }

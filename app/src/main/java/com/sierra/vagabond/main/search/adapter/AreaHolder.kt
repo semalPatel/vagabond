@@ -1,23 +1,18 @@
 package com.sierra.vagabond.main.search.adapter
 
+import android.content.Intent
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-
+import kotlinx.android.synthetic.main.list_view.view.*
 import androidx.recyclerview.widget.RecyclerView
-
 import com.sierra.vagabond.R
+import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.main.details.DetailsActivity
 import com.squareup.picasso.Picasso
 
-class AreaHolder internal constructor(view: View) : RecyclerView.ViewHolder(view), AreaHolderView {
-
-    private val areaName: TextView = view.findViewById(R.id.area_name)
-    private val moreInfoBtn: Button = view.findViewById(R.id.more_info)
-    private val backgroundImage: ImageView = view.findViewById(R.id.card_background)
+class AreaHolder(private val view: View) : RecyclerView.ViewHolder(view), AreaHolderView {
 
     override fun setAreaTitle(areaTitle: String) {
-        areaName.text = areaTitle
+        view.area_name.text = areaTitle
     }
 
     override fun setAreaImage(imageUrl: String?) {
@@ -26,8 +21,16 @@ class AreaHolder internal constructor(view: View) : RecyclerView.ViewHolder(view
                 .placeholder(R.drawable.baseline_report_problem_24)
                 .fit()
                 .centerCrop()
-                .into(backgroundImage)
+                .into(view.card_background)
     }
 
-    override fun setMoreInfoButton() {}
+    override fun setMoreInfoButton(area : RecreationalArea) {
+        view.more_info.setOnClickListener { v ->  goToDetailsActivity(v, area)}
+    }
+
+    private fun goToDetailsActivity(v : View, area : RecreationalArea) {
+        val intent = Intent(v.context, DetailsActivity::class.java)
+        intent.putExtra("area", area)
+        v.context.startActivity(intent)
+    }
 }

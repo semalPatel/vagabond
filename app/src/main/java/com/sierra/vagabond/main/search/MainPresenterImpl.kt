@@ -27,7 +27,7 @@ class MainPresenterImpl(
 
     private fun handleSuccess(result: RecreationalAreaList) {
         mainView.hideProgress()
-        if (result.recreationalAreaList.isEmpty()) {
+        if (result.areasList.isEmpty()) {
             mainView.onResponseFailure()
         } else {
             mainView.setDataToRecyclerView(result)
