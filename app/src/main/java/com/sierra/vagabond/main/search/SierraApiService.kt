@@ -17,7 +17,7 @@ interface SierraApiService {
         private const val DELETE_WATCH = "delete_watch"
         private const val GET_WATCHES = "get_watches"
         private const val REGISTER_PUSH = "register_push"
-        private const val BASE_ENDPOINT = "https://ridb.recreation.gov/api/v1/"
+        private const val BASE_ENDPOINT = "https://us-central1-sierra-236907.cloudfunctions.net/"
 
         fun create(): SierraApiService {
             val retrofit = Retrofit.Builder()
@@ -28,6 +28,13 @@ interface SierraApiService {
             return retrofit.create(SierraApiService::class.java)
         }
     }
+
+    @POST(REGISTER_PUSH)
+    fun registerPushToken(
+            @Query("query") query: String,
+            @Query("full") full: Boolean,
+            @Header("apikey") apiKey: String): Single<Watch>
+
 
     @POST(CREATE_WATCH)
     fun createWatch(
@@ -43,12 +50,6 @@ interface SierraApiService {
 
     @POST(GET_WATCHES)
     fun getWatches(
-            @Query("query") query: String,
-            @Query("full") full: Boolean,
-            @Header("apikey") apiKey: String): Single<Watch>
-
-    @POST(REGISTER_PUSH)
-    fun registerPushToken(
             @Query("query") query: String,
             @Query("full") full: Boolean,
             @Header("apikey") apiKey: String): Single<Watch>
