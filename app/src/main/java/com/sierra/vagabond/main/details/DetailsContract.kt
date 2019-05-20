@@ -14,5 +14,6 @@ interface DetailsContract {
     interface View {
 
         fun setDataToRecyclerView(imageUrls: List<String>)
+
     }
 }

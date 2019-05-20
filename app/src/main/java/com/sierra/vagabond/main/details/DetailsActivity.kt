@@ -5,6 +5,7 @@ import android.view.Menu
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.squareup.picasso.Picasso
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailsActivity : AppCompatActivity(), DetailsContract.View {
 
-    private var detailedArea: RecreationalArea? = null
+    private lateinit var detailedArea: RecreationalArea
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +27,13 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
         super.onStart()
         initializeData()
         loadImage()
+        setFacilities()
         //    setDataToRecyclerView();
     }
 
     private fun loadImage() {
         val expandingImage = findViewById<ImageView>(R.id.collapsing_image)
-        Picasso.get().load(detailedArea!!.recAreaMediaList[0].imageURL).fit().centerCrop().into(expandingImage)
+        Picasso.get().load(detailedArea.recAreaMediaList[0].imageURL).fit().centerCrop().into(expandingImage)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -46,9 +48,17 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
     }
 
     private fun initializeData() {
-        collapsing_layout.title = detailedArea?.recAreaName
-        val desc = detailedArea?.recAreaDescription
+        collapsing_layout.title = detailedArea.recAreaName
+        val desc = detailedArea.recAreaDescription
         description.text = desc
+    }
+
+    private fun setFacilities() {
+        val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        list_facilities.layoutManager = linearLayoutManager
+        val facilities = detailedArea.recAreaFacilities
+        val facilitiesAdapter = FacilitiesAdapter(facilities)
+        list_facilities.adapter = facilitiesAdapter
     }
 
     override fun setDataToRecyclerView(imageUrls: List<String>) {

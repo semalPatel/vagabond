@@ -18,7 +18,7 @@ data class RecreationalArea(
         @field:SerializedName(REC_AREA_PHONE) @field:Expose val recAreaPhone: String,
         @field:SerializedName(REC_AREA_EMAIL) @field:Expose val recAreaEmail: String,
         @field:SerializedName(REC_AREA_MEDIA) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaMediaList: List<RecAreaMedia>,
-        @field:SerializedName(REC_AREA_FACILITIES) @field:Expose val recAreaFacilities: List<RecAreaFacilities>) : Parcelable{
+        @field:SerializedName(REC_AREA_FACILITIES) @field:Expose val recAreaFacilities: List<RecAreaFacilities>) : Parcelable {
 
         companion object {
                 private const val REC_AREA_ID = "RecAreaID"
