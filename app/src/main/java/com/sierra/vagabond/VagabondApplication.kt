@@ -1,22 +1,16 @@
 package com.sierra.vagabond
 
 import android.app.Application
-import android.widget.Toast
-import com.google.firebase.iid.FirebaseInstanceId
+import com.sierra.vagabond.utils.Prefs
+import com.sierra.vagabond.utils.PushInteractor
 
 class VagabondApplication : Application() {
 
+    private val pushInteractor = PushInteractor()
+
     override fun onCreate() {
         super.onCreate()
-        FirebaseInstanceId.getInstance().instanceId
-                .addOnCompleteListener { task ->
-                    if (!task.isSuccessful) {
-                        Toast.makeText(this@VagabondApplication, task.exception?.message, Toast.LENGTH_SHORT).show()
-                    }
-
-                    val token = task.result?.token
-
-                    Toast.makeText(this@VagabondApplication, token, Toast.LENGTH_SHORT).show()
-                }
+        pushInteractor.registerDeviceToken()
+        Prefs.init(this)
     }
 }

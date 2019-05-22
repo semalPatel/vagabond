@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.google.gms.google-services'
+
 
 buildscript {
     repositories.mavenLocal()
@@ -51,8 +51,11 @@ dependencies {
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.google.firebase:firebase-core:16.0.9"
+    implementation 'com.google.firebase:firebase-messaging:18.0.0'
 }
 
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'com.google.gms.google-services'

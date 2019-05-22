@@ -16,6 +16,7 @@ interface AreasApiService {
     fun getRecreationalAreaData(
             @Query("query") query: String,
             @Query("full") full: Boolean,
+            @Query("activity") activity: String,
             @Header("apikey") apiKey: String): Single<RecreationalAreaList>
 
 
