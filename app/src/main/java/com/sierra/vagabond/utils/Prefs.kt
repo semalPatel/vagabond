@@ -5,8 +5,6 @@ import android.content.SharedPreferences
 
 object Prefs {
 
-    private const val NAME = "DEVICE_PREFS"
-    private const val MODE = Context.MODE_PRIVATE
     private lateinit var deviceInfo: SharedPreferences
     private val DEVICE_REGISTRATION_TOKEN = Pair("deviceRegistrationToken", "")
 

@@ -1,6 +1,7 @@
 package com.sierra.vagabond.data.remote
 
 import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.utils.*
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
@@ -12,24 +13,19 @@ import retrofit2.http.Query
 
 interface AreasApiService {
 
-    @GET(AREAS_ENDPOINT)
-    fun getRecreationalAreaData(
-            @Query("query") query: String,
-            @Query("full") full: Boolean,
-            @Query("activity") activity: String,
-            @Header("apikey") apiKey: String): Single<RecreationalAreaList>
-
+    @GET(RC_AREAS_ENDPOINT)
+    fun getRecreationalAreaData(@Query(QUERY) query: String,
+                                @Query(FULL) full: Boolean,
+                                @Query(ACTIVITY) activity: String,
+                                @Header(API_KEY) apiKey: String): Single<RecreationalAreaList>
 
     companion object Factory {
-
-        private const val AREAS_ENDPOINT = "recareas"
-        private const val BASE_ENDPOINT = "https://ridb.recreation.gov/api/v1/"
 
         fun create(): AreasApiService {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(BASE_ENDPOINT)
+                    .baseUrl(RC_BASE_ENDPOINT)
                     .build()
             return retrofit.create(AreasApiService::class.java)
         }

@@ -1,13 +1,10 @@
 package com.sierra.vagabond.data
 
-import com.sierra.vagabond.data.entities.PushToken
-import com.sierra.vagabond.data.entities.RecreationalAreaList
-import com.sierra.vagabond.data.entities.TokenResponse
-import com.sierra.vagabond.data.entities.Watch
+import com.sierra.vagabond.data.entities.*
 import com.sierra.vagabond.data.remote.AreasApiService
 import com.sierra.vagabond.data.remote.SierraApiService
+import com.sierra.vagabond.utils.CAMPING
 import io.reactivex.Single
-import retrofit2.Call
 
 object SearchRepositoryProvider {
     fun provideSearchRepository(): SearchRepository {
@@ -21,18 +18,13 @@ object SearchRepositoryProvider {
 
 class SearchRepository(private val recAreaData: AreasApiService) {
     fun getRecAreasList(query: String, apiKey: String): Single<RecreationalAreaList> {
-        val activity = "CAMPING"
-        return recAreaData.getRecreationalAreaData(query, full = true, apiKey = apiKey, activity = activity)
+        return recAreaData.getRecreationalAreaData(query, full = true, apiKey = apiKey, activity = CAMPING)
     }
 }
 
 class SierraRepository(private val sierraApiService: SierraApiService) {
-    fun registerForPush(deviceToken: String?): Call<TokenResponse> {
-        val pushToken = PushToken(deviceToken)
-        return sierraApiService.registerPushToken(pushToken)
-    }
 
-    fun createWatch(watch: Watch): Single<Watch> {
+    fun createWatch(watch: WatchRequest): Single<WatchResponse> {
         return sierraApiService.createWatch(watch)
     }
 }

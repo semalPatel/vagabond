@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.github.chrisbanes.photoview.PhotoView
 import com.sierra.vagabond.main.details.SingleImageView
+import com.sierra.vagabond.utils.IMAGE_URL
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.horizontal_images_grid.view.*
 
@@ -26,7 +27,7 @@ class DetailsPhotosAdapter(private val imagesUrls: List<String>) : RecyclerView.
         Picasso.get().load(randomUrl).fit().centerCrop().into(images.image)
         images.image.setOnClickListener { v ->
             val intent = Intent(v.context, SingleImageView::class.java)
-            intent.putExtra("image_url", randomUrl)
+            intent.putExtra(IMAGE_URL, randomUrl)
             v.context.startActivity(intent)
         }
     }

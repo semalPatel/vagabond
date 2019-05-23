@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.main.details.DetailsActivity
+import com.sierra.vagabond.utils.AREA
 import com.squareup.picasso.Picasso
 
 class AreaHolder(private val view: View) : RecyclerView.ViewHolder(view), AreaHolderView {
@@ -30,7 +31,7 @@ class AreaHolder(private val view: View) : RecyclerView.ViewHolder(view), AreaHo
 
     private fun goToDetailsActivity(v : View, area : RecreationalArea) {
         val intent = Intent(v.context, DetailsActivity::class.java)
-        intent.putExtra("area", area)
+        intent.putExtra(AREA, area)
         v.context.startActivity(intent)
     }
 }

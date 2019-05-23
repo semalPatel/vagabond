@@ -10,6 +10,7 @@ import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.main.details.adapter.DetailsPhotosAdapter
 import com.sierra.vagabond.main.details.adapter.FacilitiesAdapter
+import com.sierra.vagabond.utils.AREA
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -20,7 +21,7 @@ class DetailsActivity : AppCompatActivity(), DetailsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        detailedArea = intent.getParcelableExtra("area")
+        detailedArea = intent.getParcelableExtra(AREA)
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

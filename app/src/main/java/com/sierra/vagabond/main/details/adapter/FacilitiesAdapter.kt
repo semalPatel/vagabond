@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
-import com.sierra.vagabond.data.entities.RecAreaFacilities
-import com.sierra.vagabond.data.entities.Watch
 import com.sierra.vagabond.data.SearchRepositoryProvider
+import com.sierra.vagabond.data.entities.RecAreaFacilities
+import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.utils.Prefs
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.list_facilities.view.*
@@ -31,7 +31,7 @@ class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>) : Recyc
         holder.facilityClick.setOnClickListener {
             val service = SearchRepositoryProvider.provideSierraService()
             val today = Instant.now()
-            val watch = Watch(
+            val watch = WatchRequest(
                     facilityId = facilities[position].facilityId,
                     facilityName = facilities[position].facilityName,
                     startDate = 1558573331,
