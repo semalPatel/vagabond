@@ -1,4 +1,4 @@
-package com.sierra.vagabond.main.details
+package com.sierra.vagabond.main.details.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.sierra.vagabond.R
 import com.github.chrisbanes.photoview.PhotoView
+import com.sierra.vagabond.main.details.SingleImageView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.horizontal_images_grid.view.*
 

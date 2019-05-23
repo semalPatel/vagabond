@@ -1,5 +1,6 @@
 package com.sierra.vagabond.main.search
 
+import com.sierra.vagabond.data.SearchRepositoryProvider
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

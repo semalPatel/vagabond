@@ -1,4 +1,4 @@
-package com.sierra.vagabond.main.details
+package com.sierra.vagabond.main.details.adapter
 
 import android.annotation.TargetApi
 import android.os.Build
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecAreaFacilities
 import com.sierra.vagabond.data.entities.Watch
-import com.sierra.vagabond.main.search.SearchRepositoryProvider
+import com.sierra.vagabond.data.SearchRepositoryProvider
 import com.sierra.vagabond.utils.Prefs
 import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.list_facilities.view.*

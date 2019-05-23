@@ -1,4 +1,4 @@
-package com.sierra.vagabond.main.search
+package com.sierra.vagabond.data.remote
 
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import io.reactivex.Single

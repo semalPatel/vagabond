@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.main.details.adapter.DetailsPhotosAdapter
+import com.sierra.vagabond.main.details.adapter.FacilitiesAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 
