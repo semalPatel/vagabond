@@ -60,5 +60,8 @@ fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
 
-#android resources
+# android resources
 app/src/main/res/values/secrets.xml
+
+# DS store
+.DS_Store

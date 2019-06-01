@@ -26,7 +26,7 @@ class AreaHolder(private val view: View) : RecyclerView.ViewHolder(view), AreaHo
     }
 
     override fun setMoreInfoButton(area : RecreationalArea) {
-        view.more_info.setOnClickListener { v ->  goToDetailsActivity(v, area)}
+        view.main_card.setOnClickListener { v ->  goToDetailsActivity(v, area)}
     }
 
     private fun goToDetailsActivity(v : View, area : RecreationalArea) {
