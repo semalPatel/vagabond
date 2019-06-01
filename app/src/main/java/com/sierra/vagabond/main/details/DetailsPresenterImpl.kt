@@ -1,6 +1,6 @@
 package com.sierra.vagabond.main.details
 
-class DetailsPresenterImpl(var view: DetailsContract.View) : DetailsContract.Presenter {
+class DetailsPresenterImpl(var view: DetailsMvp.View) : DetailsMvp.Presenter {
 
     override fun loadImages(imageUrls: List<String>) {
         view.setDataToRecyclerView(imageUrls)

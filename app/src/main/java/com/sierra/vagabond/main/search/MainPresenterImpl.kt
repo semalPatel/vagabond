@@ -6,7 +6,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 
 class MainPresenterImpl(
-        private val mainView: MainContract.MainView) : MainContract.Presenter {
+        private val view: MainMvp.View) : MainMvp.Presenter {
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -15,7 +15,7 @@ class MainPresenterImpl(
     }
 
     override fun onSearch(query: String, apiKey: String) {
-        mainView.showProgress()
+        view.showProgress()
         val repository = SearchRepositoryProvider.provideSearchRepository()
         compositeDisposable.add(repository
                 .getRecAreasList(query, apiKey)
@@ -27,17 +27,17 @@ class MainPresenterImpl(
     }
 
     private fun handleSuccess(result: RecreationalAreaList) {
-        mainView.hideProgress()
+        view.hideProgress()
         if (result.areasList.isEmpty()) {
-            mainView.onResponseFailure()
+            view.onResponseFailure()
         } else {
-            mainView.setDataToRecyclerView(result)
+            view.setDataToRecyclerView(result)
         }
     }
 
     private fun handleError(error: Throwable) {
-        mainView.hideProgress()
-        mainView.onResponseFailure()
+        view.hideProgress()
+        view.onResponseFailure()
         error.stackTrace
     }
 

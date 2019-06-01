@@ -2,7 +2,7 @@ package com.sierra.vagabond.main.search
 
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 
-interface MainContract {
+interface MainMvp {
 
     interface Presenter {
 
@@ -11,7 +11,7 @@ interface MainContract {
         fun onSearch(query: String, apiKey: String)
     }
 
-    interface MainView {
+    interface View {
 
         fun showProgress()
 

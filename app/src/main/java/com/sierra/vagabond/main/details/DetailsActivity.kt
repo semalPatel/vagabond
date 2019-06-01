@@ -14,7 +14,7 @@ import com.sierra.vagabond.utils.AREA
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 
-class DetailsActivity : AppCompatActivity(), DetailsContract.View {
+class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
 
     private lateinit var detailedArea: RecreationalArea
 

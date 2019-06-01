@@ -14,9 +14,9 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), MainContract.MainView, SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextListener {
 
-    private lateinit var presenter: MainContract.Presenter
+    private lateinit var presenter: MainMvp.Presenter
     private var errorSnackBar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

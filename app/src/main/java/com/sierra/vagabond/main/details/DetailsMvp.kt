@@ -1,6 +1,6 @@
 package com.sierra.vagabond.main.details
 
-interface DetailsContract {
+interface DetailsMvp {
 
     interface Presenter {
 
