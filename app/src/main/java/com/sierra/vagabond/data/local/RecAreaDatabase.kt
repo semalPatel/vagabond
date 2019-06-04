@@ -7,7 +7,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-import com.sierra.vagabond.data.entities.DataConverter
 import com.sierra.vagabond.data.entities.RecreationalArea
 
 @Database(entities = [RecreationalArea::class], version = 1, exportSchema = false)
@@ -22,17 +21,17 @@ abstract class RecAreaDatabase : RoomDatabase() {
 
     companion object {
 
-        private val sLock = Any()
-        private var INSTANCE: RecAreaDatabase? = null
+        @Volatile private var INSTANCE: RecAreaDatabase? = null
 
-        fun getInstance(context: Context): RecAreaDatabase? {
-            synchronized(sLock) {
-                if (INSTANCE == null) {
-                    INSTANCE = Room.databaseBuilder(context.applicationContext, RecAreaDatabase::class.java, "Areas.db")
-                            .build()
+        fun getInstance(context: Context): RecAreaDatabase =
+                INSTANCE ?: synchronized(this) {
+                    INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
                 }
-            }
-            return INSTANCE
-        }
+
+        private fun buildDatabase(context: Context) =
+                Room.databaseBuilder(context.applicationContext,
+                        RecAreaDatabase::class.java, "Areas.db")
+                        .build()
     }
 }
+

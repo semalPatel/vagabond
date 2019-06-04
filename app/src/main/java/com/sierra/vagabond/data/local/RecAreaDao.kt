@@ -5,16 +5,27 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.utils.DELETE_ALL
+import com.sierra.vagabond.utils.SELECT_ALL
+import com.sierra.vagabond.utils.SELECT_ONE
+import com.sierra.vagabond.utils.TABLE_NAME
+import io.reactivex.Completable
+import io.reactivex.Maybe
+import io.reactivex.Single
 
 @Dao
 interface RecAreaDao {
 
-    @get:Query("SELECT * FROM recreationalarea")
+    @get:Query(SELECT_ALL)
     val areas: List<RecreationalArea>
 
     @Insert(onConflict = REPLACE)
-    fun save(recreationalAreaList: List<RecreationalArea>)
+    fun save(recreationalArea: RecreationalArea): Completable
 
-    @Query("SELECT * FROM recreationalarea WHERE recAreaID = :rec_area_id")
-    fun getArea(rec_area_id: String): RecreationalArea
+    @Query("SELECT * FROM $TABLE_NAME WHERE recAreaID = :rec_area_id")
+    fun getArea(rec_area_id: String): Single<RecreationalArea>
+
+    @Query(DELETE_ALL)
+    fun deleteAll()
+
 }

@@ -1,5 +1,6 @@
 package com.sierra.vagabond.main.search
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,6 +12,7 @@ import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
 import com.google.android.material.snackbar.Snackbar
+import com.sierra.vagabond.data.RecAreaRepository
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeToolbarAndRecyclerView()
-        presenter = MainPresenterImpl(this)
+        presenter = MainPresenter(this)
     }
 
     private fun initializeToolbarAndRecyclerView() {
@@ -51,6 +53,8 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         recyclerViewID.adapter = recreationalAreaAdapter
         Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
+
+    override fun provideContext(): Context { return this }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 
 buildscript {
@@ -29,7 +30,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def room_version = "2.1.0-alpha04"
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-coroutines:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.appcompat:appcompat:1.0.2"
     implementation "com.google.android.material:material:1.1.0-alpha06"
     implementation "androidx.cardview:cardview:1.0.0"
@@ -41,6 +43,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     androidTestImplementation "com.google.truth:truth:0.42"
+    androidTestImplementation "android.arch.core:core-testing:$room_version"
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -48,6 +51,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:2.2.5"
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation "androidx.room:room-rxjava2:$room_version"
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.google.firebase:firebase-core:16.0.9"

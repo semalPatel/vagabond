@@ -49,4 +49,9 @@ const val MODE = Context.MODE_PRIVATE
 const val ACCEPT_HEADER = "Accept: application/json"
 const val CONTENT_TYPE = "Content-type: application/json"
 
+const val TABLE_NAME = "recreational_areas"
+const val SELECT_ALL = "SELECT * FROM $TABLE_NAME"
+const val SELECT_ONE = "SELECT * FROM $TABLE_NAME WHERE recAreaID = :rec_area_id"
+const val DELETE_ALL = "DELETE FROM $TABLE_NAME"
+
 
