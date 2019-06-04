@@ -16,7 +16,8 @@
 
         <activity
             android:name="com.sierra.vagabond.main.search.MainActivity"
-            android:theme="@style/VagaTheme">
+            android:theme="@style/VagaTheme"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
