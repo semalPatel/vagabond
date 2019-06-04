@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-
-import com.sierra.vagabond.R
 import com.github.chrisbanes.photoview.PhotoView
+import com.sierra.vagabond.R
 import com.sierra.vagabond.main.details.SingleImageView
 import com.sierra.vagabond.utils.IMAGE_URL
 import com.squareup.picasso.Picasso

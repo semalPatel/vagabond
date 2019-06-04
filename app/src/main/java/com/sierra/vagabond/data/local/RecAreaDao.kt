@@ -7,10 +7,8 @@ import androidx.room.Query
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.utils.DELETE_ALL
 import com.sierra.vagabond.utils.SELECT_ALL
-import com.sierra.vagabond.utils.SELECT_ONE
 import com.sierra.vagabond.utils.TABLE_NAME
 import io.reactivex.Completable
-import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Dao

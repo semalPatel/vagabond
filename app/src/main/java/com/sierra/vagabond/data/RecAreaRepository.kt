@@ -5,8 +5,6 @@ import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.data.local.RecAreaDao
 import com.sierra.vagabond.data.local.RecAreaDatabase
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 
 class RecAreaRepository(context: Context) {

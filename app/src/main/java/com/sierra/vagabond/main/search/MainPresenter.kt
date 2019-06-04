@@ -7,9 +7,6 @@ import com.sierra.vagabond.data.entities.RecreationalAreaList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class MainPresenter(
         private val view: MainMvp.View) : MainMvp.Presenter {

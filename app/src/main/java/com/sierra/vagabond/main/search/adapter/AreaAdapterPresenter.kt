@@ -10,7 +10,7 @@ class AreaAdapterPresenter(private val recreationalAreaList: RecreationalAreaLis
     internal fun onBindDataToAdapter(holder: AreaHolder, position: Int) {
         val area = recreationalAreaList.areasList[position]
         holder.setAreaTitle(area.recAreaName)
-        val imageUrl : String? = if (area.recAreaMediaList.isEmpty()) null else area.recAreaMediaList[0].imageURL
+        val imageUrl: String? = if (area.recAreaMediaList.isEmpty()) null else area.recAreaMediaList[0].imageURL
         holder.setAreaImage(imageUrl)
         holder.setMoreInfoButton(area)
     }

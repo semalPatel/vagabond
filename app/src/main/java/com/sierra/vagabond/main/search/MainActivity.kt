@@ -8,11 +8,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
-import com.google.android.material.snackbar.Snackbar
-import com.sierra.vagabond.data.RecAreaRepository
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -54,7 +53,9 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
 
-    override fun provideContext(): Context { return this }
+    override fun provideContext(): Context {
+        return this
+    }
 
     override fun onDestroy() {
         super.onDestroy()

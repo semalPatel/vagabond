@@ -8,5 +8,5 @@ interface AreaHolderView {
 
     fun setAreaImage(imageUrl: String?)
 
-    fun setMoreInfoButton(area : RecreationalArea)
+    fun setMoreInfoButton(area: RecreationalArea)
 }

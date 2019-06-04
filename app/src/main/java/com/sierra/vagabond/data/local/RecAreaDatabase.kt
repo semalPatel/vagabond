@@ -21,7 +21,8 @@ abstract class RecAreaDatabase : RoomDatabase() {
 
     companion object {
 
-        @Volatile private var INSTANCE: RecAreaDatabase? = null
+        @Volatile
+        private var INSTANCE: RecAreaDatabase? = null
 
         fun getInstance(context: Context): RecAreaDatabase =
                 INSTANCE ?: synchronized(this) {

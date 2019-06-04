@@ -1,6 +1,8 @@
 package com.sierra.vagabond.data
 
-import com.sierra.vagabond.data.entities.*
+import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.data.entities.WatchRequest
+import com.sierra.vagabond.data.entities.WatchResponse
 import com.sierra.vagabond.data.remote.AreasApiService
 import com.sierra.vagabond.data.remote.SierraApiService
 import com.sierra.vagabond.utils.CAMPING
