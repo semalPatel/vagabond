@@ -8,6 +8,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.utils.DB_NAME
 
 @Database(entities = [RecreationalArea::class], version = 1, exportSchema = false)
 @TypeConverters(DataConverter::class)
@@ -31,7 +32,8 @@ abstract class RecAreaDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
                 Room.databaseBuilder(context.applicationContext,
-                        RecAreaDatabase::class.java, "Areas.db")
+                        RecAreaDatabase::class.java, DB_NAME)
+                        .fallbackToDestructiveMigration()
                         .build()
     }
 }

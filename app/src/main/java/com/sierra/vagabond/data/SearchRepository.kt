@@ -6,6 +6,7 @@ import com.sierra.vagabond.data.entities.WatchResponse
 import com.sierra.vagabond.data.remote.AreasApiService
 import com.sierra.vagabond.data.remote.SierraApiService
 import com.sierra.vagabond.utils.CAMPING
+import io.reactivex.Observable
 import io.reactivex.Single
 
 object SearchRepositoryProvider {
@@ -19,7 +20,7 @@ object SearchRepositoryProvider {
 }
 
 class SearchRepository(private val recAreaData: AreasApiService) {
-    fun getRecAreasList(query: String, apiKey: String): Single<RecreationalAreaList> {
+    fun getRecAreasList(query: String, apiKey: String): Observable<RecreationalAreaList> {
         return recAreaData.getRecreationalAreaData(query, full = true, apiKey = apiKey, activity = CAMPING)
     }
 }

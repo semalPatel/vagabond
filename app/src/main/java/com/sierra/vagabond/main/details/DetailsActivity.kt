@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
 
-    private lateinit var detailedArea: RecreationalArea
     private val presenter: DetailsPresenter = DetailsPresenter(this)
     private lateinit var repo: RecAreaRepository
     private lateinit var id: String
@@ -44,20 +43,16 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { gotArea ->
-                            detailedArea = gotArea
-                            initializeData()
-                            loadImage()
-                            setFacilities()
+                            initializeData(gotArea)
                         },
-                        { err -> Log.d(javaClass.simpleName, "Null result") }
+                        { Log.d(javaClass.simpleName, "Null result") }
                 )
         compositeDisposable.add(areaDisposable)
     }
 
-    private fun loadImage() {
-        val expandingImage = findViewById<ImageView>(R.id.collapsing_image)
-        Picasso.get().load(detailedArea.recAreaMediaList[0].imageURL).fit().centerCrop().into(expandingImage)
-    }
+    /*private fun loadImage() {
+
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -70,19 +65,22 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         finish()
     }
 
-    private fun initializeData() {
+    private fun initializeData(detailedArea: RecreationalArea) {
+        val expandingImage = findViewById<ImageView>(R.id.collapsing_image)
+        Picasso.get().load(detailedArea.recAreaMediaList[0].imageURL).fit().centerCrop().into(expandingImage)
         collapsing_layout.title = detailedArea.recAreaName
         val desc = detailedArea.recAreaDescription
         description.text = desc
-    }
-
-    private fun setFacilities() {
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         list_facilities.layoutManager = linearLayoutManager
         val facilities = detailedArea.recAreaFacilities
         val facilitiesAdapter = FacilitiesAdapter(facilities)
         list_facilities.adapter = facilitiesAdapter
     }
+
+    /*private fun setFacilities() {
+
+    }*/
 
     override fun setDataToRecyclerView(imageUrls: List<String>) {
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

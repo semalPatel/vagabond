@@ -22,6 +22,6 @@ interface MainMvp {
 
         fun onResponseFailure()
 
-        fun provideContext(): Context
+//        fun provideContext(): Context
     }
 }

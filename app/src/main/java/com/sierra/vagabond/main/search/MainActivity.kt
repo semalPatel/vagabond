@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
+import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,14 +25,16 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeToolbarAndRecyclerView()
-        presenter = MainPresenter(this)
+        presenter = MainPresenter(this, RecAreaRepository(this))
+
     }
 
     private fun initializeToolbarAndRecyclerView() {
         setSupportActionBar(main_app_toolbar)
         main_app_toolbar.setTitle(R.string.app_name)
         val layoutManager = LinearLayoutManager(this@MainActivity)
-        recyclerViewID.layoutManager = layoutManager
+        search_recycler_view.layoutManager = layoutManager
+        search_recycler_view.setHasFixedSize(true)
     }
 
     override fun showProgress() {
@@ -49,13 +52,13 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
 
     override fun setDataToRecyclerView(recAreasList: RecreationalAreaList) {
         val recreationalAreaAdapter = RecreationalAreaAdapter(recAreasList)
-        recyclerViewID.adapter = recreationalAreaAdapter
+        search_recycler_view.adapter = recreationalAreaAdapter
         Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
 
-    override fun provideContext(): Context {
+    /*override fun provideContext(): Context {
         return this
-    }
+    }*/
 
     override fun onDestroy() {
         super.onDestroy()

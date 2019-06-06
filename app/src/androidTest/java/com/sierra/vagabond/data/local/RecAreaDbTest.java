@@ -28,8 +28,14 @@ public class RecAreaDbTest {
 
     private RecAreaDao recAreaDao;
     private RecAreaDatabase recAreaDatabase;
+
     private static List<RecAreaMedia> testRecAreaMedia1 = Collections.singletonList(new RecAreaMedia("Sierra National Forest", 100, 700, "some-jpeg"));
-    private static List<RecAreaFacilities> testRecAreaFacilities = Collections.singletonList(new RecAreaFacilities("2986", "Upper pines"));
+    private static List<RecAreaFacilities> testRecAreaFacilities1 = Collections.singletonList(new RecAreaFacilities("2986", "Upper pines"));
+
+
+    private static List<RecAreaMedia> testRecAreaMedia2 = Collections.singletonList(new RecAreaMedia("Yosemite National Forest", 100, 700, "some-jpeg"));
+    private static List<RecAreaFacilities> testRecAreaFacilities2 = Collections.singletonList(new RecAreaFacilities("1000", "Upper pines"));
+
 
     private static final RecreationalArea testRecreationalArea1 = new RecreationalArea("1074",
             "Sierra National Forest",
@@ -38,7 +44,16 @@ public class RecAreaDbTest {
             "{}",
             "public_affairs@fs.fed.us",
             testRecAreaMedia1,
-            testRecAreaFacilities);
+            testRecAreaFacilities1);
+
+    private static final RecreationalArea testRecreationalArea2 = new RecreationalArea("1074",
+            "Yosemite National Forest",
+            "A description",
+            "",
+            "{}",
+            "public_affairs@fs.fed.us",
+            testRecAreaMedia2,
+            testRecAreaFacilities2);
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
@@ -74,6 +89,34 @@ public class RecAreaDbTest {
                                 recreationalArea.getRecAreaName().equals(testRecreationalArea1.getRecAreaName());
                     }
                 });
+    }
+
+    @Test
+    public void testClearAll() {
+        recAreaDao.save(testRecreationalArea1).blockingAwait();
+        recAreaDao.save(testRecreationalArea2).blockingAwait();
+        recAreaDao.deleteAll()
+                .test()
+                .assertNoValues()
+                .assertComplete();
+    }
+
+    @Test
+    public void testInsertAndClearAndGetArea() {
+        recAreaDao.save(testRecreationalArea1).blockingAwait();
+        recAreaDao.getArea(testRecreationalArea1.getRecAreaID());
+        recAreaDao.deleteAll();
+        recAreaDao.save(testRecreationalArea2).blockingAwait();
+        recAreaDao.getArea(testRecreationalArea2.getRecAreaID())
+                .test()
+                .assertValue(new Predicate<RecreationalArea>() {
+                    @Override
+                    public boolean test(RecreationalArea recreationalArea) throws Exception {
+                        return recreationalArea.getRecAreaID().equals(testRecreationalArea2.getRecAreaID()) &&
+                                recreationalArea.getRecAreaName().equals(testRecreationalArea2.getRecAreaName());
+                    }
+                });
+
     }
 
 }

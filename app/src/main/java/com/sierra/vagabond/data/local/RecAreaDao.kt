@@ -7,23 +7,27 @@ import androidx.room.Query
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.utils.DELETE_ALL
 import com.sierra.vagabond.utils.SELECT_ALL
-import com.sierra.vagabond.utils.TABLE_NAME
+import com.sierra.vagabond.utils.SELECT_ONE
 import io.reactivex.Completable
+import io.reactivex.Flowable
 import io.reactivex.Single
 
 @Dao
-interface RecAreaDao {
+abstract class RecAreaDao {
 
     @get:Query(SELECT_ALL)
-    val areas: List<RecreationalArea>
+    abstract val areas: List<RecreationalArea>
 
     @Insert(onConflict = REPLACE)
-    fun save(recreationalArea: RecreationalArea): Completable
+    abstract fun save(recreationalArea: RecreationalArea): Completable
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE recAreaID = :rec_area_id")
-    fun getArea(rec_area_id: String): Single<RecreationalArea>
+    @Query(SELECT_ONE)
+    protected abstract fun getArea(rec_area_id: String): Flowable<RecreationalArea>
+
+    fun getAreaDistinct(rec_area_id: String)
+            : Flowable<RecreationalArea> = getArea(rec_area_id).distinctUntilChanged()
 
     @Query(DELETE_ALL)
-    fun deleteAll()
+    abstract fun deleteAll()
 
 }
