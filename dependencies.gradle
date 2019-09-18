@@ -1,0 +1,76 @@
+ext {
+
+    def appCompatVersion = "1.1.0"
+    def roomVersion = "2.2.0-rc01"
+    def materialVersion = "1.1.0-alpha10"
+    def cardViewVersion = "1.0.0"
+    def recyclerViewVersion = "1.1.0-beta04"
+    def exifVersion = "1.0.0"
+    def constraintLayoutVersion = "1.1.3"
+    def photoViewVersion = "2.3.0"
+    def junitVersion = "1.1.1"
+    def runnerVersion = "1.2.0"
+    def espressoCoreVersion = "3.2.0"
+    def truthVersion = "0.42"
+    def retrofitVersion = "2.6.0"
+    def picassoVersion = "2.71828"
+    def gsonVersion = "2.8.5"
+    def gsonConverterVersion = "2.6.0"
+    def rxJava2Version = "2.2.5"
+    def rxJava2AdapterVersion = "2.5.0"
+    def rxJava2AndroidVersion = "2.1.0"
+    def ktxVersion = "1.1.0"
+    def firebaseCoreVersion = "17.2.0"
+    def firebaseMessagingVersion = "20.0.0"
+
+    rxJava2Dependencies = [
+            rxJava2 : "io.reactivex.rxjava2:rxjava:$rxJava2Version",
+            rxJava2Adapter : "com.squareup.retrofit2:adapter-rxjava2:$rxJava2AdapterVersion",
+            rxJava2Android : "io.reactivex.rxjava2:rxandroid:$rxJava2AndroidVersion"
+    ]
+
+    firbaseDependencies = [
+            firebaseCore : "com.google.firebase:firebase-core:$firebaseCoreVersion",
+            firebaseMessaging : "com.google.firebase:firebase-messaging:$firebaseMessagingVersion"
+    ]
+
+    networkingDependencies = [
+            retrofit : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGsonConverter : "com.squareup.retrofit2:converter-gson:$gsonConverterVersion",
+            picasso : "com.squareup.picasso:picasso:$picassoVersion",
+            gson : "com.google.code.gson:gson:$gsonVersion"
+    ]
+
+    roomDependencies = [
+            room : "androidx.room:room-runtime:$roomVersion",
+            roomKtx : "androidx.room:room-ktx:$roomVersion",
+            rxJava2Room : "androidx.room:room-rxjava2:$roomVersion"
+    ]
+
+    roomCompiler = [
+            roomCompiler : "androidx.room:room-compiler:$roomVersion"
+    ]
+
+    uiDependencies = [
+            appCompat : "androidx.appcompat:appcompat:$appCompatVersion",
+            material : "com.google.android.material:material:$materialVersion",
+            cardView : "androidx.cardview:cardview:$cardViewVersion",
+            recyclerView : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            exif : "androidx.exifinterface:exifinterface:$exifVersion",
+            constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            photoView : "com.github.chrisbanes:PhotoView:$photoViewVersion",
+    ]
+
+    kotlinDependencies = [
+            ktx : "androidx.core:core-ktx:$ktxVersion",
+            kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    ]
+
+    testingDependencies = [
+            junit : "androidx.test.ext:junit:$junitVersion",
+            runner : "androidx.test:runner:$runnerVersion",
+            espresso : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
+            truth : "com.google.truth:truth:$truthVersion",
+            room : "android.arch.core:core-testing:$roomVersion"
+    ]
+}
