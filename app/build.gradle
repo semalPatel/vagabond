@@ -27,13 +27,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    kapt roomCompiler.values()
+    kapt dagger2Annotation.values()
     implementation kotlinDependencies.values()
+    implementation dagger2Dependencies.values()
     implementation uiDependencies.values()
     implementation roomDependencies.values()
     implementation networkingDependencies.values()
     implementation firbaseDependencies.values()
     implementation rxJava2Dependencies.values()
-    kapt roomCompiler.values()
     androidTestImplementation testingDependencies.values()
 }
 

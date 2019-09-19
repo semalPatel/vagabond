@@ -22,11 +22,22 @@ ext {
     def ktxVersion = "1.1.0"
     def firebaseCoreVersion = "17.2.0"
     def firebaseMessagingVersion = "20.0.0"
+    def daggerVersion = "2.24"
 
     rxJava2Dependencies = [
             rxJava2 : "io.reactivex.rxjava2:rxjava:$rxJava2Version",
             rxJava2Adapter : "com.squareup.retrofit2:adapter-rxjava2:$rxJava2AdapterVersion",
             rxJava2Android : "io.reactivex.rxjava2:rxandroid:$rxJava2AndroidVersion"
+    ]
+
+    dagger2Dependencies = [
+            dagger2 : "com.google.dagger:dagger:$daggerVersion",
+            daggerAndroid : "com.google.dagger:dagger-android:$daggerVersion"
+    ]
+
+    dagger2Annotation = [
+            daggerCompiler : "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerAndroidProcessor : "com.google.dagger:dagger-android-processor:$daggerVersion"
     ]
 
     firbaseDependencies = [
