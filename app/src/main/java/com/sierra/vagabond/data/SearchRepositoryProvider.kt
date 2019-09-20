@@ -3,15 +3,24 @@ package com.sierra.vagabond.data
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.data.entities.WatchResponse
-import com.sierra.vagabond.data.remote.AreasApiService
-import com.sierra.vagabond.data.remote.SierraApiService
+import com.sierra.vagabond.api.AreasApiService
+import com.sierra.vagabond.api.SierraApiService
 import com.sierra.vagabond.utils.CAMPING
 import io.reactivex.Observable
 import io.reactivex.Single
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object SearchRepositoryProvider {
-    fun provideSearchRepository(): SearchRepository {
+@Singleton
+class SearchRepositoryProvider @Inject constructor(private val areasApiService: AreasApiService) {
+
+    /*
+    fun provideSearchRepository(query: String): SearchRepository {
         return SearchRepository(AreasApiService.create())
+    }*/
+
+    fun getRecAreasList(query: String): Observable<RecreationalAreaList> {
+        return areasApiService.getRecreationalAreaData(query, full = true, activity = CAMPING)
     }
 
     fun provideSierraService(): SierraRepository {
@@ -19,10 +28,8 @@ object SearchRepositoryProvider {
     }
 }
 
-class SearchRepository(private val recAreaData: AreasApiService) {
-    fun getRecAreasList(query: String, apiKey: String): Observable<RecreationalAreaList> {
-        return recAreaData.getRecreationalAreaData(query, full = true, apiKey = apiKey, activity = CAMPING)
-    }
+class SearchRepository() {
+
 }
 
 class SierraRepository(private val sierraApiService: SierraApiService) {

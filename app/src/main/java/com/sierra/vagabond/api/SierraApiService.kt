@@ -1,4 +1,4 @@
-package com.sierra.vagabond.data.remote
+package com.sierra.vagabond.api
 
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.data.entities.WatchResponse

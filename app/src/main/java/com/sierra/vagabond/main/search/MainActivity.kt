@@ -10,10 +10,13 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
+import com.sierra.vagabond.VagabondApplication
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.di.DaggerAppComponent
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextListener {
@@ -23,9 +26,12 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DaggerAppComponent.builder()
+                .activity(this)
+                .build()
         setContentView(R.layout.activity_main)
         initializeToolbarAndRecyclerView()
-        presenter = MainPresenter(this, RecAreaRepository(this))
+        presenter = MainPresenter(this, RecAreaRepository(this), this)
 
     }
 
@@ -76,7 +82,7 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
     }
 
     override fun onQueryTextSubmit(s: String): Boolean {
-        presenter.onSearch(s, getString(R.string.api_key))
+        presenter.onSearch(s)
         return false
     }
 

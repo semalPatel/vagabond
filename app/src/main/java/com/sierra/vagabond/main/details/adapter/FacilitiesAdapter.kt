@@ -28,7 +28,7 @@ class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>) : Recyc
     @TargetApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: Facilities, position: Int) {
         holder.facilityName.text = facilities[position].facilityName
-        holder.facilityClick.setOnClickListener {
+        /*holder.facilityClick.setOnClickListener {
             val service = SearchRepositoryProvider.provideSierraService()
             val today = Instant.now()
             val watch = WatchRequest(
@@ -43,7 +43,7 @@ class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>) : Recyc
                     .subscribe(
                             { result -> Log.d(javaClass.simpleName, result.toString()) },
                             { error -> Log.d(javaClass.simpleName, error.message) })
-        }
+        }*/
 
     }
 

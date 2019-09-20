@@ -25,9 +25,9 @@ abstract class RecAreaDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: RecAreaDatabase? = null
 
-        fun getInstance(context: Context): RecAreaDatabase =
+        fun getInstance(application: Context): RecAreaDatabase =
                 INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+                    INSTANCE ?: buildDatabase(application).also { INSTANCE = it }
                 }
 
         private fun buildDatabase(context: Context) =
