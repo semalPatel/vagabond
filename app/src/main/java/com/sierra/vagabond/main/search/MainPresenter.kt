@@ -14,34 +14,22 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.lang.reflect.Constructor
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(
-        private val view: MainMvp.View, private val areaRepository: RecAreaRepository, mainActivity: MainActivity) : MainMvp.Presenter {
+class MainPresenter @Inject constructor (private val view: MainMvp.View, private val searchRepositoryProvider: SearchRepositoryProvider) : MainMvp.Presenter {
 
-    private val injector: AppComponent = DaggerAppComponent
-            .builder()
-            .activity(mainActivity)
-            .build()
-
-    init {
-        injector.inject(this)
-    }
+//    @Inject lateinit var searchRepositoryProvider: SearchRepositoryProvider
 
     private val compositeDisposable = CompositeDisposable()
     private var isDataStored: Boolean = false
-//    private val searchRepository = SearchRepositoryProvider()
-
-    @Inject lateinit var searchRepositoryProvider: SearchRepositoryProvider
 
     override fun onDestroy() {
         compositeDisposable.dispose()
-        clearDb()
     }
 
     override fun onSearch(query: String) {
         view.showProgress()
-        clearDb()
         compositeDisposable.add(searchRepositoryProvider
                 .getRecAreasList(query)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -50,7 +38,7 @@ class MainPresenter @Inject constructor(
                     result.areasList
                 }
                 .subscribe({ result ->
-                    saveToDb(recArea = result)
+//                    saveToDb(recArea = result)
                     isDataStored = true
                 },
                 { error -> handleError(error) }))
@@ -71,7 +59,7 @@ class MainPresenter @Inject constructor(
         error.stackTrace
     }
 
-    private fun saveToDb(recArea: RecreationalArea) {
+    /*private fun saveToDb(recArea: RecreationalArea) {
         areaRepository.insert(recArea)
     }
 
@@ -85,5 +73,5 @@ class MainPresenter @Inject constructor(
                     .dispose()
 
         }
-    }
+    }*/
 }

@@ -1,9 +1,11 @@
 package com.sierra.vagabond.di
 
 import com.sierra.vagabond.VagabondApplication
-import com.sierra.vagabond.main.search.MainPresenter
 
 object AppInjector {
 
-
+    fun init(application: VagabondApplication) {
+        DaggerAppComponent.builder().application(application)
+                .build().inject(application)
+    }
 }

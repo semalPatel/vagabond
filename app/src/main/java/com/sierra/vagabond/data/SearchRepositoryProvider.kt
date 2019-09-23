@@ -11,7 +11,6 @@ import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
 class SearchRepositoryProvider @Inject constructor(private val areasApiService: AreasApiService) {
 
     /*
@@ -23,19 +22,14 @@ class SearchRepositoryProvider @Inject constructor(private val areasApiService: 
         return areasApiService.getRecreationalAreaData(query, full = true, activity = CAMPING)
     }
 
-    fun provideSierraService(): SierraRepository {
+   /* fun provideSierraService(): SierraRepository {
         return SierraRepository(SierraApiService.create())
-    }
+    }*/
 }
 
-class SearchRepository() {
-
-}
-
-class SierraRepository(private val sierraApiService: SierraApiService) {
+/*class SierraRepository(private val sierraApiService: SierraApiService) {
 
     fun createWatch(watch: WatchRequest): Single<WatchResponse> {
         return sierraApiService.createWatch(watch)
-    }
-}
+    }*/
 

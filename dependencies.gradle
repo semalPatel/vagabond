@@ -32,7 +32,8 @@ ext {
 
     dagger2Dependencies = [
             dagger2 : "com.google.dagger:dagger:$daggerVersion",
-            daggerAndroid : "com.google.dagger:dagger-android:$daggerVersion"
+            daggerAndroid : "com.google.dagger:dagger-android:$daggerVersion",
+            daggerSupport : "com.google.dagger:dagger-android-support:$daggerVersion"
     ]
 
     dagger2Annotation = [

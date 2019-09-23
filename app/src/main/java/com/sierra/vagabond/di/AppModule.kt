@@ -1,16 +1,13 @@
 package com.sierra.vagabond.di
 
 import com.google.gson.Gson
-import com.sierra.vagabond.R
 import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.api.AuthInterceptor
 import com.sierra.vagabond.api.SierraApiService
 import com.sierra.vagabond.data.SearchRepositoryProvider
 import com.sierra.vagabond.utils.GC_BASE_ENDPOINT
-import com.sierra.vagabond.utils.RC_AREAS_ENDPOINT
 import com.sierra.vagabond.utils.RC_BASE_ENDPOINT
 import com.sierra.vagabond.utils.RIDB_API_KEY
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import io.reactivex.schedulers.Schedulers
@@ -72,6 +69,4 @@ class AppModule {
                                   clazz: Class<T>): T {
         return createRetrofit(okHttpClient, gsonConverterFactory, baseUrl).create(clazz)
     }
-
-
 }

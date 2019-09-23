@@ -18,7 +18,7 @@ interface AreasApiService {
                                 @Query(FULL) full: Boolean,
                                 @Query(ACTIVITY) activity: String): Observable<RecreationalAreaList>
 
-    companion object Factory {
+    /*companion object Factory {
 
         fun create(): AreasApiService {
             val retrofit = Retrofit.Builder()
@@ -28,7 +28,7 @@ interface AreasApiService {
                     .build()
             return retrofit.create(AreasApiService::class.java)
         }
-    }
+    }*/
 }
 
 
