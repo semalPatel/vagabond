@@ -1,19 +1,11 @@
 package com.sierra.vagabond.di
 
+import android.app.Application
+import android.content.Context
 import com.google.gson.Gson
-import com.sierra.vagabond.api.AreasApiService
-import com.sierra.vagabond.api.AuthInterceptor
-import com.sierra.vagabond.api.SierraApiService
-import com.sierra.vagabond.data.SearchRepositoryProvider
-import com.sierra.vagabond.utils.GC_BASE_ENDPOINT
-import com.sierra.vagabond.utils.RC_BASE_ENDPOINT
-import com.sierra.vagabond.utils.RIDB_API_KEY
+import com.sierra.vagabond.data.local.RecAreaDatabase
 import dagger.Module
 import dagger.Provides
-import io.reactivex.schedulers.Schedulers
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
@@ -21,52 +13,20 @@ import javax.inject.Singleton
 class AppModule {
 
     @Provides
+    fun provideContext(application: Application): Context = application
+
+    @Provides
     fun provideGson(): Gson = Gson()
 
     @Provides
     fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory = GsonConverterFactory.create(gson)
 
+    @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient()
-
-    @AreasAPI
-    @Provides
-    fun provideOkHttpClientForAreas(upstreamClient: OkHttpClient): OkHttpClient =
-            upstreamClient.newBuilder().addInterceptor(AuthInterceptor(apiKey = RIDB_API_KEY)).build()
+    fun provideDatabase(application: Application) = RecAreaDatabase.getInstance(application)
 
     @Singleton
     @Provides
-    fun provideAreasService(@AreasAPI okHttpClient: OkHttpClient,
-                            gsonConverterFactory: GsonConverterFactory) = createService(okHttpClient, gsonConverterFactory, RC_BASE_ENDPOINT, AreasApiService::class.java)
+    fun provideRecAreaDao(recAreaDatabase: RecAreaDatabase) = recAreaDatabase.recAreaDao()
 
-    @Singleton
-    @Provides
-    fun provideAreasDataSource(areasApiService: AreasApiService) = SearchRepositoryProvider(areasApiService)
-
-    @Provides
-    fun provideSierraService(@SierraAPI okHttpClient: OkHttpClient,
-                             gsonConverterFactory: GsonConverterFactory) = createService(okHttpClient, gsonConverterFactory, GC_BASE_ENDPOINT, SierraApiService::class.java)
-
-    @SierraAPI
-    @Provides
-    fun provideOkHttpClientForSierra(upstreamClient: OkHttpClient): OkHttpClient =
-            upstreamClient.newBuilder().build()
-
-    private fun createRetrofit(okHttpClient: OkHttpClient,
-                       converterFactory: GsonConverterFactory,
-                       baseUrl: String) : Retrofit {
-        return  Retrofit.Builder()
-                .addConverterFactory(converterFactory)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
-                .client(okHttpClient)
-                .baseUrl(baseUrl)
-                .build()
-    }
-
-    private fun <T> createService(okHttpClient: OkHttpClient,
-                                  gsonConverterFactory: GsonConverterFactory,
-                                  baseUrl: String,
-                                  clazz: Class<T>): T {
-        return createRetrofit(okHttpClient, gsonConverterFactory, baseUrl).create(clazz)
-    }
 }

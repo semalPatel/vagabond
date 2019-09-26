@@ -10,7 +10,6 @@ import com.sierra.vagabond.utils.SELECT_ALL
 import com.sierra.vagabond.utils.SELECT_ONE
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Single
 
 @Dao
 abstract class RecAreaDao {
@@ -20,6 +19,9 @@ abstract class RecAreaDao {
 
     @Insert(onConflict = REPLACE)
     abstract fun save(recreationalArea: RecreationalArea): Completable
+
+    @Insert(onConflict = REPLACE)
+    abstract fun saveAll(recreationalAreaList: List<RecreationalArea>)
 
     @Query(SELECT_ONE)
     protected abstract fun getArea(rec_area_id: String): Flowable<RecreationalArea>
