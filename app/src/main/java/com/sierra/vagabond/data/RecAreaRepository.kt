@@ -5,6 +5,7 @@ import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.data.local.RecAreaDao
 import com.sierra.vagabond.utils.CAMPING
+import com.sierra.vagabond.utils.BY_NAME
 import io.reactivex.Flowable
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -16,7 +17,7 @@ import javax.inject.Singleton
 class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, private val service: AreasApiService) {
 
     fun getRecAreasList(query: String): Observable<RecreationalAreaList> {
-        return service.getRecreationalAreaData(query, full = true, activity = CAMPING).also {
+        return service.getRecreationalAreaData(query, full = true, activity = CAMPING, by = BY_NAME).also {
             it.map { areaList ->
                 recAreaDao.saveAll(areaList.areasList)
             }

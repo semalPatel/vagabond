@@ -20,9 +20,9 @@ class MainPresenter @Inject constructor (private val view: MainMvp.View, private
         compositeDisposable.add(recAreaRepository
                 .getRecAreasList(query)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
+                .subscribe({ areas ->
                     isDataStored = true
-                    handleSuccess(it)
+                    handleSuccess(areas)
                 },
                 { error -> handleError(error) }))
     }

@@ -16,7 +16,8 @@ interface AreasApiService {
     @GET(RC_AREAS_ENDPOINT)
     fun getRecreationalAreaData(@Query(QUERY) query: String,
                                 @Query(FULL) full: Boolean,
-                                @Query(ACTIVITY) activity: String): Observable<RecreationalAreaList>
+                                @Query(ACTIVITY) activity: String,
+                                @Query (SORT) by: String): Observable<RecreationalAreaList>
 
     /*companion object Factory {
 

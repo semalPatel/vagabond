@@ -32,6 +32,8 @@ const val RC_BASE_ENDPOINT = "https://ridb.recreation.gov/api/v1/"
 const val QUERY = "query"
 const val FULL = "full"
 const val ACTIVITY = "activity"
+const val BY_NAME = "Name"
+const val SORT = "sort"
 const val API_KEY = "apikey"
 const val CAMPING = "CAMPING"
 
