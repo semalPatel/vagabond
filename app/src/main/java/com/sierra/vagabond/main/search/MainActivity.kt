@@ -10,23 +10,28 @@ import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
+import com.sierra.vagabond.VagabondApplication
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.di.DaggerAppComponent
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextListener {
 
-    private lateinit var presenter: MainMvp.Presenter
+    @Inject
+    lateinit var presenter: MainMvp.Presenter
+
     private var errorSnackBar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeToolbarAndRecyclerView()
-        presenter = MainPresenter(this, RecAreaRepository(this))
-
     }
 
     private fun initializeToolbarAndRecyclerView() {
@@ -46,7 +51,7 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
     }
 
     override fun onResponseFailure() {
-        errorSnackBar = Snackbar.make(layout_id, R.string.area_error, Snackbar.LENGTH_INDEFINITE)
+        errorSnackBar = Snackbar.make(layout_id, R.string.area_error, Snackbar.LENGTH_SHORT)
         errorSnackBar?.show()
     }
 
@@ -55,10 +60,6 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         search_recycler_view.adapter = recreationalAreaAdapter
         Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
-
-    /*override fun provideContext(): Context {
-        return this
-    }*/
 
     override fun onDestroy() {
         super.onDestroy()
@@ -76,13 +77,11 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
     }
 
     override fun onQueryTextSubmit(s: String): Boolean {
-        presenter.onSearch(s, getString(R.string.api_key))
+        presenter.onSearch(s)
         return false
     }
 
     override fun onQueryTextChange(s: String): Boolean {
         return false
     }
-
-
 }

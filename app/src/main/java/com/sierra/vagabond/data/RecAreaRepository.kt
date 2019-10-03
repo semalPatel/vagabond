@@ -1,21 +1,27 @@
 package com.sierra.vagabond.data
 
-import android.content.Context
+import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.data.local.RecAreaDao
-import com.sierra.vagabond.data.local.RecAreaDatabase
+import com.sierra.vagabond.utils.CAMPING
+import com.sierra.vagabond.utils.BY_NAME
 import io.reactivex.Flowable
-import io.reactivex.Single
+import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Singleton
 
 
-class RecAreaRepository(context: Context) {
+@Singleton
+class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, private val service: AreasApiService) {
 
-    private val recAreaDao: RecAreaDao
-
-    init {
-        val db = RecAreaDatabase.getInstance(context)
-        recAreaDao = db.recAreaDao()
+    fun getRecAreasList(query: String): Observable<RecreationalAreaList> {
+        return service.getRecreationalAreaData(query, full = true, activity = CAMPING, by = BY_NAME).also {
+            it.map { areaList ->
+                recAreaDao.saveAll(areaList.areasList)
+            }
+        }
     }
 
     fun getSingleArea(recAreaId: String): Flowable<RecreationalArea> {

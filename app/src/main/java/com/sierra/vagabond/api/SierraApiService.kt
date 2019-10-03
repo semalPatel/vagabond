@@ -1,4 +1,4 @@
-package com.sierra.vagabond.data.remote
+package com.sierra.vagabond.api
 
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.data.entities.WatchResponse
@@ -12,7 +12,7 @@ import retrofit2.http.*
 
 interface SierraApiService {
 
-    companion object {
+    /*companion object {
 
         fun create(): SierraApiService {
             val retrofit = Retrofit.Builder()
@@ -22,7 +22,7 @@ interface SierraApiService {
                     .build()
             return retrofit.create(SierraApiService::class.java)
         }
-    }
+    }*/
 
     @Headers(ACCEPT_HEADER,
             CONTENT_TYPE)

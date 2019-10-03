@@ -2,7 +2,6 @@ package com.sierra.vagabond.main.details.adapter
 
 import android.annotation.TargetApi
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +9,8 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
-import com.sierra.vagabond.data.SearchRepositoryProvider
 import com.sierra.vagabond.data.entities.RecAreaFacilities
-import com.sierra.vagabond.data.entities.WatchRequest
-import com.sierra.vagabond.utils.Prefs
-import io.reactivex.android.schedulers.AndroidSchedulers
 import kotlinx.android.synthetic.main.list_facilities.view.*
-import java.time.Instant
 
 class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>) : RecyclerView.Adapter<FacilitiesAdapter.Facilities>() {
 
@@ -28,8 +22,8 @@ class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>) : Recyc
     @TargetApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: Facilities, position: Int) {
         holder.facilityName.text = facilities[position].facilityName
-        holder.facilityClick.setOnClickListener {
-            val service = SearchRepositoryProvider.provideSierraService()
+        /*holder.facilityClick.setOnClickListener {
+            val service = RecAreaRemoteDataSource.provideSierraService()
             val today = Instant.now()
             val watch = WatchRequest(
                     facilityId = facilities[position].facilityId,
@@ -43,7 +37,7 @@ class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>) : Recyc
                     .subscribe(
                             { result -> Log.d(javaClass.simpleName, result.toString()) },
                             { error -> Log.d(javaClass.simpleName, error.message) })
-        }
+        }*/
 
     }
 

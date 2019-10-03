@@ -1,5 +1,6 @@
 package com.sierra.vagabond.data.local
 
+import android.app.Application
 import android.content.Context
 
 import androidx.room.Database
@@ -25,9 +26,9 @@ abstract class RecAreaDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: RecAreaDatabase? = null
 
-        fun getInstance(context: Context): RecAreaDatabase =
+        fun getInstance(application: Application): RecAreaDatabase =
                 INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+                    INSTANCE ?: buildDatabase(application).also { INSTANCE = it }
                 }
 
         private fun buildDatabase(context: Context) =

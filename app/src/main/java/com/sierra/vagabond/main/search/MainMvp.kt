@@ -9,7 +9,7 @@ interface MainMvp {
 
         fun onDestroy()
 
-        fun onSearch(query: String, apiKey: String)
+        fun onSearch(query: String)
     }
 
     interface View {

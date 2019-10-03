@@ -65,3 +65,5 @@ app/src/main/res/values/secrets.xml
 
 # DS store
 .DS_Store
+
+app/src/main/java/com/sierra/vagabond/utils/SecretApiKey.kt

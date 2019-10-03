@@ -11,7 +11,6 @@ import com.sierra.vagabond.utils.*
 import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = TABLE_NAME)
-@Parcelize
 data class RecreationalArea(@field:PrimaryKey @field:SerializedName(REC_AREA_ID) @field:Expose val recAreaID: String,
                             @field:SerializedName(REC_AREA_NAME) @field:Expose val recAreaName: String,
                             @field:SerializedName(REC_AREA_DESC) @field:Expose val recAreaDescription: String,
@@ -19,4 +18,4 @@ data class RecreationalArea(@field:PrimaryKey @field:SerializedName(REC_AREA_ID)
                             @field:SerializedName(REC_AREA_PHONE) @field:Expose val recAreaPhone: String,
                             @field:SerializedName(REC_AREA_EMAIL) @field:Expose val recAreaEmail: String,
                             @field:SerializedName(REC_AREA_MEDIA) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaMediaList: List<RecAreaMedia>,
-                            @field:SerializedName(REC_AREA_FACILITIES) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaFacilities: List<RecAreaFacilities>) : Parcelable
+                            @field:SerializedName(REC_AREA_FACILITIES) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaFacilities: List<RecAreaFacilities>)

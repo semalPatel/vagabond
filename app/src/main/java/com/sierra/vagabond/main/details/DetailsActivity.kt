@@ -31,7 +31,7 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         setContentView(R.layout.activity_detail)
 //        detailedArea = intent.getParcelableExtra(AREA)
         id = intent.getStringExtra(REC_AREA_ID)
-        repo = RecAreaRepository(this)
+//        repo = RecAreaRepository(this)
         getAreaFromRepo()
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

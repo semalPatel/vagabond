@@ -1,9 +1,8 @@
-package com.sierra.vagabond.data.remote
+package com.sierra.vagabond.api
 
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.utils.*
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -18,9 +17,9 @@ interface AreasApiService {
     fun getRecreationalAreaData(@Query(QUERY) query: String,
                                 @Query(FULL) full: Boolean,
                                 @Query(ACTIVITY) activity: String,
-                                @Header(API_KEY) apiKey: String): Observable<RecreationalAreaList>
+                                @Query (SORT) by: String): Observable<RecreationalAreaList>
 
-    companion object Factory {
+    /*companion object Factory {
 
         fun create(): AreasApiService {
             val retrofit = Retrofit.Builder()
@@ -30,7 +29,7 @@ interface AreasApiService {
                     .build()
             return retrofit.create(AreasApiService::class.java)
         }
-    }
+    }*/
 }
 
 
