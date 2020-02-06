@@ -22,7 +22,7 @@ class PushInteractor {
 //                    Log.d(javaClass.simpleName, err.toString())
 //                }
         /*Observable.just("")
-                .map { FirebaseInstanceId.getInstance().getToken("463740532540", "FCM") }
+                .map { FirebaseInstanceId.getInstance().getToken("", "FCM") }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
