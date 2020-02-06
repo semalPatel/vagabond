@@ -18,27 +18,32 @@ import javax.inject.Singleton
 @Module
 class NetworkModule {
 
+    @AreasAPI
+    @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient()
+    fun authInterceptor(): AuthInterceptor = AuthInterceptor(apiKey = RIDB_API_KEY)
 
     @AreasAPI
+    @Singleton
     @Provides
-    fun provideOkHttpClientForAreas(upstreamClient: OkHttpClient): OkHttpClient =
-            upstreamClient.newBuilder().addInterceptor(AuthInterceptor(apiKey = RIDB_API_KEY)).build()
+    fun provideOkHttpClient(@AreasAPI authInterceptor: AuthInterceptor) = OkHttpClient.Builder().addInterceptor(authInterceptor).build()
 
+    @AreasAPI
     @Singleton
     @Provides
     fun provideAreasService(@AreasAPI okHttpClient: OkHttpClient,
                             gsonConverterFactory: GsonConverterFactory) = createService(okHttpClient, gsonConverterFactory, RC_BASE_ENDPOINT, AreasApiService::class.java)
 
+    @SierraAPI
+    @Singleton
     @Provides
     fun provideSierraService(@SierraAPI okHttpClient: OkHttpClient,
                              gsonConverterFactory: GsonConverterFactory) = createService(okHttpClient, gsonConverterFactory, GC_BASE_ENDPOINT, SierraApiService::class.java)
 
     @SierraAPI
+    @Singleton
     @Provides
-    fun provideOkHttpClientForSierra(upstreamClient: OkHttpClient): OkHttpClient =
-            upstreamClient.newBuilder().build()
+    fun provideOkHttpClientForSierra(): OkHttpClient = OkHttpClient()
 
 
     private fun createRetrofit(okHttpClient: OkHttpClient,

@@ -11,7 +11,6 @@ ext {
     def junitVersion = "1.1.1"
     def runnerVersion = "1.2.0"
     def espressoCoreVersion = "3.2.0"
-    def truthVersion = "0.42"
     def retrofitVersion = "2.6.0"
     def picassoVersion = "2.71828"
     def gsonVersion = "2.8.5"
@@ -82,7 +81,6 @@ ext {
             junit : "androidx.test.ext:junit:$junitVersion",
             runner : "androidx.test:runner:$runnerVersion",
             espresso : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
-            truth : "com.google.truth:truth:$truthVersion",
             room : "android.arch.core:core-testing:$roomVersion"
     ]
 }

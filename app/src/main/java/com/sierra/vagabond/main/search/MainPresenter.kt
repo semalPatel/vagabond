@@ -23,6 +23,9 @@ class MainPresenter @Inject constructor (private val view: MainMvp.View, private
                 .subscribe({ areas ->
                     isDataStored = true
                     handleSuccess(areas)
+                    areas.areasList.forEach { area ->
+                        recAreaRepository.insert(area)
+                    }
                 },
                 { error -> handleError(error) }))
     }

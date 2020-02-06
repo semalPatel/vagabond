@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.Menu
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
@@ -12,26 +13,27 @@ import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.main.details.adapter.DetailsPhotosAdapter
 import com.sierra.vagabond.main.details.adapter.FacilitiesAdapter
+import com.sierra.vagabond.main.search.RecAreasViewModel
 import com.sierra.vagabond.utils.REC_AREA_ID
 import com.squareup.picasso.Picasso
+import dagger.android.AndroidInjection
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_detail.*
+import javax.inject.Inject
 
 class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
 
-    private val presenter: DetailsPresenter = DetailsPresenter(this)
-    private lateinit var repo: RecAreaRepository
+    @Inject lateinit var repo: RecAreaRepository
     private lateinit var id: String
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-//        detailedArea = intent.getParcelableExtra(AREA)
         id = intent.getStringExtra(REC_AREA_ID)
-//        repo = RecAreaRepository(this)
         getAreaFromRepo()
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

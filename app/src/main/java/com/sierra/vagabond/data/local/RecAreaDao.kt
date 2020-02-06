@@ -26,10 +26,8 @@ abstract class RecAreaDao {
     @Query(SELECT_ONE)
     protected abstract fun getArea(rec_area_id: String): Flowable<RecreationalArea>
 
-    fun getAreaDistinct(rec_area_id: String)
-            : Flowable<RecreationalArea> = getArea(rec_area_id).distinctUntilChanged()
+    fun getAreaDistinct(rec_area_id: String): Flowable<RecreationalArea> = getArea(rec_area_id).distinctUntilChanged()
 
     @Query(DELETE_ALL)
     abstract fun deleteAll()
-
 }
