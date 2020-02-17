@@ -1,13 +1,5 @@
 package com.sierra.vagabond.utils
 
-import android.util.Log
-import com.google.firebase.iid.FirebaseInstanceId
-import io.reactivex.Completable
-import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-
 class PushInteractor {
 
     fun registerDeviceToken() {

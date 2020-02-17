@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.main.details.DetailsActivity
-import com.sierra.vagabond.utils.AREA
 import com.sierra.vagabond.utils.REC_AREA_ID
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_view.view.*

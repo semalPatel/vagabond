@@ -39,10 +39,12 @@ const val SORT = "sort"
 const val API_KEY = "apikey"
 const val CAMPING = "CAMPING"
 
-const val CREATE_WATCH = "create_watch"
+/*const val CREATE_WATCH = "create_watch"*/
+const val CREATE_WATCH = "createWatch"
 const val DELETE_WATCH = "delete_watch"
 const val GET_WATCHES = "get_watches"
-const val GC_BASE_ENDPOINT = "https://us-central1-sierra-236907.cloudfunctions.net/"
+//const val GC_BASE_ENDPOINT = "https://us-central1-sierra-236907.cloudfunctions.net/"
+const val GC_BASE_ENDPOINT = "https://us-central1-sierra-api-266504.cloudfunctions.net/"
 
 const val IMAGE_URL = "image_url"
 const val AREA = "area"

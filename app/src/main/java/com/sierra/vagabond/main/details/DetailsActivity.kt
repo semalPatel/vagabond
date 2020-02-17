@@ -32,9 +32,9 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
         id = intent.getStringExtra(REC_AREA_ID)
-        getAreaFromRepo()
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        getAreaFromRepo()
     }
 
     private fun getAreaFromRepo() {

@@ -8,6 +8,7 @@ import com.sierra.vagabond.utils.WATCH_FACILITY_NAME
 import com.sierra.vagabond.utils.WATCH_TOKEN
 
 data class WatchRequest(@field:SerializedName(WATCH_FACILITY_ID) @field:Expose val facilityId: String,
+                        @field:SerializedName(WATCH_FACILITY_ID) @field:Expose val facilityId: String,
                         @field:SerializedName(WATCH_FACILITY_NAME) @field:Expose val facilityName: String,
                         @field:SerializedName(START_DATE) @field:Expose val startDate: Long,
                         @field:SerializedName(WATCH_TOKEN) @field:Expose val watchToken: String?)

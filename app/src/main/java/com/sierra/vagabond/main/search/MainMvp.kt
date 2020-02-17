@@ -1,8 +1,5 @@
 package com.sierra.vagabond.main.search
 
-import android.content.Context
-import com.sierra.vagabond.data.entities.RecreationalAreaList
-
 interface MainMvp {
 
     interface Presenter {

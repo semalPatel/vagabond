@@ -8,10 +8,8 @@ import com.sierra.vagabond.utils.RC_BASE_ENDPOINT
 import com.sierra.vagabond.utils.RIDB_API_KEY
 import dagger.Module
 import dagger.Provides
-import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 

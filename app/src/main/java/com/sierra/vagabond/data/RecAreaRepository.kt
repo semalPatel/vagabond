@@ -1,6 +1,5 @@
 package com.sierra.vagabond.data
 
-import androidx.lifecycle.LiveData
 import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.api.SierraApiService
 import com.sierra.vagabond.data.entities.RecreationalArea
@@ -9,10 +8,9 @@ import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.data.local.RecAreaDao
 import com.sierra.vagabond.di.AreasAPI
 import com.sierra.vagabond.di.SierraAPI
-import com.sierra.vagabond.utils.CAMPING
 import com.sierra.vagabond.utils.BY_NAME
+import com.sierra.vagabond.utils.CAMPING
 import io.reactivex.Flowable
-import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -1,11 +1,9 @@
 package com.sierra.vagabond.viewmodels
 
-import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.utils.EXCEPTION_STRING_VIEWMODEL
-import java.lang.IllegalArgumentException
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")

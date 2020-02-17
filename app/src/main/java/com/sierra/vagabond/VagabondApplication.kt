@@ -1,9 +1,7 @@
 package com.sierra.vagabond
 
 import android.app.Application
-import com.sierra.vagabond.di.AppComponent
 import com.sierra.vagabond.di.AppInjector
-import com.sierra.vagabond.di.DaggerAppComponent
 import com.sierra.vagabond.utils.Prefs
 import com.sierra.vagabond.utils.PushInteractor
 import dagger.android.AndroidInjector

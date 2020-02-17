@@ -2,9 +2,7 @@ package com.sierra.vagabond.main.search
 
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor (private val view: MainMvp.View, private val recAreaRepository: RecAreaRepository) : MainMvp.Presenter {
