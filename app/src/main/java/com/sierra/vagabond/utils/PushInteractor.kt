@@ -1,14 +1,10 @@
 package com.sierra.vagabond.utils
 
 import android.annotation.SuppressLint
-import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
-import com.sierra.vagabond.data.RecAreaRepository
-import com.sierra.vagabond.data.entities.TokenRequest
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 class PushInteractor {
 

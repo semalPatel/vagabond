@@ -3,7 +3,6 @@ package com.sierra.vagabond.data.entities
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.sierra.vagabond.utils.*
-import java.time.Instant
 
 data class WatchRequest(@field:SerializedName(WATCH_ID) @field:Expose val watchId: String? = null,
                         @field:SerializedName(USER_WATCH_ID) @field:Expose val userId: String,

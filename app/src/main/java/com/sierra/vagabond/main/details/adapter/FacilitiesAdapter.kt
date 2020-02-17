@@ -2,7 +2,6 @@ package com.sierra.vagabond.main.details.adapter
 
 import android.annotation.TargetApi
 import android.os.Build
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
-import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecAreaFacilities
@@ -19,8 +17,6 @@ import com.sierra.vagabond.data.entities.WatchRequest
 import kotlinx.android.synthetic.main.list_facilities.view.*
 import java.time.Instant
 import java.util.*
-import javax.inject.Inject
-import kotlin.reflect.typeOf
 
 class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>,
                         private val repo: RecAreaRepository) : RecyclerView.Adapter<FacilitiesAdapter.Facilities>() {

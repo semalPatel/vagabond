@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
 
     private var errorSnackBar: Snackbar? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
