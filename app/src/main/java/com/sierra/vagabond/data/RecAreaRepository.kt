@@ -1,5 +1,6 @@
 package com.sierra.vagabond.data
 
+import androidx.lifecycle.LiveData
 import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.api.SierraApiService
 import com.sierra.vagabond.data.entities.RecreationalArea
@@ -20,13 +21,8 @@ import javax.inject.Singleton
 @Singleton
 class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, @AreasAPI private val service: AreasApiService, @SierraAPI private val sierraAPI: SierraApiService) {
 
-    fun getRecAreasList(query: String): Observable<RecreationalAreaList> {
-        sierraAPI.getWatches("", true, "")
-        return service.getRecreationalAreaData(query, full = true, activity = CAMPING, by = BY_NAME).also {
-            it.map { areaList ->
-                recAreaDao.saveAll(areaList.areasList)
-            }
-        }
+    suspend fun getRecAreasList(query: String): RecreationalAreaList {
+        return service.getRecreationalAreaData(query, full = true, activity = CAMPING, by = BY_NAME)
     }
 
     fun getSingleArea(recAreaId: String): Flowable<RecreationalArea> {

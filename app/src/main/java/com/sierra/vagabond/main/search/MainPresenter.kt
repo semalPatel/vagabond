@@ -4,6 +4,7 @@ import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.coroutines.CoroutineScope
 import javax.inject.Inject
 
 class MainPresenter @Inject constructor (private val view: MainMvp.View, private val recAreaRepository: RecAreaRepository) : MainMvp.Presenter {
@@ -16,7 +17,7 @@ class MainPresenter @Inject constructor (private val view: MainMvp.View, private
     }
 
     override fun onSearch(query: String) {
-        view.showProgress()
+       /* view.showProgress()
         compositeDisposable.add(recAreaRepository
                 .getRecAreasList(query)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -27,7 +28,7 @@ class MainPresenter @Inject constructor (private val view: MainMvp.View, private
                         recAreaRepository.insert(area)
                     }
                 },
-                { error -> handleError(error) }))
+                { error -> handleError(error) }))*/
     }
 
     private fun handleSuccess(result: RecreationalAreaList) {
@@ -35,7 +36,7 @@ class MainPresenter @Inject constructor (private val view: MainMvp.View, private
         if (result.areasList.isEmpty()) {
             view.onResponseFailure()
         } else {
-            view.setDataToRecyclerView(result)
+//            view.setDataToRecyclerView(result)
         }
     }
 

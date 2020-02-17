@@ -18,7 +18,7 @@ interface MainMvp {
 
         fun hideProgress()
 
-        fun setDataToRecyclerView(recAreasList: RecreationalAreaList)
+//        fun setDataToRecyclerView(recAreasList: RecreationalAreaList)
 
         fun onResponseFailure()
 

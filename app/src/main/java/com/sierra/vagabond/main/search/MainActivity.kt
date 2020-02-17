@@ -1,20 +1,21 @@
 package com.sierra.vagabond.main.search
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
-import com.sierra.vagabond.VagabondApplication
-import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
-import com.sierra.vagabond.di.DaggerAppComponent
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
+import com.sierra.vagabond.viewmodels.RecAreasViewModel
+import com.sierra.vagabond.viewmodels.RecAreasViewModelFactory
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -24,14 +25,21 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
 
     @Inject
     lateinit var presenter: MainMvp.Presenter
+    @Inject
+    lateinit var viewModelFactory: RecAreasViewModelFactory
+    private val areasViewModel: RecAreasViewModel by viewModels { viewModelFactory }
 
     private var errorSnackBar: Snackbar? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeToolbarAndRecyclerView()
+        areasViewModel.areaList.observe(this, Observer { areas ->
+            setDataToRecyclerView(areas)
+        })
     }
 
     private fun initializeToolbarAndRecyclerView() {
@@ -55,11 +63,12 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         errorSnackBar?.show()
     }
 
-    override fun setDataToRecyclerView(recAreasList: RecreationalAreaList) {
+    private fun setDataToRecyclerView(recAreasList: RecreationalAreaList) {
         val recreationalAreaAdapter = RecreationalAreaAdapter(recAreasList)
         search_recycler_view.adapter = recreationalAreaAdapter
         Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -77,7 +86,7 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
     }
 
     override fun onQueryTextSubmit(s: String): Boolean {
-        presenter.onSearch(s)
+        areasViewModel.getRecAreaList(s)
         return false
     }
 

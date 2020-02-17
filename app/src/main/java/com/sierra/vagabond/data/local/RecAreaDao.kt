@@ -21,7 +21,7 @@ abstract class RecAreaDao {
     abstract fun save(recreationalArea: RecreationalArea): Completable
 
     @Insert(onConflict = REPLACE)
-    abstract fun saveAll(recreationalAreaList: List<RecreationalArea>)
+    abstract suspend fun saveAll(recreationalAreaList: List<RecreationalArea>)
 
     @Query(SELECT_ONE)
     protected abstract fun getArea(rec_area_id: String): Flowable<RecreationalArea>

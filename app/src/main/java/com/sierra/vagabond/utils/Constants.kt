@@ -11,6 +11,8 @@ const val START_DATE = "start_date"
 const val WATCH_TOKEN = "token"
 const val WATCH_ID = "watch_id"
 
+const val EXCEPTION_STRING_VIEWMODEL = "ViewModel class not found"
+
 const val IMG_TITLE = "Title"
 const val IMG_HEIGHT = "Height"
 const val IMG_WIDTH = "Width"

@@ -1,5 +1,6 @@
 package com.sierra.vagabond.api
 
+import androidx.lifecycle.LiveData
 import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.utils.*
 import io.reactivex.Observable
@@ -14,10 +15,10 @@ import retrofit2.http.Query
 interface AreasApiService {
 
     @GET(RC_AREAS_ENDPOINT)
-    fun getRecreationalAreaData(@Query(QUERY) query: String,
+    suspend fun getRecreationalAreaData(@Query(QUERY) query: String,
                                 @Query(FULL) full: Boolean,
                                 @Query(ACTIVITY) activity: String,
-                                @Query (SORT) by: String): Observable<RecreationalAreaList>
+                                @Query (SORT) by: String): RecreationalAreaList
 
     /*companion object Factory {
 

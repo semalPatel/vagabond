@@ -51,7 +51,6 @@ class NetworkModule {
                                baseUrl: String) : Retrofit {
         return  Retrofit.Builder()
                 .addConverterFactory(converterFactory)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .client(okHttpClient)
                 .baseUrl(baseUrl)
                 .build()

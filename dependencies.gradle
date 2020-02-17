@@ -1,7 +1,7 @@
 ext {
 
     def appCompatVersion = "1.1.0"
-    def roomVersion = "2.2.0-rc01"
+    def roomVersion = "2.2.3"
     def materialVersion = "1.1.0-alpha10"
     def cardViewVersion = "1.0.0"
     def recyclerViewVersion = "1.1.0-beta04"
@@ -74,7 +74,8 @@ ext {
 
     kotlinDependencies = [
             ktx : "androidx.core:core-ktx:$ktxVersion",
-            kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+            kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            activityKtx : "androidx.activity:activity-ktx:$ktxVersion"
     ]
 
     testingDependencies = [
