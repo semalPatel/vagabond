@@ -11,8 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
+import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.data.entities.TokenRequest
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
+import com.sierra.vagabond.utils.Prefs
 import com.sierra.vagabond.viewmodels.RecAreasViewModel
 import com.sierra.vagabond.viewmodels.RecAreasViewModelFactory
 import dagger.android.AndroidInjection
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
     lateinit var presenter: MainMvp.Presenter
     @Inject
     lateinit var viewModelFactory: RecAreasViewModelFactory
+    @Inject
+    lateinit var recAreaRepository: RecAreaRepository
+
     private val areasViewModel: RecAreasViewModel by viewModels { viewModelFactory }
 
     private var errorSnackBar: Snackbar? = null
@@ -39,6 +45,11 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         areasViewModel.areaList.observe(this, Observer { areas ->
             setDataToRecyclerView(areas)
         })
+        val tokenRequest = TokenRequest(
+                userId = "semal",
+                fcmToken = Prefs.deviceRegistrationToken
+        )
+        recAreaRepository.registerToken(tokenRequest)
     }
 
     private fun initializeToolbarAndRecyclerView() {

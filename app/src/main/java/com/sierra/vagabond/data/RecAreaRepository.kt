@@ -4,6 +4,7 @@ import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.api.SierraApiService
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.data.entities.TokenRequest
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.data.local.RecAreaDao
 import com.sierra.vagabond.di.AreasAPI
@@ -29,6 +30,7 @@ class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, 
 
     fun createWatch(watch: WatchRequest) {
         sierraAPI.createWatch(watch)
+                .subscribe()
     }
 
     fun insert(recreationalArea: RecreationalArea) {
@@ -39,5 +41,10 @@ class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, 
 
     fun clearAll() {
         recAreaDao.deleteAll()
+    }
+
+    fun registerToken(tokenRequest: TokenRequest) {
+        sierraAPI.registerToken(tokenRequest)
+                .subscribe()
     }
 }

@@ -4,12 +4,18 @@ import android.content.Context
 
 const val FACILITY_ID = "FacilityID"
 const val FACILITY_NAME = "FacilityName"
+
+const val USER_WATCH_ID = "user_id"
 const val WATCH_FACILITY_ID = "facility_id"
 const val WATCH_FACILITY_NAME = "facility_name"
-
 const val START_DATE = "start_date"
+const val END_DATE = "end_date"
+
 const val WATCH_TOKEN = "token"
 const val WATCH_ID = "watch_id"
+
+const val REGISTER_TOKEN = "registerToken"
+const val FCM_TOKEN = "fcm_token"
 
 const val EXCEPTION_STRING_VIEWMODEL = "ViewModel class not found"
 
@@ -41,8 +47,8 @@ const val CAMPING = "CAMPING"
 
 /*const val CREATE_WATCH = "create_watch"*/
 const val CREATE_WATCH = "createWatch"
-const val DELETE_WATCH = "delete_watch"
-const val GET_WATCHES = "get_watches"
+const val DELETE_WATCH = "deleteWatch"
+const val GET_WATCHES = "getWatches"
 //const val GC_BASE_ENDPOINT = "https://us-central1-sierra-236907.cloudfunctions.net/"
 const val GC_BASE_ENDPOINT = "https://us-central1-sierra-api-266504.cloudfunctions.net/"
 
@@ -52,7 +58,7 @@ const val AREA = "area"
 const val NAME = "DEVICE_PREFS"
 const val MODE = Context.MODE_PRIVATE
 
-const val ACCEPT_HEADER = "Accept: application/json"
+// const val ACCEPT_HEADER = "Accept: application/json"
 const val CONTENT_TYPE = "Content-type: application/json"
 
 const val DB_NAME = "areas.db"

@@ -1,7 +1,18 @@
 package com.sierra.vagabond.utils
 
+import android.annotation.SuppressLint
+import android.util.Log
+import com.google.firebase.iid.FirebaseInstanceId
+import com.sierra.vagabond.data.RecAreaRepository
+import com.sierra.vagabond.data.entities.TokenRequest
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+
 class PushInteractor {
 
+    @SuppressLint("CheckResult")
     fun registerDeviceToken() {
 
 //        FirebaseInstanceId.getInstance().instanceId
@@ -13,12 +24,12 @@ class PushInteractor {
 //                .addOnFailureListener { err ->
 //                    Log.d(javaClass.simpleName, err.toString())
 //                }
-        /*Observable.just("")
-                .map { FirebaseInstanceId.getInstance().getToken("", "FCM") }
+        Observable.just("")
+                .map { FirebaseInstanceId.getInstance().getToken("463740532540", "FCM") }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Log.d("Token", it)
-                })*/
+                .subscribe {
+                    Prefs.deviceRegistrationToken = it!!
+                }
     }
 }

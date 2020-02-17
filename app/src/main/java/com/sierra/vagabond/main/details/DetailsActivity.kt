@@ -74,7 +74,7 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         list_facilities.layoutManager = linearLayoutManager
         val facilities = detailedArea.recAreaFacilities
-        val facilitiesAdapter = FacilitiesAdapter(facilities)
+        val facilitiesAdapter = FacilitiesAdapter(facilities, repo)
         list_facilities.adapter = facilitiesAdapter
     }
 

@@ -6,4 +6,7 @@
     <string name="area_error">An error occurred while loading the areas</string>
     <string name="national_park_hint">Yosemite National Park</string>
     <string name="description">Description</string>
+    <string name="start_date_dialogue_title">Select Start Date</string>
+    <string name="end_date_dialogue_title">Select End Date</string>
+
 </resources>

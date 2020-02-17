@@ -22,6 +22,7 @@ ext {
     def firebaseCoreVersion = "17.2.0"
     def firebaseMessagingVersion = "20.0.0"
     def daggerVersion = "2.24"
+    def materialDialoguesVersion = "3.2.1"
 
     rxJava2Dependencies = [
             rxJava2 : "io.reactivex.rxjava2:rxjava:$rxJava2Version",
@@ -70,6 +71,7 @@ ext {
             exif : "androidx.exifinterface:exifinterface:$exifVersion",
             constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
             photoView : "com.github.chrisbanes:PhotoView:$photoViewVersion",
+            materialDialogues : "com.afollestad.material-dialogs:datetime:$materialDialoguesVersion"
     ]
 
     kotlinDependencies = [
