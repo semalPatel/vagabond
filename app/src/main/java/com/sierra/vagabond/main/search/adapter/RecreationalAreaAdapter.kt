@@ -3,11 +3,10 @@ package com.sierra.vagabond.main.search.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-
 import com.sierra.vagabond.R
-import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.data.entities.RecreationalArea
 
-class RecreationalAreaAdapter(recreationalAreaList: RecreationalAreaList) : RecyclerView.Adapter<AreaHolder>() {
+class RecreationalAreaAdapter(recreationalAreaList: List<RecreationalArea>) : RecyclerView.Adapter<AreaHolder>() {
 
     private val areaAdapterPresenter: AreaAdapterPresenter = AreaAdapterPresenter(recreationalAreaList)
 

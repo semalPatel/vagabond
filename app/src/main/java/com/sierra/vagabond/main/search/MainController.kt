@@ -1,8 +1,8 @@
 package com.sierra.vagabond.main.search
 
-interface MainMvp {
+interface MainController {
 
-    interface Presenter {
+    interface ViewModel {
 
         fun onDestroy()
 
@@ -19,6 +19,5 @@ interface MainMvp {
 
         fun onResponseFailure()
 
-//        fun provideContext(): Context
     }
 }

@@ -3,7 +3,6 @@ package com.sierra.vagabond.data
 import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.api.SierraApiService
 import com.sierra.vagabond.data.entities.RecreationalArea
-import com.sierra.vagabond.data.entities.RecreationalAreaList
 import com.sierra.vagabond.data.entities.TokenRequest
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.data.local.RecAreaDao
@@ -20,8 +19,8 @@ import javax.inject.Singleton
 @Singleton
 class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, @AreasAPI private val service: AreasApiService, @SierraAPI private val sierraAPI: SierraApiService) {
 
-    suspend fun getRecAreasList(query: String): RecreationalAreaList {
-        return service.getRecreationalAreaData(query, full = true, activity = CAMPING, by = BY_NAME)
+    suspend fun getRecAreasList(query: String): List<RecreationalArea> {
+        return service.getRecreationalAreaData(query = query, full = true, activity = CAMPING, by = BY_NAME).areasList
     }
 
     fun getSingleArea(recAreaId: String): Flowable<RecreationalArea> {

@@ -5,7 +5,7 @@ import com.sierra.vagabond.data.entities.RecreationalAreaList
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor (private val view: MainMvp.View, private val recAreaRepository: RecAreaRepository) : MainMvp.Presenter {
+class MainPresenter @Inject constructor (private val view: MainController.View, private val recAreaRepository: RecAreaRepository) : MainController.ViewModel {
 
     private val compositeDisposable = CompositeDisposable()
     private var isDataStored: Boolean = false

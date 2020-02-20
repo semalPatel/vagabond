@@ -1,7 +1,6 @@
 package com.sierra.vagabond.main.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.RecAreaRepository
-import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.data.entities.TokenRequest
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
 import com.sierra.vagabond.utils.Prefs
@@ -23,10 +22,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
-class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextListener {
+class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQueryTextListener {
 
     @Inject
-    lateinit var presenter: MainMvp.Presenter
+    lateinit var presenter: MainController.ViewModel
     @Inject
     lateinit var viewModelFactory: RecAreasViewModelFactory
     @Inject
@@ -72,10 +71,9 @@ class MainActivity : AppCompatActivity(), MainMvp.View, SearchView.OnQueryTextLi
         errorSnackBar?.show()
     }
 
-    private fun setDataToRecyclerView(recAreasList: RecreationalAreaList) {
+    private fun setDataToRecyclerView(recAreasList: List<RecreationalArea>) {
         val recreationalAreaAdapter = RecreationalAreaAdapter(recAreasList)
         search_recycler_view.adapter = recreationalAreaAdapter
-        Log.d(MainActivity::class.java.simpleName, recAreasList.toString())
     }
 
 

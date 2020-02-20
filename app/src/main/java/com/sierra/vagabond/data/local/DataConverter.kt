@@ -8,12 +8,13 @@ import com.sierra.vagabond.data.entities.RecAreaMedia
 
 class DataConverter {
 
+    private val gson = Gson()
+
     @TypeConverter
     fun toRecreationalAreaMedia(json: String?): List<RecAreaMedia>? {
         if (json == null) {
             return null
         }
-        val gson = Gson()
         val type = object : TypeToken<List<RecAreaMedia>>() {}.type
         return gson.fromJson<List<RecAreaMedia>>(json, type)
     }
@@ -23,7 +24,6 @@ class DataConverter {
         if (recAreaMediaList == null) {
             return null
         }
-        val gson = Gson()
         val type = object : TypeToken<List<RecAreaMedia>>() {}.type
         return gson.toJson(recAreaMediaList, type)
     }
@@ -33,7 +33,6 @@ class DataConverter {
         if (json == null) {
             return null
         }
-        val gson = Gson()
         val type = object : TypeToken<List<RecAreaFacilities>>() {}.type
         return gson.fromJson<List<RecAreaFacilities>>(json, type)
     }
@@ -43,7 +42,6 @@ class DataConverter {
         if (recAreaFacilities == null) {
             return null
         }
-        val gson = Gson()
         val type = object : TypeToken<List<RecAreaFacilities>>() {}.type
         return gson.toJson(recAreaFacilities, type)
     }
