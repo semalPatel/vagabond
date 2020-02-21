@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.entities.RecreationalArea
 
-class RecreationalAreaAdapter(recreationalAreaList: List<RecreationalArea>) : RecyclerView.Adapter<AreaHolder>() {
+class RecreationalAreaAdapter(recreationalAreaList: Sequence<RecreationalArea>) : RecyclerView.Adapter<AreaHolder>() {
 
     private val areaAdapterPresenter: AreaAdapterPresenter = AreaAdapterPresenter(recreationalAreaList)
 

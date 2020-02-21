@@ -10,15 +10,19 @@ import kotlinx.coroutines.launch
 
 class RecAreasViewModel (private val areaRepository: RecAreaRepository) : ViewModel() {
 
-    private val recAreasResult: MutableLiveData<List<RecreationalArea>> = MutableLiveData()
-    val areaList: LiveData<List<RecreationalArea>> = recAreasResult
+    private val recAreasResult: MutableLiveData<Sequence<RecreationalArea>> = MutableLiveData()
+    val areaList: LiveData<Sequence<RecreationalArea>> = recAreasResult
 
     fun getRecAreaList(recAreaID: String) {
         viewModelScope.launch {
             val response = areaRepository.getRecAreasList(recAreaID)
-            val filterResponse = response.filter { recreationalArea ->
+            val filterResponse = response.asSequence().filter { recreationalArea ->
                 recreationalArea.recAreaFacilities.isNotEmpty()
-                recreationalArea.recAreaMediaList.isNotEmpty()
+            }.filter { recreationalArea ->
+                        recreationalArea.recAreaMediaList.isNotEmpty()
+            }.map { area ->
+                areaRepository.insert(area)
+                return@map area
             }
             recAreasResult.value = filterResponse
         }

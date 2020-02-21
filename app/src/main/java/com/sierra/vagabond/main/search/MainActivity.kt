@@ -25,8 +25,6 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQueryTextListener {
 
     @Inject
-    lateinit var presenter: MainController.ViewModel
-    @Inject
     lateinit var viewModelFactory: RecAreasViewModelFactory
     @Inject
     lateinit var recAreaRepository: RecAreaRepository
@@ -71,7 +69,7 @@ class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQuer
         errorSnackBar?.show()
     }
 
-    private fun setDataToRecyclerView(recAreasList: List<RecreationalArea>) {
+    private fun setDataToRecyclerView(recAreasList: Sequence<RecreationalArea>) {
         val recreationalAreaAdapter = RecreationalAreaAdapter(recAreasList)
         search_recycler_view.adapter = recreationalAreaAdapter
     }
@@ -79,7 +77,6 @@ class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQuer
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
