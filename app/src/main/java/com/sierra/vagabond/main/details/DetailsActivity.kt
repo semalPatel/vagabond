@@ -23,11 +23,12 @@ import javax.inject.Inject
 
 class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
 
-    private lateinit var id: String
-
     @Inject
     lateinit var viewModelFactory: DetailsViewModelFactory
+
     private val detailsViewModel: DetailsActivityViewModel by viewModels { viewModelFactory }
+
+    private lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

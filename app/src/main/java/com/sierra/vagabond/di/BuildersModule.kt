@@ -12,7 +12,7 @@ abstract class BuildersModule {
     @ContributesAndroidInjector
     abstract fun bindMainActivity(): MainActivity
 
-    @ContributesAndroidInjector(modules = [(DetailsActivityModule::class)])
+    @ContributesAndroidInjector()
     abstract fun bindDetailsActivity(): DetailsActivity
 
     // Add bindings for other sub-components here
