@@ -1,14 +1,14 @@
 package com.sierra.vagabond.utils
 
-import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.launch
 
 class PushInteractor {
 
-    suspend fun registerDeviceToken() {
-        withContext(Dispatchers.Default) {
+    fun registerDeviceToken() {
+        CoroutineScope(Dispatchers.Default).launch {
             registerTokenInternal()
         }
     }
