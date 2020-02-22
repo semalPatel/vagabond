@@ -3,7 +3,6 @@ package com.sierra.vagabond.api
 import com.sierra.vagabond.data.entities.TokenRequest
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.utils.*
-import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -19,13 +18,13 @@ interface SierraApiService {
     @POST(DELETE_WATCH)
     fun deleteWatch(
             @Query("query") query: String,
-            @Query("full") full: Boolean): Single<WatchRequest>
+            @Query("full") full: Boolean): WatchRequest
 
     @Headers(CONTENT_TYPE)
     @POST(GET_WATCHES)
     fun getWatches(
             @Query("query") query: String,
-            @Query("full") full: Boolean): Single<List<WatchRequest>>
+            @Query("full") full: Boolean): List<WatchRequest>
 
     @Headers(CONTENT_TYPE)
     @POST(REGISTER_TOKEN)

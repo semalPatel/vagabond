@@ -10,8 +10,6 @@ import com.sierra.vagabond.di.AreasAPI
 import com.sierra.vagabond.di.SierraAPI
 import com.sierra.vagabond.utils.BY_NAME
 import com.sierra.vagabond.utils.CAMPING
-import io.reactivex.Flowable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 

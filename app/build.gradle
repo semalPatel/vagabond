@@ -40,13 +40,10 @@ dependencies {
     implementation kotlinDependencies.values()
     implementation dagger2Dependencies.values()
     implementation uiDependencies.values()
-    implementation roomDependencies.values()
+    implementation archCompDependencies.values()
     implementation networkingDependencies.values()
     implementation firbaseDependencies.values()
-    implementation rxJava2Dependencies.values()
     androidTestImplementation testingDependencies.values()
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 }
 
 repositories {

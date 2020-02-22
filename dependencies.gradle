@@ -15,20 +15,12 @@ ext {
     def picassoVersion = "2.71828"
     def gsonVersion = "2.8.5"
     def gsonConverterVersion = "2.6.0"
-    def rxJava2Version = "2.2.5"
-    def rxJava2AdapterVersion = "2.5.0"
-    def rxJava2AndroidVersion = "2.1.0"
     def ktxVersion = "1.1.0"
     def firebaseCoreVersion = "17.2.0"
     def firebaseMessagingVersion = "20.0.0"
     def daggerVersion = "2.24"
     def materialDialoguesVersion = "3.2.1"
-
-    rxJava2Dependencies = [
-            rxJava2 : "io.reactivex.rxjava2:rxjava:$rxJava2Version",
-            rxJava2Adapter : "com.squareup.retrofit2:adapter-rxjava2:$rxJava2AdapterVersion",
-            rxJava2Android : "io.reactivex.rxjava2:rxandroid:$rxJava2AndroidVersion"
-    ]
+    def viewModelVersion = "2.2.0"
 
     dagger2Dependencies = [
             dagger2 : "com.google.dagger:dagger:$daggerVersion",
@@ -53,10 +45,11 @@ ext {
             gson : "com.google.code.gson:gson:$gsonVersion"
     ]
 
-    roomDependencies = [
+    archCompDependencies = [
             room : "androidx.room:room-runtime:$roomVersion",
             roomKtx : "androidx.room:room-ktx:$roomVersion",
-            rxJava2Room : "androidx.room:room-rxjava2:$roomVersion"
+            lifeCycleExtensions : "androidx.lifecycle:lifecycle-extensions:$viewModelVersion",
+            lifeCycleViewModelKtx : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelVersion"
     ]
 
     roomCompiler = [

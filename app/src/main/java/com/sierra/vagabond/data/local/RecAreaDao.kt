@@ -8,8 +8,6 @@ import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.utils.DELETE_ALL
 import com.sierra.vagabond.utils.SELECT_ALL
 import com.sierra.vagabond.utils.SELECT_ONE
-import io.reactivex.Completable
-import io.reactivex.Flowable
 
 @Dao
 abstract class RecAreaDao {
