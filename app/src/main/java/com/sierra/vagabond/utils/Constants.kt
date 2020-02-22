@@ -18,6 +18,7 @@ const val REGISTER_TOKEN = "registerToken"
 const val FCM_TOKEN = "fcm_token"
 
 const val EXCEPTION_STRING_VIEWMODEL = "ViewModel class not found"
+const val EXCEPTION_STRING_TOKEN = "TokenError"
 
 const val IMG_TITLE = "Title"
 const val IMG_HEIGHT = "Height"

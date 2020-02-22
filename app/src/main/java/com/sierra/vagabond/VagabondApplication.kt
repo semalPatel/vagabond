@@ -7,6 +7,9 @@ import com.sierra.vagabond.utils.PushInteractor
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class VagabondApplication : Application(), HasAndroidInjector {
@@ -18,10 +21,16 @@ class VagabondApplication : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
-        pushInteractor.registerDeviceToken()
         Prefs.init(this)
         AppInjector.init(this)
+        registerToken()
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    private fun registerToken() {
+        CoroutineScope(Dispatchers.Default).launch {
+            pushInteractor.registerDeviceToken()
+        }
+    }
 }

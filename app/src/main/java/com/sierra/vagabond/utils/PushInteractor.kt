@@ -1,31 +1,21 @@
 package com.sierra.vagabond.utils
 
-import android.annotation.SuppressLint
+import android.util.Log
 import com.google.firebase.iid.FirebaseInstanceId
-import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class PushInteractor {
 
-    @SuppressLint("CheckResult")
-    fun registerDeviceToken() {
+    suspend fun registerDeviceToken() {
+        withContext(Dispatchers.Default) {
+            registerTokenInternal()
+        }
+    }
 
-//        FirebaseInstanceId.getInstance().instanceId
-//                .addOnCompleteListener { task ->
-//                    val token = task.result?.token
-//                    Prefs.deviceRegistrationToken = token!!
-//                    Log.d("Token", token)
-//                }
-//                .addOnFailureListener { err ->
-//                    Log.d(javaClass.simpleName, err.toString())
-//                }
-        Observable.just("")
-                .map { FirebaseInstanceId.getInstance().getToken("463740532540", "FCM") }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Prefs.deviceRegistrationToken = it!!
-                }
+    private fun registerTokenInternal() {
+        FirebaseInstanceId.getInstance().getToken("463740532540", "FCM").also { token ->
+            Prefs.deviceRegistrationToken = token!!
+        }
     }
 }
