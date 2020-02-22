@@ -14,12 +14,13 @@ import com.sierra.vagabond.R
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecAreaFacilities
 import com.sierra.vagabond.data.entities.WatchRequest
+import com.sierra.vagabond.viewmodels.DetailsActivityViewModel
 import kotlinx.android.synthetic.main.list_facilities.view.*
 import java.time.Instant
 import java.util.*
 
 class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>,
-                        private val repo: RecAreaRepository) : RecyclerView.Adapter<FacilitiesAdapter.Facilities>() {
+                        private val detailsViewModel: DetailsActivityViewModel) : RecyclerView.Adapter<FacilitiesAdapter.Facilities>() {
 
     private var startDate: Instant? = null
     private var endDate: Instant? = null
@@ -55,7 +56,7 @@ class FacilitiesAdapter(private val facilities: List<RecAreaFacilities>,
                                     facilityName = facilities[position].facilityName,
                                     startDate = startDate?.toString(),
                                     endDate = endDate?.toString())
-                            repo.createWatch(watchRequest)
+                            detailsViewModel.createWatch(watchRequest)
                         }
                     }
                 }

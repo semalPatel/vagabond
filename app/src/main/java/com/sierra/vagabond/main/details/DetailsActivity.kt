@@ -1,31 +1,33 @@
 package com.sierra.vagabond.main.details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
-import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.main.details.adapter.DetailsPhotosAdapter
 import com.sierra.vagabond.main.details.adapter.FacilitiesAdapter
 import com.sierra.vagabond.utils.REC_AREA_ID
+import com.sierra.vagabond.viewmodels.DetailsActivityViewModel
+import com.sierra.vagabond.viewmodels.DetailsViewModelFactory
+import com.sierra.vagabond.viewmodels.MainViewModelFactory
 import com.squareup.picasso.Picasso
 import dagger.android.AndroidInjection
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
 class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
 
-    @Inject lateinit var repo: RecAreaRepository
     private lateinit var id: String
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
+
+    @Inject
+    lateinit var viewModelFactory: DetailsViewModelFactory
+    private val detailsViewModel: DetailsActivityViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -34,25 +36,11 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         id = intent.getStringExtra(REC_AREA_ID)
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        getAreaFromRepo()
+        detailsViewModel.area.observe(this, Observer { area ->
+            initializeData(area)
+        })
+        detailsViewModel.getSingleArea(id)
     }
-
-    private fun getAreaFromRepo() {
-        val areaDisposable = repo.getSingleArea(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        { gotArea ->
-                            initializeData(gotArea)
-                        },
-                        { Log.d(javaClass.simpleName, "Null result") }
-                )
-        compositeDisposable.add(areaDisposable)
-    }
-
-    /*private fun loadImage() {
-
-    }*/
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -74,13 +62,9 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         list_facilities.layoutManager = linearLayoutManager
         val facilities = detailedArea.recAreaFacilities
-        val facilitiesAdapter = FacilitiesAdapter(facilities, repo)
+        val facilitiesAdapter = FacilitiesAdapter(facilities, detailsViewModel)
         list_facilities.adapter = facilitiesAdapter
     }
-
-    /*private fun setFacilities() {
-
-    }*/
 
     override fun setDataToRecyclerView(imageUrls: List<String>) {
         val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

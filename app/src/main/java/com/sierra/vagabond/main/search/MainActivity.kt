@@ -12,11 +12,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalArea
-import com.sierra.vagabond.data.entities.TokenRequest
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
-import com.sierra.vagabond.utils.Prefs
-import com.sierra.vagabond.viewmodels.RecAreasViewModel
-import com.sierra.vagabond.viewmodels.RecAreasViewModelFactory
+import com.sierra.vagabond.viewmodels.MainActivityViewModel
+import com.sierra.vagabond.viewmodels.MainViewModelFactory
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -25,11 +23,11 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQueryTextListener {
 
     @Inject
-    lateinit var viewModelFactory: RecAreasViewModelFactory
+    lateinit var viewModelFactory: MainViewModelFactory
     @Inject
     lateinit var recAreaRepository: RecAreaRepository
 
-    private val areasViewModel: RecAreasViewModel by viewModels { viewModelFactory }
+    private val mainViewModel: MainActivityViewModel by viewModels { viewModelFactory }
 
     private var errorSnackBar: Snackbar? = null
 
@@ -38,14 +36,10 @@ class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQuer
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initializeToolbarAndRecyclerView()
-        areasViewModel.areaList.observe(this, Observer { areas ->
+        mainViewModel.registerToken()
+        mainViewModel.areaList.observe(this, Observer { areas ->
             setDataToRecyclerView(areas)
         })
-        val tokenRequest = TokenRequest(
-                userId = "semal",
-                fcmToken = Prefs.deviceRegistrationToken
-        )
-        recAreaRepository.registerToken(tokenRequest)
     }
 
     private fun initializeToolbarAndRecyclerView() {
@@ -90,7 +84,7 @@ class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQuer
     }
 
     override fun onQueryTextSubmit(s: String): Boolean {
-        areasViewModel.getRecAreaList(s)
+        mainViewModel.getRecAreaList(s)
         return false
     }
 

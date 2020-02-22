@@ -18,15 +18,13 @@ abstract class RecAreaDao {
     abstract val areas: List<RecreationalArea>
 
     @Insert(onConflict = REPLACE)
-    abstract fun save(recreationalArea: RecreationalArea): Completable
+    abstract suspend fun save(recreationalArea: RecreationalArea)
 
     @Insert(onConflict = REPLACE)
     abstract suspend fun saveAll(recreationalAreaList: List<RecreationalArea>)
 
     @Query(SELECT_ONE)
-    protected abstract fun getArea(rec_area_id: String): Flowable<RecreationalArea>
-
-    fun getAreaDistinct(rec_area_id: String): Flowable<RecreationalArea> = getArea(rec_area_id).distinctUntilChanged()
+    abstract suspend fun getArea(rec_area_id: String): RecreationalArea
 
     @Query(DELETE_ALL)
     abstract fun deleteAll()

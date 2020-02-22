@@ -13,7 +13,7 @@ interface SierraApiService {
 
     @Headers(CONTENT_TYPE)
     @POST(CREATE_WATCH)
-    fun createWatch(@Body watch: WatchRequest): Single<WatchRequest>
+    suspend fun createWatch(@Body watch: WatchRequest): WatchRequest
 
     @Headers(CONTENT_TYPE)
     @POST(DELETE_WATCH)
@@ -29,6 +29,6 @@ interface SierraApiService {
 
     @Headers(CONTENT_TYPE)
     @POST(REGISTER_TOKEN)
-    fun registerToken(@Body tokenRequest: TokenRequest): Single<TokenRequest>
+    suspend fun registerToken(@Body tokenRequest: TokenRequest): TokenRequest
 
 }

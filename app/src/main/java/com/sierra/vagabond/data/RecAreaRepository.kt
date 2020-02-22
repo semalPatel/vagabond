@@ -23,27 +23,23 @@ class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, 
         return service.getRecreationalAreaData(query = query, full = true, activity = CAMPING, by = BY_NAME).areasList
     }
 
-    fun getSingleArea(recAreaId: String): Flowable<RecreationalArea> {
-        return recAreaDao.getAreaDistinct(recAreaId)
+    suspend fun getSingleArea(recAreaId: String): RecreationalArea {
+        return recAreaDao.getArea(recAreaId)
     }
 
-    fun createWatch(watch: WatchRequest) {
+    suspend fun createWatch(watch: WatchRequest) {
         sierraAPI.createWatch(watch)
-                .subscribe()
     }
 
-    fun insert(recreationalArea: RecreationalArea) {
+    suspend fun insert(recreationalArea: RecreationalArea) {
         recAreaDao.save(recreationalArea)
-                .subscribeOn(Schedulers.io())
-                .subscribe()
     }
 
-    fun clearAll() {
+    suspend fun clearAll() {
         recAreaDao.deleteAll()
     }
 
-    fun registerToken(tokenRequest: TokenRequest) {
+    suspend fun registerToken(tokenRequest: TokenRequest) {
         sierraAPI.registerToken(tokenRequest)
-                .subscribe()
     }
 }

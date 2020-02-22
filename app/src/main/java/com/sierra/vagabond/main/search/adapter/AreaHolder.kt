@@ -31,7 +31,6 @@ class AreaHolder(private val view: View) : RecyclerView.ViewHolder(view), AreaHo
 
     private fun goToDetailsActivity(v: View, area: RecreationalArea) {
         val intent = Intent(v.context, DetailsActivity::class.java)
-//        intent.putExtra(AREA, area)
         intent.putExtra(REC_AREA_ID, area.recAreaID)
         v.context.startActivity(intent)
     }
