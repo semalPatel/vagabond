@@ -19,7 +19,7 @@ class AreaHolder(private val view: View) : RecyclerView.ViewHolder(view), AreaHo
     override fun setAreaImage(imageUrl: String?) {
         Picasso.get()
                 .load(imageUrl)
-                .placeholder(R.drawable.baseline_report_problem_24)
+                .error(R.drawable.baseline_report_problem_24)
                 .fit()
                 .centerCrop()
                 .into(view.card_background)
