@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @Singleton
 class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, @AreasAPI private val service: AreasApiService, @SierraAPI private val sierraAPI: SierraApiService) {
 
-    suspend fun getRecAreasList(query: String): RecreationalAreaList {
+    suspend fun getRecAreasList(query: String): Wrapper<RecreationalArea> {
         return service.getRecreationalAreaData(query = query, full = true, activity = CAMPING, by = BY_NAME)
     }
 

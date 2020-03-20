@@ -18,7 +18,7 @@ class MainActivityViewModel (private val areaRepository: RecAreaRepository) : Vi
     fun getRecAreaList(recAreaID: String) {
         viewModelScope.launch {
             Log.d("ForEach", "MainViewModel")
-            val response = areaRepository.getRecAreasList(recAreaID).areasList
+            val response = areaRepository.getRecAreasList(recAreaID).data
                     .filter { area ->
                 area.recAreaFacilities.isNotEmpty()
                 area.recAreaMediaList.isNotEmpty()

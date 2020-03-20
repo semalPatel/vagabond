@@ -1,6 +1,7 @@
 package com.sierra.vagabond.api
 
-import com.sierra.vagabond.data.entities.RecreationalAreaList
+import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.data.entities.Wrapper
 import com.sierra.vagabond.utils.*
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,7 +12,7 @@ interface AreasApiService {
     suspend fun getRecreationalAreaData(@Query(QUERY) query: String,
                                 @Query(FULL) full: Boolean,
                                 @Query(ACTIVITY) activity: String,
-                                @Query (SORT) by: String): RecreationalAreaList
+                                @Query (SORT) by: String): Wrapper<RecreationalArea>
 
 }
 
