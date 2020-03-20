@@ -4,6 +4,8 @@ import android.content.Context
 
 const val FACILITY_ID = "FacilityID"
 const val FACILITY_NAME = "FacilityName"
+const val IS_RESERVABLE = "Reservable"
+const val IS_ENABLED = "Enabled"
 
 const val USER_WATCH_ID = "user_id"
 const val WATCH_FACILITY_ID = "facility_id"
@@ -36,8 +38,9 @@ const val REC_AREA_MEDIA = "MEDIA"
 const val REC_AREA_FACILITIES = "FACILITY"
 const val AREAS_DATA = "RECDATA"
 
-const val RC_AREAS_ENDPOINT = "recareas"
+const val RC_AREAS_ENDPOINT = "recareas/"
 const val RC_BASE_ENDPOINT = "https://ridb.recreation.gov/api/v1/"
+const val RC_FACILITIES_ENDPOINT = "$RC_AREAS_ENDPOINT{RecAreaID}/facilities"
 const val QUERY = "query"
 const val FULL = "full"
 const val ACTIVITY = "activity"

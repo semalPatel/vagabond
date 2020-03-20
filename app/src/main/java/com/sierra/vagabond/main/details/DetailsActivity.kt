@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sierra.vagabond.R
+import com.sierra.vagabond.data.entities.RecAreaFacilities
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.main.details.adapter.DetailsPhotosAdapter
 import com.sierra.vagabond.main.details.adapter.FacilitiesAdapter
@@ -38,8 +39,12 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         detailsViewModel.getSingleArea(id)
+        detailsViewModel.getFacilitiesForArea(id)
         detailsViewModel.area.observe(this, Observer { area ->
             initializeData(area)
+        })
+        detailsViewModel.areaFacilities.observe(this, Observer { facilities ->
+            initializeFacilities(facilities)
         })
     }
 
@@ -60,9 +65,11 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         collapsing_layout.title = detailedArea.recAreaName
         val desc = detailedArea.recAreaDescription
         description.text = desc
+    }
+
+    private fun initializeFacilities(facilities: List<RecAreaFacilities>) {
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         list_facilities.layoutManager = linearLayoutManager
-        val facilities = detailedArea.recAreaFacilities
         val facilitiesAdapter = FacilitiesAdapter(facilities, detailsViewModel)
         list_facilities.adapter = facilitiesAdapter
     }

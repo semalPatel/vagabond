@@ -11,7 +11,7 @@ import androidx.room.TypeConverters
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.utils.DB_NAME
 
-@Database(entities = [RecreationalArea::class], version = 1, exportSchema = false)
+@Database(entities = [RecreationalArea::class], version = 2, exportSchema = false)
 @TypeConverters(DataConverter::class)
 abstract class RecAreaDatabase : RoomDatabase() {
 

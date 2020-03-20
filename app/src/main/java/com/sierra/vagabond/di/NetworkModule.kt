@@ -46,7 +46,7 @@ class NetworkModule {
 
     private fun createRetrofit(okHttpClient: OkHttpClient,
                                converterFactory: GsonConverterFactory,
-                               baseUrl: String) : Retrofit {
+                               baseUrl: String): Retrofit {
         return  Retrofit.Builder()
                 .addConverterFactory(converterFactory)
                 .client(okHttpClient)

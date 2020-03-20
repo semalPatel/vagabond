@@ -19,6 +19,10 @@ class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, 
         return service.getRecreationalAreaData(query = query, full = true, activity = CAMPING, by = BY_NAME)
     }
 
+    suspend fun getFacilitiesForArea(recAreaId: String?): Wrapper<RecAreaFacilities> {
+        return service.getFacilitiesForArea(recAreaId, full = true, activity = CAMPING)
+    }
+
     suspend fun getSingleArea(recAreaId: String?): RecreationalArea {
         return recAreaDao.getArea(recAreaId)
     }

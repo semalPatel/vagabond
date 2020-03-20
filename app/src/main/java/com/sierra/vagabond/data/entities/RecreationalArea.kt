@@ -15,5 +15,4 @@ data class RecreationalArea(@field:PrimaryKey @field:SerializedName(REC_AREA_ID)
                             @field:SerializedName(REC_AREA_DIRS) @field:Expose val recAreaDirections: String,
                             @field:SerializedName(REC_AREA_PHONE) @field:Expose val recAreaPhone: String,
                             @field:SerializedName(REC_AREA_EMAIL) @field:Expose val recAreaEmail: String,
-                            @field:SerializedName(REC_AREA_MEDIA) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaMediaList: List<RecAreaMedia>,
-                            @field:SerializedName(REC_AREA_FACILITIES) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaFacilities: List<RecAreaFacilities>)
+                            @field:SerializedName(REC_AREA_MEDIA) @field:Expose @field:TypeConverters(DataConverter::class) val recAreaMediaList: List<RecAreaMedia>)

@@ -27,22 +27,4 @@ class DataConverter {
         val type = object : TypeToken<List<RecAreaMedia>>() {}.type
         return gson.toJson(recAreaMediaList, type)
     }
-
-    @TypeConverter
-    fun toRecreationalAreaFacilities(json: String?): List<RecAreaFacilities>? {
-        if (json == null) {
-            return null
-        }
-        val type = object : TypeToken<List<RecAreaFacilities>>() {}.type
-        return gson.fromJson<List<RecAreaFacilities>>(json, type)
-    }
-
-    @TypeConverter
-    fun fromRecreationalFacilities(recAreaFacilities: List<RecAreaFacilities>?): String? {
-        if (recAreaFacilities == null) {
-            return null
-        }
-        val type = object : TypeToken<List<RecAreaFacilities>>() {}.type
-        return gson.toJson(recAreaFacilities, type)
-    }
 }

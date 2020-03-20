@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQuer
         searchView.maxWidth = android.R.attr.maxWidth
         searchView.queryHint = getString(R.string.national_park_hint)
         searchView.setOnQueryTextListener(this)
+        searchView.clearFocus()
         return true
     }
 
