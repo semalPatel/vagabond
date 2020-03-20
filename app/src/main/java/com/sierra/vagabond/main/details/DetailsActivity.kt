@@ -28,7 +28,7 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
 
     private val detailsViewModel: DetailsActivityViewModel by viewModels { viewModelFactory }
 
-    private lateinit var id: String
+    private var id: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -37,10 +37,10 @@ class DetailsActivity : AppCompatActivity(), DetailsMvp.View {
         id = intent.getStringExtra(REC_AREA_ID)
         setSupportActionBar(toolbar_title)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        detailsViewModel.getSingleArea(id)
         detailsViewModel.area.observe(this, Observer { area ->
             initializeData(area)
         })
-        detailsViewModel.getSingleArea(id)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

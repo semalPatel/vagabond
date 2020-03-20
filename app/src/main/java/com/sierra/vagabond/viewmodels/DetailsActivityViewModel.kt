@@ -1,5 +1,6 @@
 package com.sierra.vagabond.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,9 +15,10 @@ class DetailsActivityViewModel (private val areaRepository: RecAreaRepository) :
     private val recArea: MutableLiveData<RecreationalArea> = MutableLiveData()
     val area: LiveData<RecreationalArea> = recArea
 
-    fun getSingleArea(recAreaId: String) {
+    fun getSingleArea(recAreaId: String?) {
         viewModelScope.launch {
             recArea.value = areaRepository.getSingleArea(recAreaId)
+            Log.d("areaSingle", areaRepository.getSingleArea(recAreaId).recAreaDescription)
         }
     }
 

@@ -1,12 +1,12 @@
 package com.sierra.vagabond.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.util.Log
+import androidx.lifecycle.*
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalArea
 import com.sierra.vagabond.data.entities.TokenRequest
+import com.sierra.vagabond.data.resource.Resource
+import com.sierra.vagabond.main.RecAreasViewState
 import com.sierra.vagabond.utils.Prefs
 import kotlinx.coroutines.launch
 
@@ -17,8 +17,17 @@ class MainActivityViewModel (private val areaRepository: RecAreaRepository) : Vi
 
     fun getRecAreaList(recAreaID: String) {
         viewModelScope.launch {
-            val response = areaRepository.getRecAreasList(recAreaID)
-            val filterResponse = response.asSequence().filter { recreationalArea ->
+            Log.d("ForEach", "MainViewModel")
+            val response = areaRepository.getRecAreasList(recAreaID).areasList
+                    .filter { area ->
+                area.recAreaFacilities.isNotEmpty()
+                area.recAreaMediaList.isNotEmpty()
+            }
+            areaRepository.insertAll(response)
+            response.forEach {
+                Log.d("ForEach", it.recAreaName + " repo " + areaRepository.getSingleArea(it.recAreaID).recAreaName)
+            }
+            /*.filter { recreationalArea ->
                 recreationalArea.recAreaFacilities.isNotEmpty()
             }.filter { recreationalArea ->
                         recreationalArea.recAreaMediaList.isNotEmpty()
@@ -27,8 +36,8 @@ class MainActivityViewModel (private val areaRepository: RecAreaRepository) : Vi
                     areaRepository.insert(area)
                 }
                 return@map area
-            }
-            recAreasResult.value = filterResponse
+            }*/
+            recAreasResult.value = response.asSequence()
         }
     }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearance.Owl.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">0px</item>
+        <item name="cornerSizeTopLeft">@dimen/small_component_top_left_radius</item>
+    </style>
+
+    <dimen name="small_component_top_left_radius">28dp</dimen>
+    <dimen name="minimized_sheet_top_left_radius">48dp</dimen>
+
+</resources>

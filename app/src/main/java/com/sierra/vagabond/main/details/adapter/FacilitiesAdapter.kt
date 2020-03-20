@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.sierra.vagabond.R
-import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecAreaFacilities
 import com.sierra.vagabond.data.entities.WatchRequest
 import com.sierra.vagabond.viewmodels.DetailsActivityViewModel

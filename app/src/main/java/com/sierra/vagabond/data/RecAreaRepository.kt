@@ -2,9 +2,7 @@ package com.sierra.vagabond.data
 
 import com.sierra.vagabond.api.AreasApiService
 import com.sierra.vagabond.api.SierraApiService
-import com.sierra.vagabond.data.entities.RecreationalArea
-import com.sierra.vagabond.data.entities.TokenRequest
-import com.sierra.vagabond.data.entities.WatchRequest
+import com.sierra.vagabond.data.entities.*
 import com.sierra.vagabond.data.local.RecAreaDao
 import com.sierra.vagabond.di.AreasAPI
 import com.sierra.vagabond.di.SierraAPI
@@ -17,11 +15,11 @@ import javax.inject.Singleton
 @Singleton
 class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, @AreasAPI private val service: AreasApiService, @SierraAPI private val sierraAPI: SierraApiService) {
 
-    suspend fun getRecAreasList(query: String): List<RecreationalArea> {
-        return service.getRecreationalAreaData(query = query, full = true, activity = CAMPING, by = BY_NAME).areasList
+    suspend fun getRecAreasList(query: String): RecreationalAreaList {
+        return service.getRecreationalAreaData(query = query, full = true, activity = CAMPING, by = BY_NAME)
     }
 
-    suspend fun getSingleArea(recAreaId: String): RecreationalArea {
+    suspend fun getSingleArea(recAreaId: String?): RecreationalArea {
         return recAreaDao.getArea(recAreaId)
     }
 
@@ -31,6 +29,10 @@ class RecAreaRepository @Inject constructor(private val recAreaDao: RecAreaDao, 
 
     suspend fun insert(recreationalArea: RecreationalArea) {
         recAreaDao.save(recreationalArea)
+    }
+
+    suspend fun insertAll(recreationalAreas: List<RecreationalArea>) {
+        recAreaDao.saveAll(recreationalAreas)
     }
 
     suspend fun clearAll() {

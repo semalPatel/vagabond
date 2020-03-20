@@ -1,6 +1,7 @@
 package com.sierra.vagabond.main.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.View
 import androidx.activity.viewModels

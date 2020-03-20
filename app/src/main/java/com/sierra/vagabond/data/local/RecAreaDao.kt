@@ -22,7 +22,7 @@ abstract class RecAreaDao {
     abstract suspend fun saveAll(recreationalAreaList: List<RecreationalArea>)
 
     @Query(SELECT_ONE)
-    abstract suspend fun getArea(rec_area_id: String): RecreationalArea
+    abstract suspend fun getArea(rec_area_id: String?): RecreationalArea
 
     @Query(DELETE_ALL)
     abstract fun deleteAll()
