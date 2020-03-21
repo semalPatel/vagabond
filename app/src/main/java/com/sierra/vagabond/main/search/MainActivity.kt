@@ -7,12 +7,14 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sierra.vagabond.R
 import com.sierra.vagabond.data.RecAreaRepository
 import com.sierra.vagabond.data.entities.RecreationalArea
+import com.sierra.vagabond.databinding.ActivityMainBinding
 import com.sierra.vagabond.main.search.adapter.RecreationalAreaAdapter
 import com.sierra.vagabond.viewmodels.MainActivityViewModel
 import com.sierra.vagabond.viewmodels.MainViewModelFactory
@@ -35,7 +37,8 @@ class MainActivity : AppCompatActivity(), MainController.View, SearchView.OnQuer
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.model = mainViewModel
         initializeToolbarAndRecyclerView()
         mainViewModel.registerToken()
         mainViewModel.areaList.observe(this, Observer { areas ->

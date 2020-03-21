@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <import type="android.view.View">
+        </import>
+        <variable
+            name="model"
+            type="com.sierra.vagabond.viewmodels.MainActivityViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -20,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="true"
-            android:visibility="invisible" />
+            app:setVisibility="@{model.isLoading ? View.VISIBLE : View.GONE}" />
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

@@ -17,8 +17,9 @@ import kotlinx.coroutines.withContext
 class DetailsActivityViewModel (private val areaRepository: RecAreaRepository) : ViewModel() {
 
     private val recArea: MutableLiveData<RecreationalArea> = MutableLiveData()
-    private val facilities: MutableLiveData<List<RecAreaFacilities>> = MutableLiveData()
     val area: LiveData<RecreationalArea> = recArea
+
+    private val facilities: MutableLiveData<List<RecAreaFacilities>> = MutableLiveData()
     val areaFacilities: LiveData<List<RecAreaFacilities>> = facilities
 
     fun getSingleArea(recAreaId: String?) {
@@ -29,7 +30,6 @@ class DetailsActivityViewModel (private val areaRepository: RecAreaRepository) :
     }
 
     fun getFacilitiesForArea(recAreaId: String?) {
-        Log.d("facilitiesURL", RC_FACILITIES_ENDPOINT)
         viewModelScope.launch {
             val responseFacilities = areaRepository.getFacilitiesForArea(recAreaId).data.filter { facilities ->
                 facilities.isReservable
